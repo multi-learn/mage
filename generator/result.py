@@ -5,10 +5,9 @@ Created on Wed Nov 27 16:14:14 2019
 
 @author: bernardet
 """
-
 import parameters
 from multiviews_datasets import generator_multiviews_dataset, results_to_csv
-from test_classifier import score_multiviews_n_samples, graph_comparaison_classifier_scores_n_samples, score_multiviews_R, score_multiviews_Z_factor, score_multiviews_n_views_R, score_multiviews_class_sep, score_one_multiview_dataset, score_multiviews_n_informative_divided
+from tests.test_classifier import score_multiviews_n_samples, graph_comparaison_classifier_scores_n_samples, score_multiviews_R, score_multiviews_Z_factor, score_multiviews_n_views_R, score_multiviews_class_sep, score_one_multiview_dataset, score_multiviews_n_informative_divided
 
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
