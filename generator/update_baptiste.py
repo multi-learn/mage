@@ -2,10 +2,8 @@ import os
 import yaml
 import numpy as np
 from sklearn.datasets import make_classification
-from random import gauss
 from math import ceil, floor
 import pandas as pd
-import shutil
 import h5py
 
 class MultiviewDatasetGenetator():
@@ -40,7 +38,12 @@ class MultiviewDatasetGenetator():
             self.standard_deviation = standard_deviation
             self.weights = weights
             self.flip_y = flip_y
-            self.random_state = random_state
+            if isinstance(random_state, np.random.RandomState):
+                self.random_state = random_state
+            elif isinstance(random_state, int):
+                self.random_state = np.random.RandomState(random_state)
+            else:
+                raise ValueError("random_sate must be np.random.RandomState or int")
 
     def generate(self):
         if self.n_views < 2:
@@ -65,7 +68,7 @@ class MultiviewDatasetGenetator():
                 "Il faut que (d+D)/2 - 3*standard_deviation >= 1 pour avoir des valeurs positives non nulles lors de l'emploi de la loi normale")
 
         # n_views dimension of view v values randomly from N((d+D)/2, standard_deviation^2)
-        d_v = np.random.normal(loc=(self.d + self.D) / 2,
+        d_v = self.random_state.normal(loc=(self.d + self.D) / 2,
                                scale=self.standard_deviation,
                                size=self.n_views)
         d_v = list(d_v)
@@ -75,7 +78,7 @@ class MultiviewDatasetGenetator():
                 remove_list.append(dim_view)
                 add = -1
                 while add < self.d or add > self.D:
-                    add = gauss((self.d + self.D) / 2, self.standard_deviation)
+                    add = self.random_state.normal((self.d + self.D) / 2, self.standard_deviation)
                 add_list.append(add)
         d_v = [view for view in d_v if view not in remove_list] + add_list
         d_v = [int(view) for view in d_v]  # dimension of views = integer
@@ -99,14 +102,14 @@ class MultiviewDatasetGenetator():
         self.results = []
         for view in range(n_views):
             # choice d_v[view] numeros of Z columns uniformly from I_q
-            I_v = np.random.choice(I_q, size=d_v[view],
+            I_v = self.random_state.choice(I_q, size=d_v[view],
                                    replace=False)  # tirage dans I_q sans remise de taille d_v[view]
             meta_I_v += list(I_v)
             # projection of Z along the columns in I_v
             X_v = self.projection( I_v)
             self.results.append((X_v, I_v))
             # remove R*d_v[view] columns numeros of I_v form I_q
-            elements_to_remove = np.random.choice(I_v,
+            elements_to_remove = self.random_state.choice(I_v,
                                                   size=floor(self.R * d_v[view]),
                                                   replace=False)  # tirage dans I_v sans remise de taille floor(R*d_v[view])
             I_q = np.setdiff1d(I_q,
@@ -242,9 +245,9 @@ if __name__=="__main__":
     class_sep_factor = 10000  # Separation between the different classes
     n_informative_divid = 2  # Divides the number of informative features in the latent space
     standard_deviation = 2
-    d = 4
-    D = 10
-    flip_y = 0.00
+    d = 4  # View size lower limit
+    D = 10  # View size upper limit
+    flip_y = 0.00  # Ratio of label noise
     random_state = 42
     weights = None # The proportions of examples in each class
 
@@ -270,17 +273,3 @@ if __name__=="__main__":
 
     multiview_generator.generate()
     multiview_generator.to_hdf5(saving_path=path, name=name)
-
-    # for filename in os.listdir(path):
-    #     file_path = os.path.join(path, filename)
-    #     try:
-    #         if os.path.isfile(file_path) or os.path.islink(file_path):
-    #             os.unlink(file_path)
-    #         elif os.path.isdir(file_path):
-    #             shutil.rmtree(file_path)
-    #     except Exception as e:
-    #         print('Failed to delete %s. Reason: %s' % (file_path, e))
-    # changing_labels_indices = np.random.RandomState(random_state).choice(np.arange(y.shape[0]), n_outliers)
-    # print(changing_labels_indices)
-    # y[changing_labels_indices] = np.invert(y[changing_labels_indices].astype(bool)).astype(int)
-    # results_to_csv(path, Z, y, results)
