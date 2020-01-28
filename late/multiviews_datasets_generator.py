@@ -63,7 +63,11 @@ def projection(latent_space, chosen_columns_list):
     return latent_space[:, chosen_columns_list]
 
 
-def generator_multiviews_dataset(n_samples=1000, n_views=3, n_classes=2, Z_factor=250, R=2/3, n_clusters_per_class=1, class_sep_factor=2, n_informative_divid=2, d=2, D=12, standard_deviation=2):
+def generator_multiviews_dataset(n_samples=1000, n_views=3, n_classes=2,
+                                 Z_factor=250, R=2/3, n_clusters_per_class=1,
+                                 class_sep_factor=2, n_informative_divid=2,
+                                 d=2, D=12, standard_deviation=2, weights=None,
+                                 random_state=42):
     """
     Returns a generator multiviews dataset
     
@@ -149,9 +153,22 @@ def generator_multiviews_dataset(n_samples=1000, n_views=3, n_classes=2, Z_facto
     # Number of informative features
     n_informative = round(dim_Z/n_informative_divid)
     # Generation of latent space Z
-    Z, y = make_classification(n_samples=n_samples, n_features=dim_Z, n_informative=n_informative, n_redundant=0, 
-                               n_repeated=0, n_classes=n_classes, n_clusters_per_class=n_clusters_per_class, weights=None, 
-                               flip_y=0.00, class_sep=n_clusters_per_class*class_sep_factor, random_state=None)
+    print("n_samples :", n_samples)
+    print("dim_Z :", dim_Z)
+    print("n_informative :", n_informative)
+    print("n_redundant :", 0)
+    print("n_repeated :", 0)
+    print("n_classes :", n_classes)
+    print("n_clusters_per_class :", n_clusters_per_class)
+    print("class_sep :", n_clusters_per_class*class_sep_factor)
+
+
+    Z, y = make_classification(n_samples=n_samples, n_features=dim_Z, n_informative=n_informative, n_redundant=0,
+                               n_repeated=0, n_classes=n_classes, n_clusters_per_class=n_clusters_per_class, weights=weights,
+                               flip_y=0.00, class_sep=n_clusters_per_class*class_sep_factor, random_state=random_state, shuffle=False)
+    # Z, y = make_classification(n_samples=200, n_features=10, n_informative=2, n_redundant=0,
+    #                            n_repeated=0, n_classes=2, n_clusters_per_class=1, weights=None,
+    #                            flip_y=0, class_sep=100, random_state=random_state, shuffle=False)
         
     I_q = np.array([i for i in range(Z.shape[1])])  # 1D-array of Z columns numero
     meta_I_v = []
