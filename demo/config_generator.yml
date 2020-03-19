@@ -1,0 +1,24 @@
+n_samples: 100  # Number of samples in tha dataset
+n_views: 4  # Number of views in the dataset
+n_classes: 3  # Number of classes in the dataset
+n_clusters_per_class: 1  # Number of clusters for each class
+class_sep: 1.55 # Separation between the different classes
+n_informative: 100 # Divides the number of informative features in the latent space
+flip_y: 0.00  # Ratio of label noise
+random_state: 42
+class_weights: None # The proportions of examples in each class
+confusion_matrix: [[0.9, 0.5, 0.3, 0.1],
+                   [0.5, 0.3, 0.3, 0.1],
+                   [0.1, 0.1, 0.3, 0.1]]
+precision: 0.05
+example_subsampling_method: "block"
+example_subsampling_config: {}
+feature_subampling_method: "block"
+feature_subsampling_config: {}
+redundancy: None
+methods: "uniform"
+view_dims: None
+estimator_name: "LOneOneScore"
+estimator_config: {}
+build_method: "iterative"
+priority: "random",
