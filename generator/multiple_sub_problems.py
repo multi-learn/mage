@@ -11,6 +11,7 @@ from math import ceil, floor
 import pandas as pd
 import h5py
 
+
 def format_array(input, size):
     if isinstance(input, int) or isinstance(input, float):
         return np.zeros(size)+input
@@ -24,6 +25,7 @@ def format_array(input, size):
         raise ValueError("Must provide scalar or np.ndarray, "
                          "provided {}".format(type(input)))
 
+
 def init_array_attr(attr, n_repeat, base_val=0):
     if attr is None:
         return np.ones((n_repeat, 1))*base_val
@@ -34,13 +36,18 @@ def init_array_attr(attr, n_repeat, base_val=0):
     else:
         raise ValueError("Wring type for attr : {}".format(type(attr)))
 
+
 class MultiViewSubProblemsGenerator():
+    """
+    This moltiview generator uses multiple monoview subproblems in which the examples may be misdescribed.
+    """
 
     def __init__(self, random_state=42, n_samples=100, n_classes=4, n_views=4,
-                 confusion_matrix=None, mislabelling_method="random",
-                 class_seps=1.0, n_features=10, n_informative=10, n_redundant=0,
-                 n_repeated=0, mult=2, class_weights=None, redundancy=None,
-                 complementarity=None, mutual_error=None):
+                 confusion_matrix=None, class_seps=1.0, n_features=10,
+                 n_informative=10, n_redundant=0, n_repeated=0, mult=2,
+                 class_weights=None, redundancy=None, complementarity=None,
+                 mutual_error=None):
+
         if isinstance(random_state, int):
             self.rs = np.random.RandomState(random_state)
         elif isinstance(random_state, np.random.RandomState):
@@ -49,6 +56,7 @@ class MultiViewSubProblemsGenerator():
             raise ValueError("Random state must be either en int or a "
                              "np.random.RandomState object, "
                              "here it is {}".format(random_state))
+
         self.class_seps = format_array(class_seps, n_views)
         self.n_features = format_array(n_features, n_views).astype(int)
         self.n_informative = format_array(n_informative, n_views).astype(int)
@@ -75,23 +83,16 @@ class MultiViewSubProblemsGenerator():
         else:
             raise ValueError("Confusion matrix of wrong type : "
                              "{} instead of np.array".format(type(confusion_matrix)))
-        self.mislabelling_method = mislabelling_method
         self.classes = np.arange(self.n_classes)
         self.mult = mult
         if class_weights is None:
             class_weights = np.ones(n_classes)
         self.class_weights = class_weights/np.sum(class_weights)
         self.n_examples_per_class = (self.class_weights * n_samples).astype(int)
-        print("n_examples_per_class: ", self.n_examples_per_class)
         self.n_well_described = [(self.n_examples_per_class[class_index]*(1-confusion)).astype(int)
                                  for class_index, confusion in enumerate(self.confusion_matrix)]
-        print("n_well_described: ", self.n_well_described)
         self.n_misdescribed = [(self.n_examples_per_class[class_index]-self.n_well_described[class_index])
                                  for class_index in range(self.n_classes)]
-        print("n_misdescribed: ", self.n_misdescribed)
-        print("redundancy: ", redundancy)
-        print("mutual_error: ", mutual_error)
-        print("complementarity: ", complementarity)
         self.n_samples = np.sum(self.n_examples_per_class)
         example_indices = np.arange(np.sum(self.n_examples_per_class))
         self.rs.shuffle(example_indices)
@@ -130,8 +131,11 @@ class MultiViewSubProblemsGenerator():
         return X
 
     def gen_redundancy(self):
+        """
+        Randomly selects the examples that will participate to redundancy
+        (well described by all the views)
+        """
         if (np.repeat(self.redundancy, self.n_views, axis=1) > 1-self.confusion_matrix).any():
-            print(np.repeat(self.redundancy, self.n_views, axis=1) > 1-self.confusion_matrix)
             raise ValueError("Redundancy ({}) must be at least equal to the lowest accuracy rate of all the confusion matrix ({}).".format(self.redundancy, np.min(1-self.confusion_matrix, axis=1)))
         else:
             for class_index, redundancy in enumerate(self.redundancy):
@@ -140,6 +144,10 @@ class MultiViewSubProblemsGenerator():
                 self.remove_available(self.available_init_indices, self.redundant_indices[class_index], class_index)
 
     def gen_mutual_error(self):
+        """
+        Randomly selects the examples that will participate to mutual error
+        (mis-described by all the views)
+        """
         if (np.repeat(self.mutual_error, self.n_views, axis=1)>self.confusion_matrix).any():
             raise ValueError(
                 "Mutual error ({}) must be at least equal to the lowest error rate of all the confusion matrix ({}).".format(
@@ -154,6 +162,11 @@ class MultiViewSubProblemsGenerator():
                                           class_index)
 
     def gen_complementarity(self):
+        """
+        Randomly selects the examples that will participate to complementarity
+        (well described by a fraction of the views)
+        """
+        # TODO complementarity level
         if ((self.complementarity*self.n_examples_per_class)[0]>np.array([len(inds) for inds in self.available_init_indices])).any():
             raise ValueError("Complementarity ({}) must be at least equal to the lowest accuracy rate of all the confusion matrix ({}).".format(self.redundancy, np.min(1-self.confusion_matrix, axis=1)))
         else:
@@ -161,7 +174,7 @@ class MultiViewSubProblemsGenerator():
                 self.complementarity_examples[class_index]  = self.rs.choice(self.available_init_indices[class_index],
                                                   size=int(self.n_examples_per_class[class_index]*complementarity),
                                                                replace=False)
-                self.good_views_indices[class_index] = [self.rs.choice(np.arange(n_views),
+                self.good_views_indices[class_index] = [self.rs.choice(np.arange(self.n_views),
                                                                        size=self.rs.randint(1, self.n_views),
                                                                        replace=False)
                                                         for _ in self.complementarity_examples[class_index]]
@@ -174,50 +187,82 @@ class MultiViewSubProblemsGenerator():
                                       class_index)
 
     def gen_example_indices(self, ):
+        """
+        Selects examples accordin to their role (redundancy, ....) and then
+        affects more error if needed according to the input confusion matrix)
+
+        """
         self.gen_redundancy()
         self.gen_mutual_error()
         self.gen_complementarity()
 
         for class_index in range(self.n_classes):
             for view_index, view_confusion in enumerate(np.transpose(self.confusion_matrix)):
+                # Mutual error examples are misdescribed in every views
                 self.misdescribed[class_index][view_index] = list(self.mutual_error_indices[class_index])
+                # Redundant examples are well described in every view
                 self.well_described[class_index][view_index] = list(self.redundant_indices[class_index])
-                print(len(self.well_described[class_index][view_index]))
+                # Complementar examples are well described in certain views
+                # and mis described in the others.
                 self.well_described[class_index][view_index] += [complem_ind
                                                                  for ind, complem_ind
                                                                  in enumerate(self.complementarity_examples[class_index])
                                                                  if view_index in self.good_views_indices[class_index][ind]]
-                print(len(self.well_described[class_index][view_index]))
-                print(self.n_well_described[class_index][view_index])
                 self.misdescribed[class_index][view_index]+=[complem_ind
                                                              for ind, complem_ind
                                                              in enumerate(self.complementarity_examples[class_index])
                                                              if view_index in self.bad_views_indices[class_index][ind]]
-                # Todo Redundancy
-                print('Class : {}, View: {}'.format(class_index, view_index))
-                print('To get: {}, Avail: {}'.format(int(self.n_well_described[class_index][view_index]-len(self.well_described[class_index][view_index])), len(self.available_init_indices[class_index])))
-                well_described = list(self.rs.choice(
-                    self.available_init_indices[class_index],
-                    size=int(self.n_well_described[class_index][view_index]-len(self.well_described[class_index][view_index])),
-                    replace=False))
-                misdescribed = [ind
-                                         for ind
-                                         in self.available_init_indices[class_index]
-                                         if ind not in well_described]
+
+                # Getting the number of examples that the view must
+                # describe well for this class :
+                n_good_descriptions_to_get = int(self.n_well_described[class_index][view_index]-
+                                                 len(self.well_described[class_index][view_index]))
+                if n_good_descriptions_to_get < 0:
+                    raise ValueError("For view {}, class {}, the error matrix "
+                                     "is not compatible with the three "
+                                     "parameters, either lower the "
+                                     "error (now:{}), or lower redundancy "
+                                     "(now: {}) and/or complementarity "
+                                     "(now: {})".format(view_index, class_index,
+                                                        self.confusion_matrix[class_index, view_index],
+                                                        self.redundancy[0,0],
+                                                        self.complementarity[0,0]))
+                if n_good_descriptions_to_get > len(self.available_init_indices[class_index]):
+                    raise ValueError("For view {}, class {}, the error matrix "
+                                     "is not compatible with the three "
+                                     "parameters, either increase the "
+                                     "error (now:{}), or lower redundancy "
+                                     "(now: {}) and/or complementarity "
+                                     "(now: {})".format(view_index, class_index,
+                                                        self.confusion_matrix[class_index, view_index],
+                                                        self.redundancy,
+                                                        self.complementarity))
+
+                # Filling with the needed well described examples
+                well_described = list(self.rs.choice(self.available_init_indices[class_index],
+                                                     size=n_good_descriptions_to_get,
+                                                     replace=False))
+                # And misdescribed couterparts
+                misdescribed = [ind for ind
+                                in self.available_init_indices[class_index]
+                                if ind not in well_described]
+
+                #Compiling the different tables
                 self.well_described[class_index][view_index]+=well_described
                 self.well_described[class_index][view_index] = np.array(self.well_described[class_index][view_index])
                 self.misdescribed[class_index][view_index]+=misdescribed
                 self.misdescribed[class_index][view_index] = np.array(
                     self.misdescribed[class_index][view_index])
 
-
     def remove_available(self, available_indices, to_remove, class_index):
+        """
+        Removes indices from the available ones array
+        """
         available_indices[class_index] = [ind
                                           for ind
                                           in available_indices[class_index]
                                           if ind not in to_remove]
         return available_indices
-
 
     def get_repartitions(self, view_index, class_index):
         n_misdescribed = self.misdescribed[class_index][view_index].shape[0]
@@ -316,54 +361,6 @@ class MultiViewSubProblemsGenerator():
             np.dtype("S100")), dtype=np.dtype("S100"))
 
         dataset_file.close()
-
-
-
-if __name__=='__main__':
-    from classify_generated import gen_folds, test_dataset, make_fig
-    n_views = 4
-    n_classes = 8
-    conf = np.ones((n_classes, n_views))*0.40
-    conf[0,3] = 0.70
-    conf[4,1] = 0.5
-    conf[5, 1] = 0.6
-    conf[6, 1] = 0.7
-    conf[7, 1] = 0.69
-    conf[6, 2] = 0.5
-    conf[7, 2] = 0.5
-    # conf = np.array([
-    #     np.array([0.40, 0.31, 0.31, 0.80]),
-    #     np.array([0.31, 0.31, 0.31, 0.31]),
-    #     np.array([0.31, 0.31, 0.31, 0.31]),
-    #     np.array([0.31, 0.4, 0.31, 0.31]),
-    #     np.array([0.31, 0.5, 0.31, 0.31]),
-    #     np.array([0.31, 0.6, 0.31, 0.31]),
-    #     np.array([0.31, 0.7, 0.41, 0.31]),
-    #     np.array([0.31, 0.8, 0.41, 0.31]),
-    # ])
-    n_folds = 10
-    n_samples = 2000
-    class_sep = 10
-    class_weights = [0.125, 0.1, 0.15, 0.125, 0.01, 0.2, 0.125, 0.125,]
-    gene = MultiViewSubProblemsGenerator(confusion_matrix=conf,
-                                         n_samples=n_samples,
-                                         n_views=n_views,
-                                         n_classes=n_classes,
-                                         class_seps=class_sep,
-                                         n_features=3,
-                                         n_informative=3,
-                                         mult=4,
-                                         mislabelling_method="center_blob",
-                                         class_weights=class_weights,
-                                         mutual_error=0.1,
-                                         redundancy=0.05,
-                                         complementarity=0.5)
-    gene.generate_multi_view_dataset()
-
-
-    folds = gen_folds(random_state=42, generator=gene, n_folds=n_folds)
-    output_confusion = test_dataset(folds, n_views, n_classes, gene)
-    make_fig(conf, output_confusion, n_views, n_classes, gene)
 
 
     # from sklearn.tree import DecisionTreeClassifier
