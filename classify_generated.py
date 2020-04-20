@@ -57,6 +57,8 @@ def make_fig(conf, confusion_output, n_views, n_classes, generator):
                     x=generator.view_data[view_index][concerned_examples, 0],
                     y=generator.view_data[view_index][concerned_examples, 1],
                     z=generator.view_data[view_index][concerned_examples, 2],
+                    text=[generator.example_ids[ind] for ind in concerned_examples],
+                    hoverinfo='text',
                     mode='markers', marker=dict(
                         size=1,  # set color to an array/list of desired values
                         color=DEFAULT_PLOTLY_COLORS[lab_index],
@@ -78,5 +80,5 @@ def make_fig(conf, confusion_output, n_views, n_classes, generator):
             # fig.update_zaxes(
             #     range=[-class_sep - 0.1 * class_sep, +class_sep + margin_ratio * class_sep],
             #     row=row, col=col)
-    plotly.offline.plot(fig, filename="center_blob.html")
+    plotly.offline.plot(fig, filename="description_fig.html")
 

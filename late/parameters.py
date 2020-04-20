@@ -33,7 +33,7 @@ classifier = "SVM"
 classifier_dictionary={'SVM':SVC(kernel='linear'), 'NB':GaussianNB()}
 # dictionary of classifiers
 n_samples_list = [100, 500, 1000, 1500, 2000]
-# list of number of samples to test generator
+# list of number of samples to test multiview_generator
 R_list = list(np.arange(0, 1.05, 0.05))
 # list of diverse R
 Z_factor_list = [1, 3, 10, 25, 100, 250, 1000]

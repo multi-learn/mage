@@ -69,7 +69,7 @@ def generator_multiviews_dataset(n_samples=1000, n_views=3, n_classes=2,
                                  d=2, D=12, standard_deviation=2, weights=None,
                                  random_state=42):
     """
-    Returns a generator multiviews dataset
+    Returns a multiview_generator multiviews dataset
     
     Parameters:
     -----------
