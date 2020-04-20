@@ -1,1 +1,4 @@
 __pycache__
+demo/*.hdf5
+demo/*.html
+multiview_generator.egg-info
