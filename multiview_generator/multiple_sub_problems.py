@@ -504,7 +504,6 @@ class MultiViewSubProblemsGenerator:
 
                 # Getting the number of examples that the view must
                 # describe well for this class :
-                print(view_index, class_index, self.n_well_described[class_index][view_index], len(self.well_described[class_index][view_index]))
                 n_good_descriptions_to_get = int(
                     self.n_well_described[class_index][view_index] -
                     len(self.well_described[class_index][view_index]))
