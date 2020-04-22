@@ -6,8 +6,17 @@
 Welcome to multiview_generator's documentation!
 ===============================================
 
+To install SMuDGE, clone the gitlab repository and run
+
+.. code-block::
+
+   cd /path/to/multiview_generator
+   pip install -e .
+
+
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    include_tuto1
