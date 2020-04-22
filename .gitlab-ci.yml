@@ -1,0 +1,50 @@
+# run the test suite
+tests:
+    image: registry.gitlab.lis-lab.fr:5005/dev/mutliview_generator/ubuntu:18.04
+    tags:
+        - docker
+    script:
+        - pip install -e . --no-deps
+        - pytest-3
+
+# generate the documentation
+doc:
+    image: registry.gitlab.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
+    tags:
+        - docker
+    only:
+        - master
+    script:
+        - export LC_ALL=$(locale -a | grep en_US)
+        - export LANG=$(locale -a | grep en_US)
+        - pip3 install -e . --no-deps
+        - sphinx-apidoc -o docs/source multiview_generator
+        - cd docs/source
+        - sphinx-build -b html . ../build
+        - cd ../..
+        - cp -r ./docs/build public
+    artifacts:
+        paths:
+          - public
+
+
+# TODO: Replace the task doc by the following task pages when making the
+# project public
+#
+pages:
+    image: registry.gitlab.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
+    tags:
+        - docker
+    only:
+        - master
+    script:
+        - export LC_ALL=$(locale -a | grep en_US)
+        - export LANG=$(locale -a | grep en_US)
+        - sphinx-apidoc -o docs/source multiview_generator
+        - cd docs/source
+        - sphinx-build -b html . ../build
+        - cd ../..
+        - cp -r ./docs/build public
+    artifacts:
+        paths:
+          - public
