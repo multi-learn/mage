@@ -9,5 +9,6 @@ tabulate
 pandas
 sphinx>=1.8
 numpydoc
+pandoc
 nbsphinx
 nbsphinx_link
