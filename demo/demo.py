@@ -4,10 +4,11 @@ from classify_generated import gen_folds, make_fig, test_dataset
 
 n_views = 4
 n_classes = 3
-gene = MultiViewSubProblemsGenerator(config_file="config_generator.yml")
+gene = MultiViewSubProblemsGenerator(config_file="config_demo.yml")
 conf = np.ones((n_classes, n_views))*0.4
 gene.generate_multi_view_dataset()
-
+gene.to_hdf5_mc()
+print(gene.gen_report())
 
 folds = gen_folds(random_state=42, generator=gene)
 output_confusion = test_dataset(folds, n_views, n_classes, gene)

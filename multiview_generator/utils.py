@@ -112,3 +112,4 @@ def init_list(input, size, type_needed=dict):
         raise ValueError("Input must be either a list "
                          "or a {}. here it is {}".format(type_needed,
             type(input)))
+

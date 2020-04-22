@@ -1,0 +1,192 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SMuDGE documentation &#8212; Mulitivew Generator 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/plotly_js.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="SMuDGE tutorial : multiple monoview generators." href="include_tuto_2.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="include_tuto_2.html" title="SMuDGE tutorial : multiple monoview generators."
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Mulitivew Generator 0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-multiple_sub_problems">
+<span id="gene-documentation"></span><h1>SMuDGE documentation<a class="headerlink" href="#module-multiple_sub_problems" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="multiple_sub_problems.MultiViewSubProblemsGenerator">
+<em class="property">class </em><code class="descclassname">multiple_sub_problems.</code><code class="descname">MultiViewSubProblemsGenerator</code><span class="sig-paren">(</span><em><span class="n">random_state</span><span class="o">=</span><span class="default_value">42</span></em>, <em><span class="n">n_samples</span><span class="o">=</span><span class="default_value">100</span></em>, <em><span class="n">n_classes</span><span class="o">=</span><span class="default_value">4</span></em>, <em><span class="n">n_views</span><span class="o">=</span><span class="default_value">4</span></em>, <em><span class="n">error_matrix</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">latent_size_multiplicator</span><span class="o">=</span><span class="default_value">2</span></em>, <em><span class="n">n_features</span><span class="o">=</span><span class="default_value">3</span></em>, <em><span class="n">class_weights</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em><span class="n">redundancy</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em><span class="n">complementarity</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em><span class="n">complementarity_level</span><span class="o">=</span><span class="default_value">0.66</span></em>, <em><span class="n">mutual_error</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em><span class="n">name</span><span class="o">=</span><span class="default_value">'generated_dataset'</span></em>, <em><span class="n">config_file</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">sub_problem_type</span><span class="o">=</span><span class="default_value">'base'</span></em>, <em><span class="n">sub_problem_configurations</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiple_sub_problems.MultiViewSubProblemsGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>This engine generates one monoview sub-problem for each view with independant data.
+If then switch descriptions between the samples to create error and difficulty in the dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>random_state</strong> (<em>int</em><em> or </em><em>np.random.RandomState</em>) – The random state or seed.</li>
+<li><strong>n_samples</strong> (<em>int</em>) – The number of samples that the dataset will contain</li>
+<li><strong>n_classes</strong> (<em>int</em>) – The number of classes in which the samples will be labelled</li>
+<li><strong>n_views</strong> (<em>int</em>) – The number of views describing the samples</li>
+<li><strong>error_matrix</strong> (<em>np.ndarray</em>) – The error matrix giving in row i column j the error of the Bayes classifier on Class i for View j</li>
+<li><strong>latent_size_multiplicator</strong> (<em>float</em>) – The mutlitplicator for the latent space generated for each view. It is useful mainly if the dataset is un-balanced.</li>
+<li><strong>n_features</strong> (<em>int</em><em> or </em><em>array-like</em>) – The number of features describing the samples for each view (can specify an int or array-like of length <code class="docutils literal notranslate"><span class="pre">n_views</span></code>)</li>
+<li><strong>class_weights</strong> (<em>float</em><em> or </em><em>array-like</em>) – The proposrtion of the dataset that will be labelled in each class. Must specify an array-like of size n_classes ([0.1,0.45,0.45] will output a dataset with with 10% of the samples in the first class and 45% in the two others.)</li>
+<li><strong>redundancy</strong> (<em>float</em>) – The proportion of the samples that will be well-decribed by all the views.</li>
+<li><strong>complementarity</strong> (<em>float</em>) – The proportion of samples that will be well-decribed only by some views</li>
+<li><strong>complementarity_level</strong> (<em>float</em>) – The proportion of views that will have a good description of the complementray samples</li>
+<li><strong>mutual_error</strong> (<em>float</em>) – The propotion of samples that will be mis-described by all the views</li>
+<li><strong>name</strong> (<em>str</em>) – The name of the dataset (will be used to name the file)</li>
+<li><strong>config_file</strong> (<em>str</em>) – The path to the yaml config file. If provided, the config fil entries will overwrite the one passes as arguments.</li>
+<li><strong>sub_problem_type</strong> (<em>str</em><em> or </em><em>list</em>) – The type of monoview-generator used in each view (make_classification, make_gaussian_quantiles, …). If only a string is provided, the same generator will be used for all the views.</li>
+<li><strong>sub_problem_configurations</strong> (<em>None</em><em>, </em><em>dict</em><em> or </em><em>list</em>) – The configuration for each of the generators. If only a dict is provided, the same configuration will be used for all the views.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="multiple_sub_problems.MultiViewSubProblemsGenerator.gen_report">
+<code class="descname">gen_report</code><span class="sig-paren">(</span><em><span class="n">output_path</span><span class="o">=</span><span class="default_value">'.'</span></em>, <em><span class="n">file_type</span><span class="o">=</span><span class="default_value">'md'</span></em>, <em><span class="n">save</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiple_sub_problems.MultiViewSubProblemsGenerator.gen_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a markdown report based on the configuration.
+If <code class="docutils literal notranslate"><span class="pre">save</span></code> is True, it will be saved in <code class="docutils literal notranslate"><span class="pre">output_path</span></code> as &lt;self.name&gt;.&lt;<code class="docutils literal notranslate"><span class="pre">file_type</span></code>&gt; .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>output_path</strong> (<em>str</em>) – path to store the text report.</li>
+<li><strong>file_type</strong> (<em>str</em>) – Type of file in which the report is saved (currently supported : “md” or “txt”)</li>
+<li><strong>save</strong> (<em>bool</em>) – Whether to save the string in a file or not.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The report string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="multiple_sub_problems.MultiViewSubProblemsGenerator.generate_multi_view_dataset">
+<code class="descname">generate_multi_view_dataset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiple_sub_problems.MultiViewSubProblemsGenerator.generate_multi_view_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the main method. It will generate a multiview dataset according
+to the configuration.
+To do so,</p>
+<ul class="simple">
+<li>it generates the labels of the multiview dataset,</li>
+<li>then it generates all the subsets of examples (redundant, …)</li>
+<li>finally, for each view it generates a monview dataset according to the configuration</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">view_data a list contianing the views np.ndarrays and y, the label array.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="multiple_sub_problems.MultiViewSubProblemsGenerator.to_hdf5_mc">
+<code class="descname">to_hdf5_mc</code><span class="sig-paren">(</span><em><span class="n">saving_path</span><span class="o">=</span><span class="default_value">'.'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiple_sub_problems.MultiViewSubProblemsGenerator.to_hdf5_mc" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is used to save the dataset in an HDF5 file, compatible with
+<a class="reference external" href="https://gitlab.lis-lab.fr/baptiste.bauvin/summit">SuMMIT</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>saving_path</strong> (<em>str</em>) – where to save the dataset, the file will be names after the self.name attribute.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="include_tuto_2.html"
+                        title="previous chapter">SMuDGE tutorial : multiple monoview generators.</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/documentation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="include_tuto_2.html" title="SMuDGE tutorial : multiple monoview generators."
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Mulitivew Generator 0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Baptiste Bauvin.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.2.
+    </div>
+  </body>
+</html>

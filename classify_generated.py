@@ -49,6 +49,7 @@ def make_fig(conf, confusion_output, n_views, n_classes, generator):
                                 {'type': 'scatter3d'}, ]])
     row = 1
     col = 1
+    show_legend = True
     for view_index in range(n_views):
         for lab_index in range(n_classes):
             concerned_examples = np.where(generator.y == lab_index)[0]
@@ -59,11 +60,14 @@ def make_fig(conf, confusion_output, n_views, n_classes, generator):
                     z=generator.view_data[view_index][concerned_examples, 2],
                     text=[generator.example_ids[ind] for ind in concerned_examples],
                     hoverinfo='text',
+                    legendgroup="Class {}".format(lab_index),
                     mode='markers', marker=dict(
                         size=1,  # set color to an array/list of desired values
                         color=DEFAULT_PLOTLY_COLORS[lab_index],
                         opacity=0.8
-                    ), name="Class {}".format(lab_index)), row=row, col=col)
+                    ), name="Class {}".format(lab_index), showlegend=show_legend),
+                row=row, col=col)
+        show_legend = False
             # fig.update_layout(
             #             scene=dict(
             #             xaxis=dict(nticks=4, range=[low_range, high_range], ),
