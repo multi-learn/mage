@@ -3,4 +3,7 @@ demo/*.hdf5
 demo/*.html
 multiview_generator.egg-info
 demo/tutorials/.ipy*
-demo/tutorials/supplementray_material/tuto/
+demo/tutorials/supplementary_material/demo.hdf5
+demo/tutorials/supplementary_material/tuto.hdf5
+demo/tutorials/supplementary_material/report.md
+demo/tutorials/supplementary_material/tuto/

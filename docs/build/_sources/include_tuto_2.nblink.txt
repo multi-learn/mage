@@ -1,3 +1,0 @@
-{
-    "path": "../../demo/tuto_2.ipynb"
-}

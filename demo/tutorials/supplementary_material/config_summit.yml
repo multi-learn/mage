@@ -1,7 +1,7 @@
 # The base configuration of the benchmark
 
 # Enable logging
-log: True
+log: False
 # The name of each dataset in the directory on which the benchmark should be run
 name: ["tuto"]
 # A label for the resul directory
@@ -42,9 +42,9 @@ classes:
 # The type of algorithms to run during the benchmark (monoview and/or multiview)
 type: ["monoview",]
 # The name of the monoview algorithms to run, ["all"] to run all the available classifiers
-algos_monoview: ["decision_tree", "adaboost", "random_forest"]
+algos_monoview: ["decision_tree",]
 # The names of the multiview algorithms to run, ["all"] to run all the available classifiers
-algos_multiview: ["weighted_linear_late_fusion",]
+algos_multiview: []
 # The number of times the benchamrk is repeated with different train/test
 # split, to have more statistically significant results
 stats_iter: 5

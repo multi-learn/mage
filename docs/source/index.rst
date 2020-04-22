@@ -10,9 +10,9 @@ Welcome to multiview_generator's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   include_demo
-   include_tuto
-   include_tuto_2
+   include_tuto1
+   include_tuto2
+   include_tuto3
    documentation
 
 Indices and tables
