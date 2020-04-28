@@ -2,15 +2,16 @@ import os
 
 import h5py
 import numpy as np
+import yaml
 from sklearn.datasets import make_classification, make_gaussian_quantiles
 from tabulate import tabulate
 import pandas as pd
 import inspect
 from datetime import datetime
 
-from multiview_generator.utils import format_array, get_config_from_file, \
+from .utils import format_array, get_config_from_file, \
     init_random_state, init_error_matrix, init_list
-from multiview_generator.base_strs import *
+from .base_strs import *
 
 
 class MultiViewSubProblemsGenerator:
@@ -217,13 +218,12 @@ class MultiViewSubProblemsGenerator:
 
     def gen_view_report(self, view_index):
         view_string = "\n\n### View "+str(view_index+1)
-        view_string+="\n\nThis view is generated with {}, with the following configuration : \n```yaml\n".format(self._get_generator(view_index))
-        import yaml
+        view_string+="\n\nThis view is generated with {}, with the following configuration : \n```yaml\n".format(self._get_generator_report(view_index))
         view_string += yaml.dump(self.sub_problem_configurations[view_index], line_break="\n",default_flow_style=False)
         view_string+="```"
         return view_string
 
-    def _get_generator(self, view_index, doc_type=".md"):
+    def _get_generator_report(self, view_index, doc_type=".md"):
         if self.sub_problem_types[view_index] in ["make_classification", "base"]:
             return "[`make_classification`](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)"
         elif self.sub_problem_types[view_index]in ["gaussian", "make_gaussian_quantiles"]:

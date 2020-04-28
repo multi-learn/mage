@@ -16,7 +16,7 @@ def setup_package():
     here = os.path.abspath(os.path.dirname(__file__))
     with open(os.path.join(here, 'README.md'), encoding='utf-8') as readme:
         long_description = readme.read()
-    group = 'baptiste.bauvin'
+    group = 'dev'
     url = 'https://gitlab.lis-lab.fr/{}/{}'.format(group, name)
     project_urls = {
         'Documentation': 'http://{}.pages.lis-lab.fr/{}'.format(group, name),
