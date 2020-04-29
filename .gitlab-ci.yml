@@ -4,8 +4,12 @@ tests:
     tags:
         - docker
     script:
-        - pip3 install -e . --no-deps
+        - python3 setup.py install
         - pytest-3
+    coverage: '/^TOTAL.+?(\d+\%)$/'
+    artifacts:
+        paths:
+            - htmlcov/
 
 # generate the documentation
 doc:
@@ -17,7 +21,7 @@ doc:
     script:
         - export LC_ALL=$(locale -a | grep en_US)
         - export LANG=$(locale -a | grep en_US)
-        - pip3 install -e . --no-deps
+        - python3 setup.py install
         - sphinx-apidoc -o docs/source multiview_generator
         - cd docs/source
         - sphinx-build -b html . ../build

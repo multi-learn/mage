@@ -1,20 +1,151 @@
-
-import os
+# -*- coding: utf-8 -*-
+# ######### COPYRIGHT #########
+#
+# Copyright(c) 2020
+# -----------------
+#
+# * Université d'Aix Marseille (AMU) -
+# * Centre National de la Recherche Scientifique (CNRS) -
+# * Université de Toulon (UTLN).
+# * Copyright © 2019-2020 AMU, CNRS, UTLN
+#
+# Contributors:
+# ------------
+#
+# * Sokol Koço <sokol.koco_AT_lis-lab.fr>
+# * Cécile Capponi <cecile.capponi_AT_univ-amu.fr>
+# * Dominique Benielli <dominique.benielli_AT_univ-amu.fr>
+# * Baptiste Bauvin <baptiste.bauvin_AT_univ-amu.fr>
+#
+# Description:
+# -----------
+#
+#
+#
+#
+#
+# Version:
+# -------
+#
+# * multiview_generator version = 0.0.dev0
+#
+# Licence:
+# -------
+#
+# License: New BSD License
+#
+#
+# ######### COPYRIGHT #########
+import os, re
+import shutil
 from setuptools import setup, find_packages
-
+from distutils.command.clean import clean as _clean
+from distutils.dir_util import remove_tree
+from distutils.command.sdist import sdist
 import multiview_generator
 
-with open('requirements.txt') as f:
-    requirements = f.read().splitlines()
+try:
+    import numpy
+except:
+    raise 'Cannot build iw without numpy'
+    sys.exit()
+
+# --------------------------------------------------------------------
+# Clean target redefinition - force clean everything supprimer de la liste '^core\.*$',
+relist = ['^.*~$', '^#.*#$', '^.*\.aux$', '^.*\.pyc$', '^.*\.o$']
+reclean = []
+USE_COPYRIGHT = True
+try:
+    from copyright import writeStamp, eraseStamp
+except ImportError:
+    USE_COPYRIGHT = False
+
+###################
+# Get Multimodal version
+####################
+def get_version():
+    v_text = open('VERSION').read().strip()
+    v_text_formted = '{"' + v_text.replace('\n', '","').replace(':', '":"')
+    v_text_formted += '"}'
+    v_dict = eval(v_text_formted)
+    return v_dict["multiview_generator"]
+
+########################
+# Set Multimodal __version__
+########################
+def set_version(multiview_generator_dir, version):
+    filename = os.path.join(multiview_generator_dir, '__init__.py')
+    buf = ""
+    for line in open(filename, "rb"):
+        if not line.decode("utf8").startswith("__version__ ="):
+            buf += line.decode("utf8")
+    f = open(filename, "wb")
+    f.write(buf.encode("utf8"))
+    f.write(('__version__ = "%s"\n' % version).encode("utf8"))
+
+for restring in relist:
+    reclean.append(re.compile(restring))
+
+
+def wselect(args, dirname, names):
+    for n in names:
+        for rev in reclean:
+            if (rev.match(n)):
+                os.remove("%s/%s" %(dirname, n))
+        break
+
+
+######################
+# Custom clean command
+######################
+class clean(_clean):
+    def walkAndClean(self):
+        os.walk("..", wselect, [])
+        pass
+
+    def run(self):
+        clean.run(self)
+        if os.path.exists('build'):
+            shutil.rmtree('build')
+        for dirpath, dirnames, filenames in os.walk('iw'):
+            for filename in filenames:
+                if (filename.endswith('.so') or
+                        filename.endswith('.pyd') or
+                        filename.endswith('.dll') or
+                        filename.endswith('.pyc')):
+                    os.unlink(os.path.join(dirpath, filename))
+            for dirname in dirnames:
+                if dirname == '__pycache__':
+                    shutil.rmtree(os.path.join(dirpath, dirname))
+
+
+##############################
+# Custom sdist command
+##############################
+class m_sdist(sdist):
+    """ Build source package
+
+    WARNING : The stamping must be done on an default utf8 machine !
+    """
+
+    def run(self):
+        if USE_COPYRIGHT:
+            writeStamp()
+            sdist.run(self)
+            # eraseStamp()
+        else:
+            sdist.run(self)
 
 def setup_package():
     """Setup function"""
 
     name = 'multiview_generator'
-    version = multiview_generator.__version__
-    description = 'A fully customizable multiview dataset multiview_generator'
+    version = get_version()
+    multiview_generator_dir = 'multiview_generator'
+    set_version(multiview_generator_dir, version)
+    description = 'A multiview dataset generator '
     here = os.path.abspath(os.path.dirname(__file__))
-    with open(os.path.join(here, 'README.md'), encoding='utf-8') as readme:
+    with open(os.path.join(here, 'README.rst'), encoding='utf-8') as readme:
         long_description = readme.read()
     group = 'dev'
     url = 'https://gitlab.lis-lab.fr/{}/{}'.format(group, name)
@@ -22,21 +153,27 @@ def setup_package():
         'Documentation': 'http://{}.pages.lis-lab.fr/{}'.format(group, name),
         'Source': url,
         'Tracker': '{}/issues'.format(url)}
-    author = 'Baptiste Bauvin and Dominique Benielli and Sokol Koco'
-    author_email = 'baptiste.bauvin@lis-lab.fr'
-    license = 'GNUGPL'
+    author = 'Dominique Benielli and Sokol Koço ' \
+             'and Baptiste Bauvin and Cécile Capponi'
+    author_email = 'contact.dev@lis-lab.fr'
+    license = 'newBSD'
     classifiers = [
-        "Programming Language :: Python",
-        "Development Status :: 1 - Planning",
-        "License :: OSI Approved",
-        "Natural Language :: French",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-        "Topic :: Machine Learning",],
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: GNU Lesser General Public License'
+        ' v3 or later (LGPLv3+)',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: Scientific/Engineering',
+        'Topic :: Scientific/Engineering :: Artificial Intelligence',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX :: Linux',
+        'Operating System :: MacOS'],
     keywords = ('machine learning, supervised learning, classification, '
-                'multiview', 'data', 'generation')
+                'ensemble methods, boosting, kernel')
     packages = find_packages(exclude=['*.tests'])
-    install_requires = requirements
+    install_requires = ['scikit-learn>=0.19', 'numpy', 'scipy', 'cvxopt' ]
     python_requires = '>=3.5'
     extras_require = {
         'dev': ['pytest', 'pytest-cov'],
