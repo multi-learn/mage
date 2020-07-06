@@ -159,7 +159,7 @@ class MultiViewSubProblemsGenerator:
         self.gen_report(save=False)
         meta_data_grp.attrs["description"] = self.report
 
-        meta_data_grp.create_dataset("example_ids", data=np.array(
+        meta_data_grp.create_dataset("sample_ids", data=np.array(
             self.example_ids).astype(
             np.dtype("S100")), dtype=np.dtype("S100"))
 
@@ -322,6 +322,7 @@ class MultiViewSubProblemsGenerator:
                                            n_classes=self.n_classes,
                                            shuffle=False,
                                            random_state=self.rs,
+                                           cov=3.,
                                            **self.sub_problem_configurations[
                                                view_index])
 
@@ -421,8 +422,6 @@ class MultiViewSubProblemsGenerator:
         Randomly selects the examples that will participate to complementarity
         (well described by a fraction of the views)
         """
-        n_comp = [int(self.complementarity_level[class_index]*self.n_views)
-                  for class_index in range(self.n_classes)]
         if ((self.complementarity * self.n_examples_per_class)[0] > np.array(
                 [len(inds) for inds in self.available_init_indices])).any():
             raise ValueError(

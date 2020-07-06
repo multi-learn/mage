@@ -24,6 +24,11 @@ To install SMuDGE, clone the gitlab repository and run
    include_tuto3
    documentation
 
+Read me
+=========
+
+.. include:: readme_link.rst
+
 Indices and tables
 ==================
 
