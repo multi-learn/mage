@@ -429,6 +429,8 @@ class MultiViewSubProblemsGenerator:
         else:
             for class_index, complementarity in enumerate(self.complementarity):
                 n_comp = int(self.complementarity_level[class_index]*self.n_views)
+                print(self.n_views)
+                print(int(self.complementarity_level[class_index]*self.n_views))
                 self.complementarity_examples[class_index] = self.rs.choice(
                     self.available_init_indices[class_index],
                     size=int(self.n_examples_per_class[
@@ -461,7 +463,7 @@ class MultiViewSubProblemsGenerator:
 
     def _gen_example_indices(self, ):
         """
-        Selects examples accordin to their role (redundancy, ....) and then
+        Selects examples according to their role (redundancy, ....) and then
         affects more error if needed according to the input confusion matrix)
 
         """
