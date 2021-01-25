@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 
-from multiview_generator.multiple_sub_problems import MultiViewSubProblemsGenerator
+from ..multiple_sub_problems import MultiViewSubProblemsGenerator
 
 
 class Test_MultiViewSubProblemsGenerator(unittest.TestCase):

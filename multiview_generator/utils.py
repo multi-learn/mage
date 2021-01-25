@@ -14,7 +14,10 @@ def format_array(input, size, type_needed=int):
     :return: a ``numpy.ndarray`` of shape (``size``, )
     """
     if isinstance(input, type_needed):
-        return np.zeros(size, dtype=type_needed) + input
+        if type_needed==str:
+            return [input for _ in range(size)]
+        else:
+            return np.zeros(size, dtype=type_needed) + input
     elif isinstance(input, list) and isinstance(input[0], type_needed):
         if size == len(input):
             return np.asarray(input)
@@ -54,7 +57,7 @@ def init_sub_problem_config(sub_problem_configs, n_views):
 
 def init_error_matrix(error_matrix, n_classes, n_views):
     if error_matrix is None:
-        error_matrix = np.zeros((n_classes, n_views)) + 0.5
+        error_matrix = np.zeros((n_classes, n_views)) + 0.3
     elif isinstance(error_matrix, np.ndarray):
         if error_matrix.shape != (n_classes, n_views):
             raise ValueError("Confusion matrix must be of shape "
