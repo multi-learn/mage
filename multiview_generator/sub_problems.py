@@ -5,9 +5,21 @@ from scipy.special import erfinv
 import yaml
 
 
-class BaseSubProblem():
+class BaseSubProblem:
+    """
+    The base class for all the sub-problem generators.
+    """
 
     def __init__(self, n_classes=2, n_features=2, random_vertices=True, errors=np.array([0.5,0.5]), random_state=np.random.RandomState(42), n_samples_per_class=np.array([100,100]), **configuration):
+        """
+
+        :param n_classes: The number of classes
+        :param n_features: The nuber of features describing the samples
+        :param errors: The error rate for each class
+        :param random_state: A numpy.random.RandomState object
+        :param n_samples_per_class: A list conatining the number of samples for each class
+        :param configuration: sub-problem specific configuration.
+        """
         self.n_classes = n_classes
         self.random_vertices = random_vertices
         self.errors = errors
@@ -20,6 +32,11 @@ class BaseSubProblem():
         self.view_name = "generated"
 
     def gen_report(self):
+        """
+        General method the generate the report on the view.
+
+        :return: A string containing the general report for the view
+        """
         view_string = "\n\nThis view is generated with {}, with the following configuration : \n```yaml\n".format(
             self.__class__.__name__)
         view_string += yaml.dump(self.config,
@@ -34,10 +51,16 @@ class StumpsGenerator(BaseSubProblem):
     def gen_data(self):
         """
         Generates the samples according to gaussian distributions with scales
-        computed with the given error and class separation
+        computed with the given error and class separation. This sub-problem is
+        easily understandable by a decision tree.
 
-        :param view_index:
-        :return:
+        The features are built as :
+        relevant_features : the  math.ceil(math.log2(self.n_classes)) first ones,
+        uniform noise features : all the remaining ones
+
+
+        :return: data a np.ndarray of dimension n_classes, n_samples_per_class,
+        n_features containing the samples' descriptions, sorted by class
         """
         self.n_relevant_features = math.ceil(math.log2(self.n_classes))
         self.view_name = "stumps"
@@ -83,6 +106,9 @@ class StumpsGenerator(BaseSubProblem):
         return data
 
     def gen_report(self):
+        """
+        Generates the specific report for StumpsGenerator.
+        """
         base_str = BaseSubProblem.gen_report(self)
         base_str += "\n\nThis view has {} features, among which {} are relevant for classification (they are the {} first columns of the view) the other are filled with uniform noise.".format(
             self.n_features, self.n_relevant_features, self.n_relevant_features)
@@ -91,18 +117,16 @@ class StumpsGenerator(BaseSubProblem):
 
     def get_bayes_classifier(self):
         from sklearn.tree import DecisionTreeClassifier
-        return DecisionTreeClassifier(max_depth=1)
+        return DecisionTreeClassifier(max_depth=math.ceil(math.log2(self.n_classes)))
+
 
 class TreesGenerator(BaseSubProblem):
-    """We stay with depth 2 trees ATM"""
+    """ Work in progress : Similar generator as StumpsGenerator, but that
+    generates several blobs per class """
 
     def gen_data(self):
         """
-        Generates the samples according to gaussian distributions with scales
-        computed with the given error and class separation
-
-        :param view_index:
-        :return:
+        WIP
         """
         self.n_relevant_features = math.ceil(math.log2(self.n_classes))
         self.view_name = "tree_depth_2"
@@ -142,7 +166,6 @@ class TreesGenerator(BaseSubProblem):
 
             # mis_described += list(np.unique(np.where(
             #     np.any(abs(vec[class_ind] - center_coord)>class_sep, axis=1))[0]))
-            # print(len(mis_described)*2/self.n_samples_per_class)
             n_samples_per_blob = int(self.n_samples_per_class[class_ind]/(self.n_relevant_features+1))
             external_error_percentage = self.n_relevant_features / (
                         self.n_relevant_features * 2 + self.n_relevant_features ** 2)
@@ -151,7 +174,6 @@ class TreesGenerator(BaseSubProblem):
                         1 / self.n_relevant_features) - 1)))
             cov = np.identity(
                 self.n_relevant_features) * external_scale**2
-            # print(internal_scale, external_scale)
             for dim_index, update_coord in enumerate(center_coord):
                 beg = n_samples+dim_index*n_samples_per_blob
                 end = n_samples+(dim_index+1)*n_samples_per_blob
@@ -185,6 +207,9 @@ class TreesGenerator(BaseSubProblem):
         return data
 
     def gen_report(self):
+        """
+        WIP
+        """
         base_str = BaseSubProblem.gen_report(self)
         base_str += "\n\nThis view has {} features, among which {} are relevant for classification (they are the {} first columns of the view).".format(self.n_features, self.n_relevant_features, self.n_relevant_features)
         base_str += "\n\n Its empirical bayesian classifier is a decision tree of depth 3"
@@ -194,22 +219,27 @@ class TreesGenerator(BaseSubProblem):
         from sklearn.tree import DecisionTreeClassifier
         return DecisionTreeClassifier(max_depth=2)
 
+
 class RingsGenerator(BaseSubProblem):
 
     def gen_data(self):
         """
         Generates the samples according to gaussian distributions with scales
-        computed with the given error and class separation
+        computed with the given error and class separation. The generator first
+        computes a radius according to the gaussian distribution, then
+        generates n_features-1 random angles to build the polar coordinates of
+        the samples. The dataset returned is the cartesian version of this
+        "polar" dataset.
 
-        :param view_index:
-        :return:
+        :return: data a np.ndarray of dimension n_classes, n_samples_per_class,
+        n_features containing the samples' descriptions, sorted by class
         """
         if self.n_features<2:
             raise ValueError("n_features for view {} must be at least 2, (now: {})".format(1, self.n_features))
         self.view_name = "rings"
         data = np.zeros((self.n_classes, max(self.n_samples_per_class), self.n_features))
         class_sep = self.config["class_sep"]
-        vertices = (np.arange(self.n_classes)+2)*class_sep
+        vertices = (np.arange(self.n_classes)+1)*class_sep
 
         if self.random_vertices == True:
             selected_vertices = self.rs.choice(np.arange(len(vertices)),
@@ -222,8 +252,12 @@ class RingsGenerator(BaseSubProblem):
         for class_ind, center_coord in enumerate(
                 self.selected_vertices):
             error = self.errors[class_ind]
-            scale = ((class_sep/2) / math.sqrt(2)) *  (1 /
-                erfinv(1 - 2*error))
+            if class_ind==0 or class_ind==self.n_classes-1:
+                scale = ((class_sep/2) / math.sqrt(2)) *  (1 /
+                    erfinv(1 - 2*error))
+            else:
+                scale = ((class_sep/2) / math.sqrt(2)) *  (1 /
+                    erfinv( 2*(1-error)**(1/2)-1))
             radii[class_ind, :] = self.rs.normal(center_coord, scale,
                                                  self.n_samples_per_class[
                                                      class_ind])
@@ -254,6 +288,9 @@ class RingsGenerator(BaseSubProblem):
         return data
 
     def gen_report(self):
+        """
+        Generates the specific report for StumpsGenerator.
+        """
         base_str = BaseSubProblem.gen_report(self)
         base_str += "\n\nThis view has {} features, all of them are relevant for classification.".format(
             self.n_features)
@@ -262,9 +299,13 @@ class RingsGenerator(BaseSubProblem):
 
     def get_bayes_classifier(self):
         from sklearn.svm import SVC
-        return SVC(kernel='rbf', gamma=0.1, C=0.001)
+        return SVC(kernel='rbf', gamma='scale', C=0.1)
+
 
 def to_cartesian(radius, angles):
+    """
+    Transforms polar coordinates to cartesian coordinates.
+    """
     a = np.concatenate((np.array([2 * np.pi]), angles))
     si = np.sin(a)
     si[0] = 1

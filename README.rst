@@ -11,26 +11,93 @@
 
 |pipeline| |license| |coverage|
 
-Multiview Generator
-===================
+MAGE : Multi-view Artificial Generation Engine
+==============================================
 
-This package aims at generating customized mutliview datasets to facilitate the
-development of new multiview algorithms and their testing on simulated data
+This package aims at generating customized mutli-view datasets to facilitate the
+development of new multi-view algorithms and their testing on simulated data
 representing specific tasks.
 
-Understanding the concept
--------------------------
+Getting started
+---------------
 
-The main idea of the generator is to build several monoview sub-problems that
+This code has been originally developed on Ubuntu, but if the compatibility
+with Mac or Windows is mandatory for you, contact us so we adapt it.
+
++----------+-------------------+
+| Platform | Last positive test|
++==========+===================+
+|   Linux  |  |pipeline|       |
++----------+-------------------+
+| Mac      | Not verified yet  |
++----------+-------------------+
+| Windows  | Not verified yet  |
++----------+-------------------+
+
+Prerequisites
+<<<<<<<<<<<<<
+
+To be able to use this project, you'll need :
+
+* `Python 3 <https://docs.python.org/3/>`_
+
+And the following python modules will be automatically installed  :
+
+* `numpy <http://www.numpy.org/>`_, `scipy <https://scipy.org/>`_,
+* `matplotlib <http://matplotlib.org/>`_ - Used to plot results,
+* `sklearn <http://scikit-learn.org/stable/>`_ - Used for the monoview classifiers,
+* `h5py <https://www.h5py.org>`_ - Used to generate HDF5 datasets on hard drive and use them to spare RAM,
+* `pandas <https://pandas.pydata.org/>`_ - Used to manipulate data efficiently,
+* `docutils <https://pypi.org/project/docutils/>`_ - Used to generate documentation,
+* `pyyaml <https://pypi.org/project/PyYAML/>`_ - Used to read the config files,
+* `plotly <https://plot.ly/>`_ - Used to generate interactive HTML visuals,
+* `tabulate <https://pypi.org/project/tabulate/>`_ - Used to generated the confusion matrix,
+* `jupyter <https://jupyter.org/>`_ - Used for the tutorials
 
 
-.. image:: _static/fig_rec.png
-   :width: 100%
-   :align: center
+Installing
+<<<<<<<<<<
+
+Once you cloned the project from the `gitlab repository <https://gitlab.lis-lab.fr/dev/multiview_generator/>`_, you just have to use :
+
+.. code:: bash
+
+    cd path/to/multiview_generator/
+    pip3 install -e .
 
 
-Structure
----------
-The class of intereset is located in ``generator/multiple_sub_problems.py`` and called ``MultiViewSubProblemsGenerator``.
+In the `multiview_generator` directory to install MAGE and its dependencies.
 
-A demo is available in ``demo/demo.py`` and generates a 3D dataset, along with a figure that analyzes it.
+
+Running the tests
+<<<<<<<<<<<<<<<<<
+
+To run the test suite of MAGE, run :
+
+.. code:: bash
+
+    cd path/to/multiview_generator
+    pip install -e .[dev]
+    pytest
+
+The coverage report is automatically generated and stored in the ``htmlcov/`` directory
+
+Building the documentation
+<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+To locally build the `documentation <https://dev.pages.lis-lab.fr/multiview_generator/>`_ run :
+
+.. code:: bash
+
+    cd path/to/multiview_generator
+    pip install -e .[doc]
+    python setup.py build_sphinx
+
+The locally built html files will be stored in ``path/to/multiview_generator/build/sphinx/html``
+
+Authors
+-------
+
+* **Baptiste BAUVIN**
+* **Dominique BENIELLI**
+* **Sokol Koço**

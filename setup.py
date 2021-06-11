@@ -143,7 +143,8 @@ def setup_package():
     version = get_version()
     multiview_generator_dir = 'multiview_generator'
     set_version(multiview_generator_dir, version)
-    description = 'A multiview dataset generator '
+    description = 'MAGE : Multi-view Artificial Generation Engine, a non-naïve ' \
+                  'multiview dataset generator '
     here = os.path.abspath(os.path.dirname(__file__))
     with open(os.path.join(here, 'README.rst'), encoding='utf-8') as readme:
         long_description = readme.read()
@@ -171,13 +172,15 @@ def setup_package():
         'Operating System :: POSIX :: Linux',
         'Operating System :: MacOS'],
     keywords = ('machine learning, supervised learning, classification, '
-                'ensemble methods, boosting, kernel')
+                'datat generation, multi-view, multi-modal, multi-class')
     packages = find_packages(exclude=['*.tests'])
-    install_requires = ['scikit-learn>=0.19', 'numpy', 'scipy', 'cvxopt' ]
+    install_requires = ['scikit-learn>=0.19', 'numpy', 'scipy', "plotly",
+                        "h5py", 'pyyaml', 'tabulate', 'pandas', ]
     python_requires = '>=3.5'
     extras_require = {
         'dev': ['pytest', 'pytest-cov'],
-        'doc': ['sphinx', 'numpydoc', 'sphinx_gallery', 'matplotlib']}
+        'doc': ['sphinx>=1.8', 'numpydoc', 'sphinx_gallery', 'matplotlib', "jupyter",
+                'pandoc', 'nbshpinx', 'nbsphinx_link']}
     include_package_data = True
 
     setup(name=name,

@@ -46,7 +46,6 @@ class MultiViewSubProblemsGenerator:
     :type n_classes: int
     :type n_views: int
     :type error_matrix: np.ndarray
-    :type latent_size_multiplicator: float
     :type n_features: int or array-like
     :type class_weights: float or array-like
     :type redundancy: float
@@ -60,7 +59,7 @@ class MultiViewSubProblemsGenerator:
     """
 
     def __init__(self, random_state=42, n_samples=100, n_classes=4, n_views=4,
-                 error_matrix=None, latent_size_multiplicator=2, n_features=3,
+                 error_matrix=None, n_features=3,
                  class_weights=1.0, redundancy=0.0, complementarity=0.0,
                  complementarity_level=3,
                  mutual_error=0.0, name="generated_dataset", config_file=None,
@@ -88,7 +87,6 @@ class MultiViewSubProblemsGenerator:
                                                 type_needed=float).reshape(
                 (n_classes, 1))
             self.complementarity_level = format_array(complementarity_level, n_classes, type_needed=int).reshape(((n_classes, 1)))
-            self.latent_size_mult = latent_size_multiplicator
             self._init_sub_problem_config(sub_problem_configurations,
                                           sub_problem_type)
             self.error_matrix = init_error_matrix(error_matrix, n_classes,
@@ -190,7 +188,7 @@ class MultiViewSubProblemsGenerator:
 
         report_string += "\n\n## Statistical analysis"
 
-        bayes_error = pd.DataFrame(self.bayes_error/self.n_samples_per_class,
+        bayes_error = pd.DataFrame(self.bayes_error,
                      columns=["Class " + str(i + 1)
                             for i in range(self.n_classes)],
                      index=['View ' + str(i + 1) for i in
@@ -211,8 +209,9 @@ class MultiViewSubProblemsGenerator:
 
         report_string += tabulate(dt_error, headers='keys', tablefmt='github')
 
-        self._plot_2d_error(output_path, error=self.error_2D, name="report_bayesian_error_2D.html")
-        self._plot_2d_error(output_path, error=self.error_2D_dt, name="report_dt_error_2D.html")
+        if save:
+            self._plot_2d_error(output_path, error=self.error_2D, file_name="report_bayesian_error_2D.html")
+            self._plot_2d_error(output_path, error=self.error_2D_dt, file_name="report_dt_error_2D.html")
 
         report_string += "\n\nThis report has been automatically generated on {}".format(datetime.now().strftime("%B %d, %Y at %H:%M:%S"))
         if save:
@@ -221,7 +220,7 @@ class MultiViewSubProblemsGenerator:
         self.report = report_string
         return report_string
 
-    def _plot_2d_error(self, output_path, error=None, name=""):
+    def _plot_2d_error(self, output_path, error=None, file_name=""):
         label_index_list = np.concatenate([np.where(self.y == i)[0] for i in
                                            np.unique(
                                                self.y)])
@@ -244,17 +243,19 @@ class MultiViewSubProblemsGenerator:
         fig.update_layout(paper_bgcolor='rgba(0,0,0,0)',
                           plot_bgcolor='rgba(0,0,0,0)')
         fig.update_xaxes(showticklabels=True, )
-        plotly.offline.plot(fig, filename=os.path.join(output_path, name),
+        plotly.offline.plot(fig, filename=os.path.join(output_path, self.name + file_name),
                             auto_open=False)
 
     def _gen_dt_error_mat(self, n_cv=10):
         # TODO : Seems to rely on random state, but unsure
         self.dt_error = np.zeros((self.n_classes, self.n_views))
         self.error_2D_dt = np.zeros((self.n_samples, self.n_views,))
+        self.dt_preds = np.zeros((self.n_samples, self.n_views,))
         classifiers = [generator.get_bayes_classifier() for generator in self._sub_problem_generators]
 
         for view_index, view_data in enumerate(self.dataset):
             pred = cross_val_predict(classifiers[view_index], view_data, self.y, cv=n_cv, )
+            self.dt_preds[:,view_index] = pred
             self.error_2D_dt[:, view_index] = np.equal(self.y, pred).astype(int)
             label_indices = [np.where(self.y == i)[0] for i in
                              range(self.n_classes)]

@@ -1,14 +1,1 @@
-numpy
-scipy
-scikit-learn>=0.19
-plotly
-h5py
-pyyaml
-jupyter
-tabulate
-pandas
-sphinx>=1.8
-numpydoc
-pandoc
-nbsphinx
-nbsphinx_link
+.
