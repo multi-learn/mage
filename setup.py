@@ -180,7 +180,7 @@ def setup_package():
     extras_require = {
         'dev': ['pytest', 'pytest-cov'],
         'doc': ['sphinx>=1.8', 'numpydoc', 'sphinx_gallery', 'matplotlib', "jupyter",
-                'pandoc', 'nbsphinx', 'nbsphinx_link', 'sphinx_rtd_theme']}
+                'pandoc', 'nbsphinx', 'nbsphinx_link', 'sphinx_rtd_theme', 'autoapi']}
     include_package_data = True
 
     command_options = {'build_sphinx': {'build_dir':('setup.py', './docs/build/')}}
