@@ -1,7 +1,10 @@
 |gene| documentation
 ====================
 
-.. automodule:: multiple_sub_problems
+.. toctree::
+   :maxdepth: 2
 
-.. autoclass:: MultiViewSubProblemsGenerator
-    :members:
+   autoapi/multiview_generator/base/index
+   autoapi/multiview_generator/gaussian_classes/index
+   autoapi/multiview_generator/sub_problems/index
+   autoapi/multiview_generator/utils/index

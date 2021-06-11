@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to multiview_generator's documentation!
+Welcome to |gene|'s documentation
 ===============================================
 
-To install MAGE, clone the gitlab repository and run
+To install |gene|, clone the gitlab repository and run
 
 .. code-block::
 
@@ -24,8 +24,8 @@ To install MAGE, clone the gitlab repository and run
    include_tuto3
    documentation
 
-Read me
-=========
+Read Me
+=======
 
 .. include:: readme_link.rst
 

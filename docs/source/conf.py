@@ -12,11 +12,18 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../multiview_generator'))
+repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# print(repo_path)
+# print(os.path.join(repo_path, "multiview_generator",  "base"))
+# quit()
+
+sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.join(repo_path, "multiview_generator'"))
+sys.path.insert(0, repo_path)
 
 # -- Project information -----------------------------------------------------
 
-project = 'Mulitivew Generator'
+project = 'MAGE'
 copyright = '2020, Baptiste Bauvin'
 author = 'Baptiste Bauvin'
 
@@ -31,6 +38,7 @@ release = '0.0'
 # ones.
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.extlinks',
+                'sphinx_rtd_theme',
 #              'sphinx.ext.doctest',
 #              'sphinx.ext.intersphinx',
 #              'sphinx.ext.todo',
@@ -42,10 +50,23 @@ extensions = ['sphinx.ext.autodoc',
 #              'sphinx.ext.viewcode',
 #              'sphinx.ext.githubpages',
                'sphinx.ext.napoleon',
+                "autoapi.extension",
               'nbsphinx',
               "nbsphinx_link"
                # 'm2r'
               ]
+
+autoapi_type = 'python'
+autoapi_dirs = [os.path.join(repo_path, "multiview_generator",""),]
+autoapi_options = ["members", "show-module-summary", 'undoc-members']
+autoapi_ignore = ["*tests*"]
+autoapi_keep_files = False
+autoapi_add_toctree_entry = False
+add_module_names = False
+autoapi_template_dir = os.path.join(repo_path, "docs", "source", "templates_autoapi")
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ['_templates', 'templates_autoapi']
+
 
 source_suffix = ['.rst', '.md', '.ipynb', ".nblink"]
 
@@ -63,12 +84,12 @@ exclude_patterns = ['_build', '**.ipynb_checkpoints']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'nature'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static',]
 
 rst_prolog = """
 .. role:: python(code)
@@ -77,18 +98,18 @@ rst_prolog = """
 .. role :: yaml(code)
     :language: yaml
 
-.. |gene| replace:: SMuDGE
+.. |gene| replace:: MAGE
 
-.. |gene_f| replace:: Supervised MUltimodal Dataset Generation Engine
+.. |gene_f| replace:: Multi-view Artificial Generation Engine
 
 .. |HPO| replace:: hyper-parameters optimization
 """
 
 extlinks = {'base_source': (
-'https://gitlab.lis-lab.fr/baptiste.bauvin/smudge/-/tree/master/',
+'https://gitlab.lis-lab.fr/dev/multiview_generator',
 "base_source"),
             'base_doc': (
-            'http://baptiste.bauvin.pages.lis-lab.fr/smudge/', 'base_doc'),
+            'https://dev.pages.lis-lab.fr/multiview_generator/', 'base_doc'),
             'summit':('https://gitlab.lis-lab.fr/baptiste.bauvin/summit', 'summit')}
 
 html_js_files = [

@@ -59,7 +59,7 @@ class StumpsGenerator(BaseSubProblem):
         uniform noise features : all the remaining ones
 
 
-        :return: data a np.ndarray of dimension n_classes, n_samples_per_class,
+        :return: data a np.ndarray of dimension n_classes, n_samples_per_class, \
         n_features containing the samples' descriptions, sorted by class
         """
         self.n_relevant_features = math.ceil(math.log2(self.n_classes))
@@ -223,16 +223,14 @@ class TreesGenerator(BaseSubProblem):  # pragma: no cover
 class RingsGenerator(BaseSubProblem):
 
     def gen_data(self):
-        """
-        Generates the samples according to gaussian distributions with scales
+        r"""Generates the samples according to gaussian distributions with scales
         computed with the given error and class separation. The generator first
         computes a radius according to the gaussian distribution, then
         generates n_features-1 random angles to build the polar coordinates of
         the samples. The dataset returned is the cartesian version of this
         "polar" dataset.
 
-        :return: data a np.ndarray of dimension n_classes, n_samples_per_class,
-        n_features containing the samples' descriptions, sorted by class
+        :return: data a np.ndarray of dimension n_classes, n_samples_per_class, n_features containing the samples' descriptions, sorted by class
         """
         if self.n_features<2:
             raise ValueError("n_features for view {} must be at least 2, (now: {})".format(1, self.n_features))

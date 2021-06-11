@@ -180,8 +180,10 @@ def setup_package():
     extras_require = {
         'dev': ['pytest', 'pytest-cov'],
         'doc': ['sphinx>=1.8', 'numpydoc', 'sphinx_gallery', 'matplotlib', "jupyter",
-                'pandoc', 'nbshpinx', 'nbsphinx_link']}
+                'pandoc', 'nbshpinx', 'nbsphinx_link', 'sphinx_rtd_theme']}
     include_package_data = True
+
+    command_options = {'build_sphinx': {'build_dir':('setup.py', './docs/build/')}}
 
     setup(name=name,
           version=version,
@@ -198,7 +200,8 @@ def setup_package():
           install_requires=install_requires,
           python_requires=python_requires,
           extras_require=extras_require,
-          include_package_data=include_package_data)
+          include_package_data=include_package_data,
+          command_options=command_options)
 
 
 if __name__ == "__main__":

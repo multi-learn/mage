@@ -1,4 +1,3 @@
-
 import numpy as np
 import itertools
 import math
@@ -22,7 +21,6 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
                  sub_problem_generators="StumpsGenerator", random_vertices=False,
                  min_rndm_val=-1, max_rndm_val=1, **kwargs):
         """
-
         :param random_state: int or np.random.RandomState object to fix the
         random seed
         :param n_samples: int representing the number of samples in the dataset
@@ -74,18 +72,15 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
 
     def generate_multi_view_dataset(self, ):
         """
-        This is the main method. It will generate a multiview dataset according
-        to the configuration.
+        This is the main method. It will generate a multiview dataset according to the configuration.
         To do so,
 
         * it generates the labels of the multiview dataset,
         * then it assigns all the subsets of samples (redundant, ...)
-        * finally, for each view it generates a monoview dataset according
-        to the configuration
+        * finally, for each view it generates a monoview dataset according to the configuration
 
 
-        :return: view_data a list containing the views np.ndarrays and y, the
-        label array.
+        :return: view_data a list containing the views np.ndarrays and y, the label array.
         """
 
         # Generate the labels
