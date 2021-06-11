@@ -19,8 +19,8 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
                  complementarity_level=3,
                  mutual_error=0.01, name="generated_dataset", config_file=None,
                  sub_problem_type="base", sub_problem_configurations=None,
-                 sub_problem_generators="StumpsGenerator", random_vertices=False
-                 , **kwargs):
+                 sub_problem_generators="StumpsGenerator", random_vertices=False,
+                 min_rndm_val=-1, max_rndm_val=1, **kwargs):
         """
 
         :param random_state: int or np.random.RandomState object to fix the
@@ -66,6 +66,8 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
                                                config_file=config_file,
                                                sub_problem_type=sub_problem_type,
                                                sub_problem_configurations=sub_problem_configurations,
+                                               min_rndm_val=min_rndm_val,
+                                               max_rndm_val=max_rndm_val,
                                                **kwargs)
         self.random_vertices = format_array(random_vertices, n_views, bool)
         self.sub_problem_generators = format_array(sub_problem_generators, n_views, str)
@@ -273,8 +275,13 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
         self.n_samples = np.sum(self.n_samples_per_class)
         self.n_complem  =np.zeros(self.n_classes)
         self.n_max_features = np.max(self.n_features)
-        self.generated_data = self.rs.uniform(low=-self.latent_size_mult, high=self.latent_size_mult, size=(self.n_views, self.n_classes, self.n_max_samples, self.n_max_features))
-        self.descriptions = np.zeros((self.n_views, self.n_classes, self.n_max_samples,))
+        self.generated_data = self.rs.uniform(low=-self.min_rndm_val,
+                                              high=self.max_rndm_val,
+                                              size=(self.n_views, self.n_classes,
+                                                    self.n_max_samples,
+                                                    self.n_max_features))
+        self.descriptions = np.zeros((self.n_views, self.n_classes,
+                                      self.n_max_samples,))
         self.n_total_samples = np.sum(self.n_samples_per_class)
         sample_indices = np.arange(int(np.sum(self.n_samples_per_class)))
         self.rs.shuffle(sample_indices)

@@ -7,3 +7,5 @@ demo/tutorials/supplementary_material/demo.hdf5
 demo/tutorials/supplementary_material/tuto.hdf5
 demo/tutorials/supplementary_material/report.md
 demo/tutorials/supplementary_material/tuto/
+.idea*
+_static

@@ -120,7 +120,7 @@ class StumpsGenerator(BaseSubProblem):
         return DecisionTreeClassifier(max_depth=math.ceil(math.log2(self.n_classes)))
 
 
-class TreesGenerator(BaseSubProblem):
+class TreesGenerator(BaseSubProblem):  # pragma: no cover
     """ Work in progress : Similar generator as StumpsGenerator, but that
     generates several blobs per class """
 

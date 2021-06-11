@@ -64,7 +64,7 @@ class MultiViewSubProblemsGenerator:
                  complementarity_level=3,
                  mutual_error=0.0, name="generated_dataset", config_file=None,
                  sub_problem_type="base", sub_problem_configurations=None,
-                 **kwargs):
+                 min_rndm_val=-1, max_rndm_val=1, **kwargs):
 
         if config_file is not None:
             args = get_config_from_file(config_file)
@@ -76,6 +76,8 @@ class MultiViewSubProblemsGenerator:
             self.n_classes = n_classes
             self.n_views = n_views
             self.name = name
+            self.min_rndm_val = min_rndm_val
+            self.max_rndm_val = max_rndm_val
             self.n_features = format_array(n_features, n_views, type_needed=int)
             self.redundancy = format_array(redundancy, n_classes,
                                            type_needed=float).reshape(
@@ -263,72 +265,72 @@ class MultiViewSubProblemsGenerator:
                     label_indice in label_indices]
             self.dt_error[:, view_index] = np.array(loss)
 
-    def _find_rows_cols(self):
-        rows=1
-        cols=1
-        if self.n_views == 4:
-            rows = 2
-            cols = 2
-        if self.n_views>1:
-            for i in range(self.n_views):
-                if rows*cols < i+1:
-                    if cols < 4*rows:
-                        cols+=1
-                    else:
-                        rows+=1
-        return rows, cols
+    # def _find_rows_cols(self):
+    #     rows=1
+    #     cols=1
+    #     if self.n_views == 4:
+    #         rows = 2
+    #         cols = 2
+    #     if self.n_views>1:
+    #         for i in range(self.n_views):
+    #             if rows*cols < i+1:
+    #                 if cols < 4*rows:
+    #                     cols+=1
+    #                 else:
+    #                     rows+=1
+    #     return rows, cols
 
-    def _get_pca(self, n_components=2, output_path='.'):
-        pca = PCA(n_components=n_components)
-        import plotly.graph_objects as go
-        from plotly.subplots import make_subplots
-        rows, cols = self._find_rows_cols()
-        fig = make_subplots(rows=rows, cols=cols,
-                            subplot_titles=["View{}".format(view_index)
-                                            for view_index
-                                            in range(self.n_views)],
-                            specs=[[{'type': 'scatter'} for _ in range(cols) ]
-                                   for _ in range(rows)])
-        row = 1
-        col = 1
-        import plotly.express as px
-        for view_index, view_data in enumerate(self.dataset):
-            if self.n_features[view_index]>n_components:
-                pca.fit(view_data)
-                reducted_data = pca.transform(view_data)
-            elif self.n_features[view_index] ==1:
-                reducted_data = np.transpose(np.array([view_data, view_data]))[0, :, :]
-            else:
-                reducted_data = view_data
-            fig.add_trace(
-                go.Scatter(
-                    x=reducted_data[:, 0],
-                    y=reducted_data[:, 1],
-                    text=self.sample_ids,
-                    mode='markers', marker=dict(
-                        size=3,  # set color to an array/list of desired values
-                        color=self.y,
-                        colorscale=["red", "blue", "black", "green", "orange", "purple"],
-                        opacity=0.8
-                    ), ),
-                row=row, col=col)
-            col += 1
-            if col > cols:
-                col = 1
-                row += 1
-        fig.update_shapes(dict(xref='x', yref='y'))
-        plotly.offline.plot(fig, filename=os.path.join(output_path, self.name+"_fig_pca.html"), auto_open=False)
+    # def _get_pca(self, n_components=2, output_path='.'):
+    #     pca = PCA(n_components=n_components)
+    #     import plotly.graph_objects as go
+    #     from plotly.subplots import make_subplots
+    #     rows, cols = self._find_rows_cols()
+    #     fig = make_subplots(rows=rows, cols=cols,
+    #                         subplot_titles=["View{}".format(view_index)
+    #                                         for view_index
+    #                                         in range(self.n_views)],
+    #                         specs=[[{'type': 'scatter'} for _ in range(cols) ]
+    #                                for _ in range(rows)])
+    #     row = 1
+    #     col = 1
+    #     import plotly.express as px
+    #     for view_index, view_data in enumerate(self.dataset):
+    #         if self.n_features[view_index]>n_components:
+    #             pca.fit(view_data)
+    #             reducted_data = pca.transform(view_data)
+    #         elif self.n_features[view_index] ==1:
+    #             reducted_data = np.transpose(np.array([view_data, view_data]))[0, :, :]
+    #         else:
+    #             reducted_data = view_data
+    #         fig.add_trace(
+    #             go.Scatter(
+    #                 x=reducted_data[:, 0],
+    #                 y=reducted_data[:, 1],
+    #                 text=self.sample_ids,
+    #                 mode='markers', marker=dict(
+    #                     size=3,  # set color to an array/list of desired values
+    #                     color=self.y,
+    #                     colorscale=["red", "blue", "black", "green", "orange", "purple"],
+    #                     opacity=0.8
+    #                 ), ),
+    #             row=row, col=col)
+    #         col += 1
+    #         if col > cols:
+    #             col = 1
+    #             row += 1
+    #     fig.update_shapes(dict(xref='x', yref='y'))
+    #     plotly.offline.plot(fig, filename=os.path.join(output_path, self.name+"_fig_pca.html"), auto_open=False)
 
     def gen_view_report(self, view_index):
         view_string = "\n\n### View "+str(view_index+1)
         view_string+=self._sub_problem_generators[view_index].gen_report()
         return view_string
 
-    def _get_generator_report(self, view_index, doc_type=".md"):
-        if self.sub_problem_types[view_index] in ["make_classification", "base"]:
-            return "[`make_classification`](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)"
-        elif self.sub_problem_types[view_index]in ["gaussian", "make_gaussian_quantiles"]:
-            return "[`make_gaussian_quantiles`](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_gaussian_quantiles.html#sklearn.datasets.make_gaussian_quantiles)"
+    # def _get_generator_report(self, view_index, doc_type=".md"):
+    #     if self.sub_problem_types[view_index] in ["make_classification", "base"]:
+    #         return "[`make_classification`](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html)"
+    #     elif self.sub_problem_types[view_index]in ["gaussian", "make_gaussian_quantiles"]:
+    #         return "[`make_gaussian_quantiles`](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_gaussian_quantiles.html#sklearn.datasets.make_gaussian_quantiles)"
 
     def _init_base_arguments(self):
         self.n_samples_per_class = (
