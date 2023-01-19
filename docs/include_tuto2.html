@@ -1,0 +1,5385 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SMuDGE tutorial : the sample types &#8212; Mulitivew Generator 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/plotly_js.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SMuDGE tutorial : multiple monoview generators." href="include_tuto3.html" />
+    <link rel="prev" title="Multiview Dataset Generator Demo" href="include_tuto1.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="include_tuto3.html" title="SMuDGE tutorial : multiple monoview generators."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="include_tuto1.html" title="Multiview Dataset Generator Demo"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Mulitivew Generator 0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="SMuDGE-tutorial-:-the-sample-types">
+<h1>SMuDGE tutorial : the sample types<a class="headerlink" href="#SMuDGE-tutorial-:-the-sample-types" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we will learn how to generate a multiview dataset presenting :</p>
+<ul class="simple">
+<li>redundancy,</li>
+<li>complementarity and</li>
+<li>mutual error.</li>
+</ul>
+<div class="section" id="Definitions">
+<h2>Definitions<a class="headerlink" href="#Definitions" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, will will denote a sample as</p>
+<ul class="simple">
+<li><strong>Redundant</strong> if all the views have enough information to classify it correctly without collaboration,</li>
+<li><strong>Complementary</strong> if only some of the views have enough information to classify it correctly without collaboration it is useful the assess the ability to extract the relevant information among the views.</li>
+<li>Part of the <strong>Mutual Error</strong> if none of the views has enough information to classify it correctly without collaboration. A mutliview classifier able to classify these examples is apt to get information from several features from different views and combine it to classify the examples.</li>
+</ul>
+</div>
+<div class="section" id="Hands-on-experience-:-initialization">
+<h2>Hands on experience : initialization<a class="headerlink" href="#Hands-on-experience-:-initialization" title="Permalink to this headline">¶</a></h2>
+<p>We will initialize the arguments as earlier :</p>
+<div class="nbinput nblast container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">multiview_generator.multiple_sub_problems</span> <span class="kn">import</span> <span class="n">MultiViewSubProblemsGenerator</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;tuto&quot;</span>
+<span class="n">n_views</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">error_matrix</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">class_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.333</span><span class="p">,</span> <span class="mf">0.333</span><span class="p">,</span> <span class="mf">0.333</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+<p>To control the three previously introduced characteristics, we have to provide three floats :</p>
+<div class="nbinput nblast container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">complementarity</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">redundancy</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">mutual_error</span> <span class="o">=</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can generate the dataset with the given configuration.</p>
+<div class="nbinput container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">generator</span> <span class="o">=</span> <span class="n">MultiViewSubProblemsGenerator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">n_views</span><span class="o">=</span><span class="n">n_views</span><span class="p">,</span>
+                                          <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
+                                          <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
+                                          <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
+                                          <span class="n">class_weights</span><span class="o">=</span><span class="n">class_weights</span><span class="p">,</span>
+                                          <span class="n">error_matrix</span><span class="o">=</span><span class="n">error_matrix</span><span class="p">,</span>
+                                          <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
+                                          <span class="n">redundancy</span><span class="o">=</span><span class="n">redundancy</span><span class="p">,</span>
+                                          <span class="n">complementarity</span><span class="o">=</span><span class="n">complementarity</span><span class="p">,</span>
+                                          <span class="n">mutual_error</span><span class="o">=</span><span class="n">mutual_error</span><span class="p">)</span>
+
+<span class="n">view_data</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_multi_view_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="prompt empty container">
+</div>
+<div class="output_area container">
+<div class="highlight"><pre>
+[array([399, 399, 399, 399]), array([299, 399, 399, 399]), array([399, 333, 319, 299])]
+400.0
+0 0 399 228
+1 0 399 239
+2 0 399 230
+3 0 399 233
+0 1 299 237
+1 1 399 236
+2 1 399 226
+3 1 399 231
+0 2 399 229
+1 2 333 234
+2 2 319 233
+3 2 299 234
+</pre></div></div>
+</div>
+<p>Here, the generator distinguishes four types of examples, the thrre previously introduced and the ones that were used to fill the dataset.</p>
+</div>
+<div class="section" id="Dataset-analysis-using-SuMMIT">
+<h2>Dataset analysis using <a class="reference external" href="https://gitlab.lis-lab.fr/baptiste.bauvin/summit">SuMMIT</a><a class="headerlink" href="#Dataset-analysis-using-SuMMIT" title="Permalink to this headline">¶</a></h2>
+<p>In order to differentiate them, we use <code class="docutils literal notranslate"><span class="pre">generator.example_ids</span></code>. In this attribute, we can find an array with the ids of all the generated exmaples, characterizing their type :</p>
+<div class="nbinput container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">generator</span><span class="o">.</span><span class="n">example_ids</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area container">
+<div class="highlight"><pre>
+[&#39;Complementary_193_1&#39;,
+ &#39;redundancy_56_2&#39;,
+ &#39;Complementary_64_0&#39;,
+ &#39;redundancy_26_1&#39;,
+ &#39;Complementary_141_2&#39;,
+ &#39;example_5&#39;,
+ &#39;redundancy_54_1&#39;,
+ &#39;Complementary_157_1&#39;,
+ &#39;example_8&#39;,
+ &#39;example_9&#39;]
+</pre></div></div>
+</div>
+<p>Here, we printed the 10 first ones, and we have :</p>
+<ul class="simple">
+<li>the redundant samples tagged <code class="docutils literal notranslate"><span class="pre">redundancy_</span></code>,</li>
+<li>the mutual error ones tagged <code class="docutils literal notranslate"><span class="pre">mutual_error_</span></code>,</li>
+<li>the complementary ones tagged <code class="docutils literal notranslate"><span class="pre">complementary_</span></code> and</li>
+<li>the filling ones tagged <code class="docutils literal notranslate"><span class="pre">example_</span></code>.</li>
+</ul>
+<p>To get a visualization on these properties, we will use SuMMIT with decision trees on each view.</p>
+<div class="nbinput container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">multiview_platform.execute</span> <span class="kn">import</span> <span class="n">execute</span>
+
+<span class="n">generator</span><span class="o">.</span><span class="n">to_hdf5_mc</span><span class="p">(</span><span class="s1">&#39;supplementary_material&#39;</span><span class="p">)</span>
+<span class="n">execute</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;supplementary_material&#39;</span><span class="p">,</span><span class="s1">&#39;config_summit.yml&#39;</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="prompt empty container">
+</div>
+<div class="output_area stderr container">
+<div class="highlight"><pre>
+Start:   Initializing monoview classifiers arguments
+Done:    Initializing monoview classifiers arguments
+Start:   Initializing monoview classifiers arguments
+Done:    Initializing monoview classifiers arguments
+Start:   Executing all the needed benchmarks
+Start:   Benchmark initialization
+Done:    Benchmark initialization
+Start:   monoview benchmark
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.014620825997553766[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5245245245245245
+                - Score on test : 0.5405405405405406
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       195 │        71 │        67 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        91 │       147 │        95 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        60 │        75 │       198 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -8.986247539520264
+Feature importances :
+- Feature index : 1, feature importance : 0.593865779915303
+- Feature index : 2, feature importance : 0.37775762340238894
+- Feature index : 0, feature importance : 0.028376596682308103
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.02298176399199292[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.44344344344344344
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       140 │        95 │        98 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        89 │       145 │        99 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        72 │       103 │       158 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3622416671310541
+- Feature index : 2, feature importance : 0.3411227657434244
+- Feature index : 0, feature importance : 0.29663556712552147
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.042979129997547716[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.973973973973974
+                - Score on test : 0.44044044044044045
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       160 │        93 │        80 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       116 │       137 │        80 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        92 │        98 │       143 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.34810232453346884
+- Feature index : 0, feature importance : 0.3348437348480852
+- Feature index : 2, feature importance : 0.317053940618446
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.01366416399832815[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5625625625625625
+                - Score on test : 0.5315315315315315
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       174 │        85 │        74 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        65 │       207 │        61 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        79 │       104 │       150 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= 0.11212348937988281
+Feature importances :
+- Feature index : 1, feature importance : 0.6120220280042745
+- Feature index : 0, feature importance : 0.38797797199572553
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.02157829000498168[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.37537537537537535
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       120 │        97 │       116 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        89 │       130 │       114 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        81 │       127 │       125 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3581427826162341
+- Feature index : 0, feature importance : 0.3320074059539233
+- Feature index : 2, feature importance : 0.3098498114298425
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.03333836898673326[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.973973973973974
+                - Score on test : 0.44344344344344344
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       163 │        75 │        95 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        94 │       149 │        90 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        92 │       110 │       131 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.35063866653989983
+- Feature index : 2, feature importance : 0.32761820411732384
+- Feature index : 0, feature importance : 0.3217431293427764
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.011298666999209672[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5445445445445446
+                - Score on test : 0.5455455455455456
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       199 │        64 │        70 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        64 │       194 │        75 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        77 │       104 │       152 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -1.1316807270050049
+Feature importances :
+- Feature index : 1, feature importance : 0.5603538640891512
+- Feature index : 0, feature importance : 0.4396461359108487
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.016297076013870537[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.4134134134134134
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       152 │       102 │        79 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        91 │       135 │       107 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        99 │       108 │       126 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3621281243886289
+- Feature index : 0, feature importance : 0.3497804668765774
+- Feature index : 2, feature importance : 0.2880914087347936
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.04144220901071094[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.9719719719719719
+                - Score on test : 0.4494494494494494
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       171 │        91 │        71 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        90 │       159 │        84 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        90 │       124 │       119 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.36396500099010287
+- Feature index : 0, feature importance : 0.3277636019905735
+- Feature index : 2, feature importance : 0.30827139701932366
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.011509386007674038[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5475475475475475
+                - Score on test : 0.5225225225225225
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       196 │        64 │        73 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        64 │       194 │        75 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        96 │       105 │       132 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= 7.099114418029785
+Feature importances :
+- Feature index : 1, feature importance : 0.5782256722519781
+- Feature index : 2, feature importance : 0.38786245664154767
+- Feature index : 0, feature importance : 0.033911871106474235
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.017198485002154484[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3863863863863864
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       136 │        83 │       114 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        91 │       145 │        97 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       114 │       114 │       105 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3584041021628971
+- Feature index : 2, feature importance : 0.3334659557746437
+- Feature index : 0, feature importance : 0.30812994206245925
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.03872804998536594[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef7558&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.968968968968969
+                - Score on test : 0.44244244244244246
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       176 │        75 │        82 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        97 │       163 │        73 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       131 │        99 │       103 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.34828717578196294
+- Feature index : 2, feature importance : 0.33209362138174287
+- Feature index : 0, feature importance : 0.31961920283629414
+
+Done:    Saving results
+Done:    monoview benchmark
+Start:   multiview arguments initialization
+Done:    multiview arguments initialization
+Start:   multiview benchmark
+Done:    multiview benchmark
+Start:   Analyzing all results
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f28541aedd8&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Done:    Analyzing all results
+Start:   Benchmark initialization
+Done:    Benchmark initialization
+Start:   monoview benchmark
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.013571974996011704[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5445445445445446
+                - Score on test : 0.5215215215215215
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       189 │        68 │        76 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        90 │       136 │       107 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        67 │        70 │       196 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -8.986247539520264
+Feature importances :
+- Feature index : 1, feature importance : 0.5472671261284495
+- Feature index : 2, feature importance : 0.3018988800753102
+- Feature index : 0, feature importance : 0.1508339937962403
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.017609995004022494[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.4164164164164164
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       136 │       105 │        92 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        95 │       124 │       114 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        91 │        86 │       156 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.39032418528177976
+- Feature index : 2, feature importance : 0.32614691556549413
+- Feature index : 0, feature importance : 0.28352889915272617
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.03328543298994191[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.968968968968969
+                - Score on test : 0.44344344344344344
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       174 │        77 │        82 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       101 │       129 │       103 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        97 │        96 │       140 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 2, feature importance : 0.3508015514043997
+- Feature index : 1, feature importance : 0.3411023669702324
+- Feature index : 0, feature importance : 0.30809608162536795
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.009463227004744112[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5805805805805806
+                - Score on test : 0.5225225225225225
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       166 │        81 │        86 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        70 │       202 │        61 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        73 │       106 │       154 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -8.185171604156494
+Feature importances :
+- Feature index : 1, feature importance : 0.5874010730815006
+- Feature index : 0, feature importance : 0.3209794197164746
+- Feature index : 2, feature importance : 0.09161950720202482
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.016291387000819668[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.4144144144144144
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       146 │        71 │       116 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       102 │       131 │       100 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        94 │       102 │       137 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3859486721996058
+- Feature index : 0, feature importance : 0.3414719725150146
+- Feature index : 2, feature importance : 0.2725793552853797
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.03930041799321771[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.9679679679679679
+                - Score on test : 0.4624624624624625
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       166 │        79 │        88 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        94 │       161 │        78 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       102 │        96 │       135 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3785623571312163
+- Feature index : 0, feature importance : 0.33402875405488996
+- Feature index : 2, feature importance : 0.2874088888138938
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.01120196800911799[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5575575575575575
+                - Score on test : 0.5185185185185185
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       206 │        63 │        64 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        85 │       182 │        66 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       111 │        92 │       130 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -1.0831778049468994
+Feature importances :
+- Feature index : 1, feature importance : 0.5456660892016889
+- Feature index : 0, feature importance : 0.4197391986254741
+- Feature index : 2, feature importance : 0.034594712172837064
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.019016871985513717[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3683683683683684
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       113 │        98 │       122 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        94 │       136 │       103 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       108 │       106 │       119 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.35732844280955095
+- Feature index : 0, feature importance : 0.3377112111592173
+- Feature index : 2, feature importance : 0.3049603460312318
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.045145098003558815[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.9669669669669669
+                - Score on test : 0.4094094094094094
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       151 │        95 │        87 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        91 │       146 │        96 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       104 │       117 │       112 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3562976127351838
+- Feature index : 0, feature importance : 0.34647866842920744
+- Feature index : 2, feature importance : 0.29722371883560883
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.011459171975729987[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5335335335335335
+                - Score on test : 0.5265265265265265
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       176 │        66 │        91 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        68 │       196 │        69 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        85 │        94 │       154 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        2 &lt;= 7.884028673171997
+Feature importances :
+- Feature index : 2, feature importance : 0.6447773749986965
+- Feature index : 1, feature importance : 0.33021348399657524
+- Feature index : 0, feature importance : 0.025009141004728383
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.019449904997600242[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.4034034034034034
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       148 │        92 │        93 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        97 │       142 │        94 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       113 │       107 │       113 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 2, feature importance : 0.4052965135270534
+- Feature index : 0, feature importance : 0.3019369228937852
+- Feature index : 1, feature importance : 0.2927665635791614
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.03309051800169982[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0090&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.9719719719719719
+                - Score on test : 0.42742742742742745
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       159 │        92 │        82 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        84 │       165 │        84 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       107 │       123 │       103 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 2, feature importance : 0.3421568007018131
+- Feature index : 1, feature importance : 0.33521422052353367
+- Feature index : 0, feature importance : 0.3226289787746533
+
+Done:    Saving results
+Done:    monoview benchmark
+Start:   multiview arguments initialization
+Done:    multiview arguments initialization
+Start:   multiview benchmark
+Done:    multiview benchmark
+Start:   Analyzing all results
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f285452a9e8&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Done:    Analyzing all results
+Start:   Benchmark initialization
+Done:    Benchmark initialization
+Start:   monoview benchmark
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.011741251015337184[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5325325325325325
+                - Score on test : 0.5335335335335335
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       200 │        69 │        64 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        89 │       160 │        84 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        82 │        78 │       173 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        0 &lt;= -7.5858564376831055
+Feature importances :
+- Feature index : 0, feature importance : 0.6426433328407938
+- Feature index : 1, feature importance : 0.30316084666342147
+- Feature index : 2, feature importance : 0.05419582049578462
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.016791434987680987[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.40540540540540543
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       132 │       116 │        85 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        83 │       118 │       132 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        80 │        98 │       155 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 0, feature importance : 0.3508179004161926
+- Feature index : 2, feature importance : 0.32829579432960804
+- Feature index : 1, feature importance : 0.32088630525419937
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.032099153992021456[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.9669669669669669
+                - Score on test : 0.43043043043043044
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       167 │       105 │        61 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       117 │       127 │        89 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        97 │       100 │       136 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.34184835381666784
+- Feature index : 2, feature importance : 0.3331618840021268
+- Feature index : 0, feature importance : 0.32498976218120545
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.009638071001973003[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5495495495495496
+                - Score on test : 0.5595595595595596
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       201 │        67 │        65 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        69 │       200 │        64 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        97 │        78 │       158 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -0.01163482666015625
+Feature importances :
+- Feature index : 1, feature importance : 0.5811118664011568
+- Feature index : 0, feature importance : 0.3003951272452718
+- Feature index : 2, feature importance : 0.11849300635357148
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.01566211401950568[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.42742742742742745
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       146 │        98 │        89 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        82 │       152 │        99 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        99 │       105 │       129 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3440774761871894
+- Feature index : 2, feature importance : 0.32910202407068434
+- Feature index : 0, feature importance : 0.32682049974212624
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.04119984098360874[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.972972972972973
+                - Score on test : 0.4624624624624625
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       181 │        70 │        82 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        97 │       147 │        89 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       116 │        83 │       134 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3553546874072236
+- Feature index : 0, feature importance : 0.33659333713048306
+- Feature index : 2, feature importance : 0.3080519754622934
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.012263860990060493[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5135135135135135
+                - Score on test : 0.5625625625625625
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       210 │        60 │        63 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        72 │       195 │        66 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        96 │        80 │       157 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -8.781835556030273
+Feature importances :
+- Feature index : 1, feature importance : 0.5759472379681086
+- Feature index : 0, feature importance : 0.34644073405667825
+- Feature index : 2, feature importance : 0.07761202797521309
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.019346140994457528[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3923923923923924
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       142 │        80 │       111 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       101 │       134 │        98 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       111 │       106 │       116 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 0, feature importance : 0.36158644685294766
+- Feature index : 2, feature importance : 0.3203572874470783
+- Feature index : 1, feature importance : 0.31805626569997403
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.04268411098746583[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.973973973973974
+                - Score on test : 0.42342342342342343
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       149 │        87 │        97 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        86 │       155 │        92 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       102 │       112 │       119 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3600675330402482
+- Feature index : 0, feature importance : 0.327724535703172
+- Feature index : 2, feature importance : 0.3122079312565798
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.012006058008410037[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5205205205205206
+                - Score on test : 0.5365365365365365
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       188 │        70 │        75 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        62 │       186 │        85 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        88 │        83 │       162 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        2 &lt;= 7.621823072433472
+Feature importances :
+- Feature index : 2, feature importance : 0.6127253529075672
+- Feature index : 1, feature importance : 0.3276148589893498
+- Feature index : 0, feature importance : 0.059659788103082985
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.017790345998946577[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3783783783783784
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       116 │       105 │       112 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        93 │       133 │       107 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        99 │       105 │       129 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 2, feature importance : 0.3798342367122621
+- Feature index : 1, feature importance : 0.3163714597070011
+- Feature index : 0, feature importance : 0.3037943035807368
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.03771343201515265[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0240&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.973973973973974
+                - Score on test : 0.44344344344344344
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       159 │        90 │        84 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        74 │       157 │       102 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       108 │        98 │       127 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3367546219487557
+- Feature index : 2, feature importance : 0.3361012156655226
+- Feature index : 0, feature importance : 0.32714416238572175
+
+Done:    Saving results
+Done:    monoview benchmark
+Start:   multiview arguments initialization
+Done:    multiview arguments initialization
+Start:   multiview benchmark
+Done:    multiview benchmark
+Start:   Analyzing all results
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f28546ae2e8&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Done:    Analyzing all results
+Start:   Benchmark initialization
+Done:    Benchmark initialization
+Start:   monoview benchmark
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.017450111015932634[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5435435435435435
+                - Score on test : 0.5315315315315315
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       201 │        70 │        62 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        91 │       143 │        99 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        71 │        75 │       187 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        0 &lt;= -7.537216424942017
+Feature importances :
+- Feature index : 0, feature importance : 0.5226051614948145
+- Feature index : 1, feature importance : 0.34315504101576955
+- Feature index : 2, feature importance : 0.13423979748941609
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.03680643701227382[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.38538538538538536
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       124 │       110 │        99 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       102 │       120 │       111 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        81 │       111 │       141 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 0, feature importance : 0.38824868202962015
+- Feature index : 2, feature importance : 0.30630942653599513
+- Feature index : 1, feature importance : 0.30544189143438477
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.04335637201438658[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.972972972972973
+                - Score on test : 0.4014014014014014
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       147 │       113 │        73 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       126 │       126 │        81 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        91 │       114 │       128 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3531902456622059
+- Feature index : 0, feature importance : 0.35014010054650957
+- Feature index : 2, feature importance : 0.2966696537912845
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.01579122498515062[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5695695695695696
+                - Score on test : 0.5305305305305306
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       189 │        84 │        60 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        68 │       192 │        73 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        79 │       105 │       149 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -8.038341045379639
+Feature importances :
+- Feature index : 1, feature importance : 0.46117819456772075
+- Feature index : 0, feature importance : 0.40154750850939563
+- Feature index : 2, feature importance : 0.13727429692288373
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.033786593994591385[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3933933933933934
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       133 │        86 │       114 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        92 │       136 │       105 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        96 │       113 │       124 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 0, feature importance : 0.35097011165256853
+- Feature index : 1, feature importance : 0.32608433124358605
+- Feature index : 2, feature importance : 0.3229455571038454
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.08894029300427064[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.972972972972973
+                - Score on test : 0.44644644644644643
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       174 │        77 │        82 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        94 │       145 │        94 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       101 │       105 │       127 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3537167189738878
+- Feature index : 0, feature importance : 0.3392257345584697
+- Feature index : 2, feature importance : 0.30705754646764255
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.016797334974398836[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5455455455455456
+                - Score on test : 0.5375375375375375
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       185 │        80 │        68 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        69 │       189 │        75 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        79 │        91 │       163 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -8.3212308883667
+Feature importances :
+- Feature index : 1, feature importance : 0.6531314724862579
+- Feature index : 0, feature importance : 0.3214686025048021
+- Feature index : 2, feature importance : 0.02539992500894002
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.02450905999285169[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3943943943943944
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       147 │        90 │        96 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        92 │       111 │       130 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       107 │        90 │       136 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3983423348078147
+- Feature index : 0, feature importance : 0.3424457373272194
+- Feature index : 2, feature importance : 0.25921192786496594
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.045477173989638686[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.96996996996997
+                - Score on test : 0.4164164164164164
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       151 │        93 │        89 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        91 │       143 │        99 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       105 │       106 │       122 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.37412853003104596
+- Feature index : 0, feature importance : 0.3262055843514551
+- Feature index : 2, feature importance : 0.2996658856174991
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.01210012601222843[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5315315315315315
+                - Score on test : 0.5335335335335335
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       196 │        68 │        69 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        69 │       193 │        71 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        86 │       103 │       144 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= 0.19560027122497559
+Feature importances :
+- Feature index : 1, feature importance : 0.6775639173831282
+- Feature index : 0, feature importance : 0.3224360826168718
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.01731816300889477[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3863863863863864
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       139 │        83 │       111 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        84 │       126 │       123 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        98 │       114 │       121 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.38233804155148937
+- Feature index : 0, feature importance : 0.3479529817784296
+- Feature index : 2, feature importance : 0.2697089766700809
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.034021465020487085[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef0318&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.9719719719719719
+                - Score on test : 0.45245245245245247
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       174 │        68 │        91 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        88 │       153 │        92 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       104 │       104 │       125 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.34515048305515383
+- Feature index : 2, feature importance : 0.338274110741391
+- Feature index : 0, feature importance : 0.3165754062034552
+
+Done:    Saving results
+Done:    monoview benchmark
+Start:   multiview arguments initialization
+Done:    multiview arguments initialization
+Start:   multiview benchmark
+Done:    multiview benchmark
+Start:   Analyzing all results
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f2851c7db38&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Done:    Analyzing all results
+Start:   Benchmark initialization
+Done:    Benchmark initialization
+Start:   monoview benchmark
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.017685680009890348[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5515515515515516
+                - Score on test : 0.5195195195195195
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       194 │        61 │        78 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        93 │       152 │        88 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        72 │        88 │       173 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        0 &lt;= -7.537216424942017
+Feature importances :
+- Feature index : 0, feature importance : 0.6227376471820618
+- Feature index : 1, feature importance : 0.30032813402069375
+- Feature index : 2, feature importance : 0.07693421879724446
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.024542364990338683[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.40540540540540543
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       135 │        98 │       100 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       109 │       129 │        95 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        87 │       105 │       141 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 0, feature importance : 0.3635255671687931
+- Feature index : 2, feature importance : 0.3210206934913345
+- Feature index : 1, feature importance : 0.3154537393398723
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_1 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.06806946799042635[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_1 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_1   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.970970970970971
+                - Score on test : 0.43343343343343343
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       169 │        81 │        83 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       125 │       132 │        76 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        99 │       102 │       132 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 2, feature importance : 0.343736464289811
+- Feature index : 1, feature importance : 0.33857188774317215
+- Feature index : 0, feature importance : 0.3176916479670169
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.023136607982451096[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5595595595595596
+                - Score on test : 0.5385385385385385
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       183 │        59 │        91 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        59 │       191 │        83 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        81 │        88 │       164 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= 0.3691229820251465
+Feature importances :
+- Feature index : 1, feature importance : 0.5468384818929156
+- Feature index : 0, feature importance : 0.3808963789533876
+- Feature index : 2, feature importance : 0.07226513915369666
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.021909513015998527[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.4244244244244244
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       150 │        83 │       100 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        87 │       141 │       105 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        90 │       110 │       133 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3720066821591741
+- Feature index : 0, feature importance : 0.33594054790107486
+- Feature index : 2, feature importance : 0.29205276993975093
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_2 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.05181503898347728[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_2 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_2   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.973973973973974
+                - Score on test : 0.44844844844844844
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       162 │        84 │        87 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        85 │       166 │        82 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       107 │       106 │       120 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3548025856213372
+- Feature index : 0, feature importance : 0.32827612799964195
+- Feature index : 2, feature importance : 0.31692128637902084
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.014254659996367991[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5625625625625625
+                - Score on test : 0.5245245245245245
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       190 │        65 │        78 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        67 │       187 │        79 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        90 │        96 │       147 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        1 &lt;= -1.1706411838531494
+Feature importances :
+- Feature index : 1, feature importance : 0.5090799830467423
+- Feature index : 0, feature importance : 0.4909200169532578
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.01773965498432517[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.38238238238238237
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       115 │        79 │       139 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        91 │       129 │       113 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       100 │        95 │       138 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.37763966614448174
+- Feature index : 0, feature importance : 0.33320078029807343
+- Feature index : 2, feature importance : 0.28915955355744494
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_3 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.048221231991192326[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_3 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_3   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.965965965965966
+                - Score on test : 0.42542542542542544
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       149 │        82 │       102 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        85 │       158 │        90 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       104 │       111 │       118 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 1, feature importance : 0.3683595717213061
+- Feature index : 0, feature importance : 0.3373841287612923
+- Feature index : 2, feature importance : 0.29425629951740156
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.012050641991663724[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with decision_tree.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.5645645645645646
+                - Score on test : 0.5005005005005005
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       177 │        73 │        83 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        67 │       193 │        73 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        96 │       107 │       130 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+First featrue :
+        2 &lt;= 5.844297647476196
+Feature importances :
+- Feature index : 2, feature importance : 0.5868595382863983
+- Feature index : 1, feature importance : 0.3312062534941445
+- Feature index : 0, feature importance : 0.08193420821945724
+
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : adaboost
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.018854184017982334[s]
+Start:   Getting results
+/home/baptiste/Documents/venvs/develop/lib/python3.6/site-packages/sklearn/base.py:197: FutureWarning:
+
+From version 0.24, get_params will raise an AttributeError if a parameter cannot be retrieved as an instance attribute. Previously it would return None.
+
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with adaboost.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - Adaboost with n_estimators : 50, base_estimator : DecisionTreeClassifier
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 1.0
+                - Score on test : 0.3813813813813814
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       115 │       118 │       100 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        98 │       146 │        89 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        97 │       116 │       120 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 2, feature importance : 0.34580735025180703
+- Feature index : 0, feature importance : 0.332606265184098
+- Feature index : 1, feature importance : 0.32158638456409483
+
+
+ Estimator error | Estimator weight
+0.0 | 1.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+1.0 | 0.0
+Done:    Saving results
+Start:   Loading data
+Done:    Loading data
+Info:    Classification - Database:tuto View:generated_view_4 train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : random_forest
+Start:   Determine Train/Test split
+Info:    Shape X_train:(999, 3), Length of y_train:999
+Info:    Shape X_test:(999, 3), Length of y_test:999
+Done:    Determine Train/Test split
+Start:   Generate classifier args
+Done:    Generate classifier args
+Start:   Training
+Done:    Training
+Start:   Predicting
+Done:    Predicting
+Info:    Duration for training and predicting: 0.04730147498776205[s]
+Start:   Getting results
+Done:    Getting results
+Start:   Saving preds
+Classification on tuto for generated_view_4 with random_forest.
+
+Database configuration :
+        - Database name : tuto
+        - View name : generated_view_4   View shape : (1998, 3)
+        - Learning Rate : 0.5
+        - Labels used : label_1, label_2, label_3
+        - Number of cross validation folds : 5
+
+Classifier configuration :
+        - RandomForest with n_estimators : 10, max_depth : None, criterion : gini, random_state : &lt;mtrand.RandomState object at 0x7f2859ef02d0&gt;
+        - Executed on 1 core(s)
+
+
+        For Accuracy score using {}, (higher is better) :
+                - Score on train : 0.980980980980981
+                - Score on test : 0.44244244244244246
+
+Test set confusion matrix :
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       162 │        77 │        94 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        86 │       151 │        96 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       107 │        97 │       129 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation :
+Feature importances :
+- Feature index : 2, feature importance : 0.3401685694795628
+- Feature index : 1, feature importance : 0.3401340580160968
+- Feature index : 0, feature importance : 0.3196973725043405
+
+Done:    Saving results
+Done:    monoview benchmark
+Start:   multiview arguments initialization
+Done:    multiview arguments initialization
+Start:   multiview benchmark
+Done:    multiview benchmark
+Start:   Analyzing all results
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f2852ff4a20&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Done:    Analyzing all results
+Done:    Executing all the needed benchmarks
+Start:   Analyzing predictions
+Start:   Analyzing all results
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f2852cf5240&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f2852ceb860&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f28553bcf28&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f28531a7400&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Start:   Score graph generation for accuracy_score*
+Done:    Score graph generation for accuracy_score*
+Start:   Label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f285329fef0&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Label analysis figures generation
+Done:    Analyzing all results
+Start:   Global label analysis figure generation
+locator: &lt;matplotlib.ticker.FixedLocator object at 0x7f28532cf8d0&gt;
+Using fixed locator on colorbar
+Setting pcolormesh
+Done:    Global label analysis figures generation
+Done:    Analyzing predictions
+</pre></div></div>
+</div>
+<p>To extract the result, we need a small script that will fetch the right folder :</p>
+<div class="nbinput container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="k">def</span> <span class="nf">fetch_latest_dir</span><span class="p">(</span><span class="n">experiment_directories</span><span class="p">,</span> <span class="n">latest_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1560</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">experiment_directory</span> <span class="ow">in</span> <span class="n">experiment_directories</span><span class="p">:</span>
+        <span class="n">experiment_time</span> <span class="o">=</span> <span class="n">experiment_directory</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">experiment_time</span> <span class="o">+=</span> <span class="n">experiment_directory</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">experiment_time</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">experiment_time</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">experiment_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dt</span> <span class="o">&gt;</span> <span class="n">latest_date</span><span class="p">:</span>
+            <span class="n">latest_date</span><span class="o">=</span><span class="n">dt</span>
+            <span class="n">latest_experiment_dir</span> <span class="o">=</span> <span class="n">experiment_directory</span>
+    <span class="k">return</span> <span class="n">latest_experiment_dir</span>
+
+<span class="n">experiment_directory</span> <span class="o">=</span> <span class="n">fetch_latest_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;supplementary_material&#39;</span><span class="p">,</span> <span class="s1">&#39;tuto&#39;</span><span class="p">)))</span>
+<span class="n">error_fig_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;supplementary_material&#39;</span><span class="p">,</span><span class="s1">&#39;tuto&#39;</span><span class="p">,</span> <span class="n">experiment_directory</span><span class="p">,</span> <span class="s2">&quot;error_analysis_2D.html&quot;</span><span class="p">)</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">error_fig_path</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html container">
+<iframe
+    width="900"
+    height="500"
+    src="supplementary_material/tuto/started_2020_04_22-09_19_/error_analysis_2D.html"
+    frameborder="0"
+    allowfullscreen
+></iframe></div>
+</div>
+<p>This graph represents the failure of each classifier on each sample. So a black rectangle on row i, column j means that classifier j always failed to classify example i. So, by <a class="reference external" href="link_to_gif">zooming in</a>, we can focus on several samples and we see that the type of samples are well defined as the mutual error ones are systematically misclassified by the decision trees, the redundant ones are well-classified and the complementary ones are classified only by a portion of the views.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SMuDGE tutorial : the sample types</a><ul>
+<li><a class="reference internal" href="#Definitions">Definitions</a></li>
+<li><a class="reference internal" href="#Hands-on-experience-:-initialization">Hands on experience : initialization</a></li>
+<li><a class="reference internal" href="#Dataset-analysis-using-SuMMIT">Dataset analysis using SuMMIT</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="include_tuto1.html"
+                        title="previous chapter">Multiview Dataset Generator Demo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="include_tuto3.html"
+                        title="next chapter">SMuDGE tutorial : multiple monoview generators.</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/include_tuto2.nblink.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="include_tuto3.html" title="SMuDGE tutorial : multiple monoview generators."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="include_tuto1.html" title="Multiview Dataset Generator Demo"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Mulitivew Generator 0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Baptiste Bauvin.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+:mod:`multiview_generator.tests`
+================================
+
+.. py:module:: multiview_generator.tests
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   test_gaussian_classes/index.rst
+
+

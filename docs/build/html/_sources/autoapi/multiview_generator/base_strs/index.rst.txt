@@ -1,0 +1,24 @@
+:mod:`multiview_generator.base_strs`
+====================================
+
+.. py:module:: multiview_generator.base_strs
+
+
+base_strs
+---------
+
+.. data:: GENE
+   :annotation: = MAGE
+
+   
+
+.. data:: GENE_F
+   :annotation: = Multiview Artificial Generation Engine
+
+   
+
+.. data:: LINK
+   :annotation: = https://gitlab.lis-lab.fr/dev/multiview_generator
+
+   
+

@@ -1,0 +1,56 @@
+:mod:`multiview_generator.gaussian_classes`
+===========================================
+
+.. py:module:: multiview_generator.gaussian_classes
+
+
+gaussian_classes
+----------------
+
+
+.. py:class:: MultiViewGaussianSubProblemsGenerator(random_state=42, n_samples=100, n_classes=4, n_views=4, error_matrix=None, n_features=3, class_weights=1.0, redundancy=0.05, complementarity=0.05, complementarity_level=3, mutual_error=0.01, name='generated_dataset', config_file=None, sub_problem_type='base', sub_problem_configurations=None, sub_problem_generators='StumpsGenerator', random_vertices=False, min_rndm_val=-1, max_rndm_val=1, **kwargs)
+
+
+
+   .. method:: generate_multi_view_dataset(self)
+
+
+      This is the main method. It will generate a multiview dataset according to the configuration.
+      To do so,
+
+      * it generates the labels of the multiview dataset,
+      * then it assigns all the subsets of samples (redundant, ...)
+      * finally, for each view it generates a monoview dataset according to the configuration
+
+
+      :return: view_data a list containing the views np.ndarrays and y, the label array.
+
+
+   .. method:: assign_mutual_error(self)
+
+
+      Method assigning the mis-describing views to the mutual error samples.
+
+
+   .. method:: assign_complementarity(self)
+
+
+      Method assigning mis-described and well-described views to build
+      complementary samples
+
+
+   .. method:: assign_redundancy(self)
+
+
+      Method assigning the well-describing views to the redundant samples.
+
+
+   .. method:: get_distance(self)
+
+
+      Method that records the distance of each description to the ideal
+      decision limit, will be used later to quantify more precisely the
+      quality of a description.
+
+
+

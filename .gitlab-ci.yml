@@ -50,6 +50,7 @@ pages:
         - sphinx-build -b html . ../build
         - cd ../..
         - cp -r ./docs/build public
+        - cp -r ./docs/build/_static/fig.html public/_static/fig.html
     artifacts:
         paths:
           - public
