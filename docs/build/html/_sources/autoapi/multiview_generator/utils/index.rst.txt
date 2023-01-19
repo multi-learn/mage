@@ -8,7 +8,7 @@ utils
 -----
 
 
-.. function:: format_array(input, size, type_needed=int)
+.. py:function:: format_array(input, size, type_needed=int)
 
    Used to test that :
    *  if the input is an array, it is the right size,
@@ -20,7 +20,7 @@ utils
    :return: a ``numpy.ndarray`` of shape (``size``, )
 
 
-.. function:: get_config_from_file(file_path)
+.. py:function:: get_config_from_file(file_path)
 
    Loads the configuration for the yaml config file
 
@@ -28,7 +28,7 @@ utils
    :return:
 
 
-.. function:: init_class_weights(class_weights, n_classes)
+.. py:function:: init_class_weights(class_weights, n_classes)
 
    Initializes the class weights. Sets a unifrom distribution if no
    distribution is specified.
@@ -38,7 +38,7 @@ utils
    :return:
 
 
-.. function:: init_error_matrix(error_matrix, n_classes, n_views)
+.. py:function:: init_error_matrix(error_matrix, n_classes, n_views)
 
    Initializes the error matrix
 
@@ -48,7 +48,7 @@ utils
    :return:
 
 
-.. function:: init_random_state(random_state)
+.. py:function:: init_random_state(random_state)
 
    Initalizes the random state.
 
@@ -56,7 +56,7 @@ utils
    :return:
 
 
-.. function:: init_array_attr(attr, n_repeat, base_val=0)
+.. py:function:: init_array_attr(attr, n_repeat, base_val=0)
 
    Transforms a unique attribute into an array with the same value.
 
@@ -66,7 +66,7 @@ utils
    :return:
 
 
-.. function:: init_list(input, size, type_needed=dict)
+.. py:function:: init_list(input, size, type_needed=dict)
 
    Transforms a unique attribute into a list with the same value.
 

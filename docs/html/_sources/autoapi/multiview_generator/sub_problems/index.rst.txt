@@ -12,8 +12,7 @@ sub_problems
 
    The base class for all the sub-problem generators.
 
-   .. method:: gen_report(self)
-
+   .. py:method:: gen_report(self)
 
       General method the generate the report on the view.
 
@@ -25,8 +24,9 @@ sub_problems
 
 
 
-   .. method:: gen_data(self)
+   The base class for all the sub-problem generators.
 
+   .. py:method:: gen_data(self)
 
       Generates the samples according to gaussian distributions with scales
       computed with the given error and class separation. This sub-problem is
@@ -40,14 +40,12 @@ sub_problems
       :return: data a np.ndarray of dimension n_classes, n_samples_per_class,         n_features containing the samples' descriptions, sorted by class
 
 
-   .. method:: gen_report(self)
-
+   .. py:method:: gen_report(self)
 
       Generates the specific report for StumpsGenerator.
 
 
-   .. method:: get_bayes_classifier(self)
-
+   .. py:method:: get_bayes_classifier(self)
 
 
 
@@ -58,20 +56,17 @@ sub_problems
    Work in progress : Similar generator as StumpsGenerator, but that
    generates several blobs per class
 
-   .. method:: gen_data(self)
-
-
-      WIP
-
-
-   .. method:: gen_report(self)
-
+   .. py:method:: gen_data(self)
 
       WIP
 
 
-   .. method:: get_bayes_classifier(self)
+   .. py:method:: gen_report(self)
 
+      WIP
+
+
+   .. py:method:: get_bayes_classifier(self)
 
 
 
@@ -79,8 +74,9 @@ sub_problems
 
 
 
-   .. method:: gen_data(self)
+   The base class for all the sub-problem generators.
 
+   .. py:method:: gen_data(self)
 
       Generates the samples according to gaussian distributions with scales
       computed with the given error and class separation. The generator first
@@ -92,18 +88,16 @@ sub_problems
       :return: data a np.ndarray of dimension n_classes, n_samples_per_class, n_features containing the samples' descriptions, sorted by class
 
 
-   .. method:: gen_report(self)
-
+   .. py:method:: gen_report(self)
 
       Generates the specific report for StumpsGenerator.
 
 
-   .. method:: get_bayes_classifier(self)
+   .. py:method:: get_bayes_classifier(self)
 
 
 
-
-.. function:: to_cartesian(radius, angles)
+.. py:function:: to_cartesian(radius, angles)
 
    Transforms polar coordinates to cartesian coordinates.
 

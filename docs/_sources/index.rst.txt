@@ -6,7 +6,7 @@
 Welcome to multiview_generator's documentation!
 ===============================================
 
-To install SMuDGE, clone the gitlab repository and run
+To install MAGE, clone the gitlab repository and run
 
 .. code-block::
 
@@ -23,6 +23,11 @@ To install SMuDGE, clone the gitlab repository and run
    include_tuto2
    include_tuto3
    documentation
+
+Read me
+=========
+
+.. include:: readme_link.rst
 
 Indices and tables
 ==================

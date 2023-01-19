@@ -1,7 +1,8 @@
 |gene| documentation
 ====================
 
-.. automodule:: multiple_sub_problems
+.. automodule:: gaussian_classes
 
-.. autoclass:: MultiViewSubProblemsGenerator
-    :members:
+.. automodule:: sub_problems
+
+

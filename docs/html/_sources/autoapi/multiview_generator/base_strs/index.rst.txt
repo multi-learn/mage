@@ -7,17 +7,17 @@
 base_strs
 ---------
 
-.. data:: GENE
+.. py:data:: GENE
    :annotation: = MAGE
 
    
 
-.. data:: GENE_F
+.. py:data:: GENE_F
    :annotation: = Multiview Artificial Generation Engine
 
    
 
-.. data:: LINK
+.. py:data:: LINK
    :annotation: = https://gitlab.lis-lab.fr/dev/multiview_generator
 
    

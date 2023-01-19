@@ -43,8 +43,7 @@ base
    :type sub_problem_type: str or list
    :type sub_problem_configurations: None, dict or list
 
-   .. method:: to_hdf5_mc(self, saving_path='.')
-
+   .. py:method:: to_hdf5_mc(self, saving_path='.')
 
       This is used to save the dataset in an HDF5 file, compatible with
       :summit:`SuMMIT <>`
@@ -54,8 +53,7 @@ base
       :return: None
 
 
-   .. method:: gen_report(self, output_path='.', file_type='md', save=True, n_cv=5)
-
+   .. py:method:: gen_report(self, output_path='.', file_type='md', save=True, n_cv=5)
 
       Generates a markdown report based on the configuration.
       If ``save`` is True, it will be saved in ``output_path`` as <self.name>.<``file_type``> .
@@ -69,8 +67,7 @@ base
       :return: The report string
 
 
-   .. method:: gen_view_report(self, view_index)
-
+   .. py:method:: gen_view_report(self, view_index)
 
 
 
