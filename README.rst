@@ -58,7 +58,7 @@ And the following python modules will be automatically installed  :
 Installing
 <<<<<<<<<<
 
-Once you cloned the project from the `gitlab repository <https://gitlab.lis-lab.fr/dev/multiview_generator/>`_, you just have to use :
+Once you cloned the project from the `Github repository <https://github.com/multi-learn/mage>`_, you just have to use :
 
 .. code:: bash
 
@@ -85,7 +85,7 @@ The coverage report is automatically generated and stored in the ``htmlcov/`` di
 Building the documentation
 <<<<<<<<<<<<<<<<<<<<<<<<<<
 
-To locally build the `documentation <https://dev.pages.lis-lab.fr/multiview_generator/>`_ run :
+To locally build the `documentation <https://multi-learn.github.io/mage/>`_ run :
 
 .. code:: bash
 
