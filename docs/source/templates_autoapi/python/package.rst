@@ -17,6 +17,7 @@
 {% block subpackages %}
 {% set visible_subpackages = obj.subpackages|selectattr("display")|list %}
 {% if visible_subpackages %}
+
 Subpackages
 -----------
 
@@ -36,11 +37,15 @@ Subpackages
 {% set visible_submodules = obj.submodules|selectattr("display")|list %}
 {% if visible_submodules %}
 {% if obj.short_name is equalto("monoview_classifiers") %}
+
 Available monoview classifiers
 ------------------------------
+
 {% elif obj.short_name is equalto("multiview_classifiers") %}
+
 Available multiview classifiers
 -------------------------------
+
 {% endif %}
 
 .. toctree::
@@ -89,6 +94,7 @@ Classes
 
 {% block functions %}
 {% if visible_functions %}
+
 Functions
 ~~~~~~~~~
 

@@ -23,9 +23,7 @@ doc:
         - export LANG=$(locale -a | grep en_US)
         - pip3 install -e .[doc]
         - sphinx-apidoc -o docs/source multiview_generator
-        - cd docs/source
-        - sphinx-build -b html . ../build
-        - cd ../..
+        - sphinx-build -b html docs/source docs/build/html && python docs/source/post_build_clean.py
         - cp -r ./docs/build public
     artifacts:
         paths:
@@ -46,11 +44,8 @@ pages:
         - export LANG=$(locale -a | grep en_US)
         - pip3 install -e .[doc]
         - sphinx-apidoc -o docs/source multiview_generator
-        - cd docs/source
-        - sphinx-build -b html . ../build
-        - cd ../..
+        - sphinx-build -b html docs/source docs/build/html && python docs/source/post_build_clean.py
         - cp -r ./docs/build public
-        - cp -r ./docs/build/_static/fig.html public/_static/fig.html
     artifacts:
         paths:
           - public

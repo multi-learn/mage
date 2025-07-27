@@ -1,10 +1,10 @@
 import numpy as np
-from multiview_generator.multiple_sub_problems import MultiViewSubProblemsGenerator
+from multiview_generator.gaussian_classes import MultiViewGaussianSubProblemsGenerator
 from classify_generated import gen_folds, make_fig, test_dataset
 
 n_views = 4
 n_classes = 3
-gene = MultiViewSubProblemsGenerator(config_file="config_demo.yml")
+gene = MultiViewGaussianSubProblemsGenerator(config_file="config_demo.yml")
 conf = np.ones((n_classes, n_views))*0.4
 gene.generate_multi_view_dataset()
 gene.to_hdf5_mc()

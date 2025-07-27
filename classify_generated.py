@@ -58,7 +58,7 @@ def make_fig(conf, confusion_output, n_views, n_classes, generator):
                     x=generator.view_data[view_index][concerned_examples, 0],
                     y=generator.view_data[view_index][concerned_examples, 1],
                     z=generator.view_data[view_index][concerned_examples, 2],
-                    text=[generator.example_ids[ind] for ind in concerned_examples],
+                    text=[generator.sample_ids[ind] for ind in concerned_examples],
                     hoverinfo='text',
                     legendgroup="Class {}".format(lab_index),
                     mode='markers', marker=dict(

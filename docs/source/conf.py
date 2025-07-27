@@ -12,6 +12,8 @@
 #
 import os
 import sys
+
+os.environ["SPHINX_BUILD"] = "1"
 repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # print(repo_path)
 # print(os.path.join(repo_path, "multiview_generator",  "base"))
@@ -77,6 +79,17 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', '**.ipynb_checkpoints']
+nbsphinx_execute = 'always'
+nbsphinx_prolog = r"""
+.. raw:: html
+
+    <style>
+       .nbinput .prompt, .nboutput .prompt{
+        display: none;
+    }
+
+    </style>
+"""
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -106,12 +119,14 @@ rst_prolog = """
 """
 
 extlinks = {'base_source': (
-'https://gitlab.lis-lab.fr/dev/multiview_generator',
+'https://gitlab.lis-lab.fr/dev/multiview_generator/%s',
 "base_source"),
             'base_doc': (
-            'https://dev.pages.lis-lab.fr/multiview_generator/', 'base_doc'),
-            'summit':('https://gitlab.lis-lab.fr/baptiste.bauvin/summit', 'summit')}
+            'https://dev.pages.lis-lab.fr/multiview_generator/%s', 'base_doc'),
+            'summit':('https://gitlab.lis-lab.fr/baptiste.bauvin/summit%s', 'summit')}
 
 html_js_files = [
     'plotly_js.js',
 ]
+def setup(app):
+    pass

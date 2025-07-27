@@ -159,7 +159,7 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
         """
         self.complementarity_ratio = 0
         for class_ind in range(self.n_classes):
-            complem_level = int(self.complementarity_level[class_ind])
+            complem_level = int(self.complementarity_level[class_ind].item())
             complem_start = np.sum(self.n_samples_per_class[:class_ind])+self.mutual_error_per_class[class_ind]
             complem_ind = 0
             while complem_level != 0:
@@ -186,13 +186,13 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
                     for view_index in range(self.n_views):
                         if view_index in selected_failed_views:
                             self.error_2D[complem_start+complem_ind, view_index] = 0
-                            chosen_ind = int(self.rs.choice(np.where(self.descriptions[view_index, class_ind, :]==-1)[0],size=1, replace=False))
+                            chosen_ind = int(self.rs.choice(np.where(self.descriptions[view_index, class_ind, :]==-1)[0],size=1, replace=False)[0])
                             self.dataset[view_index][complem_start+complem_ind, :] = self.generated_data[view_index, class_ind, chosen_ind, :self.n_features[view_index]]
                             self.descriptions[view_index, class_ind, chosen_ind] = 0
                             self.sample_ids[complem_start+complem_ind] += "_{}".format(view_index)
                             avail_errors[view_index]-=1
                         elif view_index in selected_succeeded_views:
-                            chosen_ind = int(self.rs.choice(np.where(self.descriptions[view_index, class_ind, :]==1)[0],size=1, replace=False))
+                            chosen_ind = int(self.rs.choice(np.where(self.descriptions[view_index, class_ind, :]==1)[0],size=1, replace=False)[0])
                             self.dataset[view_index][complem_start + complem_ind,:] = self.generated_data[view_index, class_ind, chosen_ind, :self.n_features[view_index]]
                             self.descriptions[view_index, class_ind, chosen_ind] = 0
                             avail_success[view_index] -= 1
@@ -300,10 +300,10 @@ class MultiViewGaussianSubProblemsGenerator(MultiViewSubProblemsGenerator):
         self.bayes_error = np.zeros((self.n_views, self.n_classes))
         self.sub_problems = [[] for _ in range(self.n_views)]
         self.mutual_error_per_class = np.array(
-            [int(float(self.mutual_error[class_ind]) * n_sample_) for class_ind, n_sample_ in
+            [int(float(self.mutual_error[class_ind].item()) * n_sample_) for class_ind, n_sample_ in
              enumerate(self.n_samples_per_class)])
         self.redundancy_per_class = np.array(
-            [int(self.redundancy[class_ind] * n_sample_) for class_ind, n_sample_ in enumerate(self.n_samples_per_class)])
+            [int(self.redundancy[class_ind].item() * n_sample_) for class_ind, n_sample_ in enumerate(self.n_samples_per_class)])
         self.view_data = [np.zeros((self.n_samples, self.n_features[view_ind])) for view_ind in range(self.n_views)]
         self.all_mis_described = [[] for _ in range(self.n_views)]
         self.all_well_described = [[] for _ in range(self.n_views)]

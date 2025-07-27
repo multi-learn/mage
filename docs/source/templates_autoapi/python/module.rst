@@ -17,6 +17,7 @@
 {% block subpackages %}
 {% set visible_subpackages = obj.subpackages|selectattr("display")|list %}
 {% if visible_subpackages %}
+
 Subpackages
 -----------
 
@@ -35,6 +36,7 @@ Subpackages
 {% block submodules %}
 {% set visible_submodules = obj.submodules|selectattr("display")|list %}
 {% if visible_submodules %}
+
 Submodules
 ----------
 
@@ -84,6 +86,7 @@ Classes
 
 {% block functions %}
 {% if visible_functions %}
+
 Functions
 ~~~~~~~~~
 

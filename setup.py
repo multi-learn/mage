@@ -157,12 +157,11 @@ def setup_package():
     author = 'Dominique Benielli and Sokol Koço ' \
              'and Baptiste Bauvin and Cécile Capponi'
     author_email = 'contact.dev@lis-lab.fr'
-    license = 'newBSD'
+    license = "BSD-3-Clause"
     classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: GNU Lesser General Public License'
-        ' v3 or later (LGPLv3+)',
+        'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -170,17 +169,17 @@ def setup_package():
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX :: Linux',
-        'Operating System :: MacOS'],
+        'Operating System :: MacOS']
     keywords = ('machine learning, supervised learning, classification, '
                 'datat generation, multi-view, multi-modal, multi-class')
     packages = find_packages(exclude=['*.tests'])
-    install_requires = ['scikit-learn>=0.19', 'numpy', 'scipy', "plotly",
+    install_requires = ['scikit-learn>=0.19', 'numpy>=1.24.0', 'scipy>=1.3.0', "plotly",
                         "h5py", 'pyyaml', 'tabulate', 'pandas', ]
     python_requires = '>=3.5'
     extras_require = {
         'dev': ['pytest', 'pytest-cov'],
         'doc': ['sphinx>=1.8', 'numpydoc', 'sphinx_gallery', 'matplotlib', "jupyter",
-                'pandoc', 'nbsphinx', 'nbsphinx_link', 'sphinx_rtd_theme', 'sphinx-autoapi']}
+                'pandoc', 'nbsphinx', 'nbsphinx_link', 'sphinx_rtd_theme', 'sphinx-autoapi','summit-multi-learn']}
     include_package_data = True
 
     command_options = {'build_sphinx': {'build_dir':('setup.py', './docs/build/')}}
