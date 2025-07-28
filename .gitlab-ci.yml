@@ -27,7 +27,7 @@ doc:
         - pip3 install -e .[doc]
         - sphinx-apidoc -o docs/source multiview_generator
         - sphinx-build -b html docs/source docs/build/html && python docs/source/post_build_clean.py
-        - cp -r ./docs/build public
+        - cp -r ./docs/build/html public
     artifacts:
         paths:
           - public
@@ -49,7 +49,7 @@ pages:
         - pip3 install -e .[doc]
         - sphinx-apidoc -o docs/source multiview_generator
         - sphinx-build -b html docs/source docs/build/html && python docs/source/post_build_clean.py
-        - cp -r ./docs/build public
+        - cp -r ./docs/build/html public
     artifacts:
         paths:
           - public
