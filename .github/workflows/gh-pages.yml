@@ -21,8 +21,9 @@ jobs:
         run: |
           export LC_ALL=C.UTF-8
           export LANG=C.UTF-8
+          pip3 install --upgrade setuptools wheel packaging
           if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
-          pip3 install -e .[doc]
+          pip3 install -e .[doc]  --no-build-isolation
           sphinx-apidoc -o docs/source   multiview_generator
 
       - name: Build docs
