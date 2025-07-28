@@ -1,6 +1,6 @@
 # run the test suite
 tests:
-    image: registry.gitlab.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
+    image: registry.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
     tags:
         - docker
     script:
@@ -13,7 +13,7 @@ tests:
 
 # generate the documentation
 doc:
-    image: registry.gitlab.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
+    image: registry.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
     tags:
         - docker
     only:
@@ -34,7 +34,7 @@ doc:
 # project public
 #
 pages:
-    image: registry.gitlab.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
+    image: registry.lis-lab.fr:5005/dev/multiview_generator/ubuntu:18.04
     tags:
         - docker
     only:
