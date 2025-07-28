@@ -26,7 +26,7 @@ jobs:
           pip3 install pandoc==2.4 nbsphinx nbsphinx_link sphinx_rtd_theme sphinx-autoapi
           pip3 install summit-multi-learn==0.0.2
           if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
-          pip3 install -e .[doc]  --no-build-isolation
+          pip3 install -e .[doc]  --no-build-isolation --use-pep517
           sphinx-apidoc -o docs/source   multiview_generator
 
       - name: Build docs
