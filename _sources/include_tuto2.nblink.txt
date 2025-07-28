@@ -1,0 +1,3 @@
+{
+    "path": "../../demo/tutorials/sample_types.ipynb"
+}

@@ -1,0 +1,3 @@
+{
+    "path": "../../demo/tutorials/sub_problems_configuration.ipynb"
+}

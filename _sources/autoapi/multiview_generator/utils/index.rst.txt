@@ -1,0 +1,78 @@
+:mod:`multiview_generator.utils`
+================================
+
+.. py:module:: multiview_generator.utils
+
+
+utils
+-----
+
+
+.. py:function:: format_array(input, size, type_needed=int)
+
+   Used to test that :
+   *  if the input is an array, it is the right size,
+   * if it is either a string, or a saclar, build an array with ``input``
+   repeated ``size`` times.
+
+   :param input:  either a string, a scalar or an array-like
+   :param size: an int, the size of the output array
+   :return: a ``numpy.ndarray`` of shape (``size``, )
+
+
+.. py:function:: get_config_from_file(file_path)
+
+   Loads the configuration for the yaml config file
+
+   :param file_path: path to the config file.
+   :return:
+
+
+.. py:function:: init_class_weights(class_weights, n_classes)
+
+   Initializes the class weights. Sets a unifrom distribution if no
+   distribution is specified.
+
+   :param class_weights:
+   :param n_classes:
+   :return:
+
+
+.. py:function:: init_error_matrix(error_matrix, n_classes, n_views)
+
+   Initializes the error matrix
+
+   :param error_matrix:
+   :param n_classes:
+   :param n_views:
+   :return:
+
+
+.. py:function:: init_random_state(random_state)
+
+   Initalizes the random state.
+
+   :param random_state:
+   :return:
+
+
+.. py:function:: init_array_attr(attr, n_repeat, base_val=0)
+
+   Transforms a unique attribute into an array with the same value.
+
+   :param attr:
+   :param n_repeat:
+   :param base_val:
+   :return:
+
+
+.. py:function:: init_list(input, size, type_needed=dict)
+
+   Transforms a unique attribute into a list with the same value.
+
+   :param attr:
+   :param n_repeat:
+   :param base_val:
+   :return:
+
+
