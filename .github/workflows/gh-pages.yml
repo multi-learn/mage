@@ -22,6 +22,8 @@ jobs:
           export LC_ALL=C.UTF-8
           export LANG=C.UTF-8
           pip3 install --upgrade setuptools wheel packaging
+          pip3 install sphinx>=1.8  numpydoc  sphinx_gallery matplotlib jupyter
+          pip3 install pandoc==2.4 nbsphinx nbsphinx_link sphinx_rtd_theme sphinx-autoapi
           if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
           pip3 install -e .[doc]  --no-build-isolation
           sphinx-apidoc -o docs/source   multiview_generator
