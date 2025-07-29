@@ -4,6 +4,7 @@ tests:
     tags:
         - docker
     script:
+        - apt-get update && apt-get install -y pandoc
         - pip3 install numpy
         - pip3 install .
         - pip3 install .[dev]
@@ -21,13 +22,14 @@ doc:
     only:
         - master
     script:
+        - apt-get update && apt-get install -y pandoc
         - pip3 install numpy
         - export LC_ALL=$(locale -a | grep en_US)
         - export LANG=$(locale -a | grep en_US)
         - pip3 install -e .[doc]
         - sphinx-apidoc -o docs/source multiview_generator
         - sphinx-build -b html docs/source docs/build/html && python docs/source/post_build_clean.py
-        - ls ./docs/build/htm
+        - ls ./docs/build/html
         - cp -r ./docs/build/html public
     artifacts:
         paths:
@@ -44,6 +46,7 @@ pages:
     only:
         - master
     script:
+        - apt-get update && apt-get install -y pandoc
         - pip3 install numpy
         - export LC_ALL=$(locale -a | grep en_US)
         - export LANG=$(locale -a | grep en_US)
