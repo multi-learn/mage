@@ -14,6 +14,8 @@
 MAGE : Multi-view Artificial Generation Engine
 ==============================================
 
+.. image:: docs/source/_static/mage-small.png
+
 This package aims at generating customized mutli-view datasets to facilitate the
 development of new multi-view algorithms and their testing on simulated data
 representing specific tasks.

@@ -73,8 +73,8 @@ templates_path = ['_templates', 'templates_autoapi']
 source_suffix = ['.rst', '.md', '.ipynb', ".nblink"]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
 
+html_logo = "mage-small.png"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -103,7 +103,7 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static',]
-
+html_logo = "_static/mage-small.png"
 rst_prolog = """
 .. role:: python(code)
     :language: python
@@ -119,11 +119,11 @@ rst_prolog = """
 """
 
 extlinks = {'base_source': (
-'https://gitlab.lis-lab.fr/dev/multiview_generator/%s',
+'https://github.com/multi-learn/mage/%s',
 "base_source"),
             'base_doc': (
-            'https://dev.pages.lis-lab.fr/multiview_generator/%s', 'base_doc'),
-            'summit':('https://gitlab.lis-lab.fr/baptiste.bauvin/summit%s', 'summit')}
+            'https://multi-learn.github.io/mage/%s', 'base_doc'),
+            'summit':('https://multi-learn.github.io/summit/%s', 'summit')}
 
 html_js_files = [
     'plotly_js.js',

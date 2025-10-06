@@ -24,12 +24,11 @@ Description:
 Version:
 -------
 
-* multiview_generator version = MULTIMODAL_VERSION
+* mage-multi-learn version = MAGE_VERSION
 
 Licence:
 -------
 
 License: New BSD License
-
 
 ######### COPYRIGHT #########

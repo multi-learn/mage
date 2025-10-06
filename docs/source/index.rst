@@ -8,6 +8,8 @@ Welcome to |gene|'s documentation
 
 To install |gene|, clone the gitlab repository and run
 
+.. |img| image:: _static/mage-small.png
+
 .. code-block::
 
    cd /path/to/multiview_generator
@@ -19,10 +21,10 @@ To install |gene|, clone the gitlab repository and run
    :maxdepth: 1
    :caption: Contents:
 
-   include_tuto1
-   include_tuto2
-   include_tuto3
-   documentation
+     include_tuto1
+     include_tuto2
+     include_tuto3
+     documentation
 
 Read Me
 =======

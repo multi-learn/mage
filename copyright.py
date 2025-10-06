@@ -50,7 +50,7 @@ def getStamp(date, multiview_generator_version):
     """ Return the corrected formated stamp """
     stamp = open("copyrightstamp.txt").read()
     stamp = stamp.replace("DATE", date)
-    stamp = stamp.replace("MULTIVIEW_GENERATOR_VERSION", multiview_generator_version)
+    stamp = stamp.replace("MAGE_VERSION", multiview_generator_version)
     stamp = stamp.replace('\n', '\n# ')
     stamp = "# " + stamp
     stamp = stamp.replace("# \n", "#\n")
@@ -64,7 +64,7 @@ def getVersionsAndDate():
     v_text_formted = '{"' + v_text.replace('\n', '","').replace(':', '":"')
     v_text_formted += '"}'
     v_dict = eval(v_text_formted)
-    return (time.strftime("%Y"), v_dict['multiview_generator'])
+    return (time.strftime("%Y"), v_dict['mage-multi-learn'])
 
 
 def writeStamp():
