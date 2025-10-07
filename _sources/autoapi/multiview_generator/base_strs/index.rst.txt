@@ -1,0 +1,21 @@
+:mod:`multiview_generator.base_strs`
+====================================
+
+.. py:module:: multiview_generator.base_strs
+
+
+base_strs
+---------
+
+.. py:data:: GENE
+   :value: 'MAGE'
+
+
+.. py:data:: GENE_F
+   :value: 'Multiview Artificial Generation Engine'
+
+
+.. py:data:: LINK
+   :value: 'https://github.com/multi-learn/mage'
+
+

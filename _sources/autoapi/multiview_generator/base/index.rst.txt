@@ -1,0 +1,75 @@
+:mod:`multiview_generator.base`
+===============================
+
+.. py:module:: multiview_generator.base
+
+
+base
+----
+
+
+.. py:class:: MultiViewSubProblemsGenerator(random_state=42, n_samples=100, n_classes=4, n_views=4, error_matrix=None, n_features=3, class_weights=1.0, redundancy=0.0, complementarity=0.0, complementarity_level=3, mutual_error=0.0, name='generated_dataset', config_file=None, sub_problem_type='base', sub_problem_configurations=None, min_rndm_val=-1, max_rndm_val=1, **kwargs)
+
+   This engine generates one monoview sub-problem for each view with independant data.
+   If then switch descriptions between the samples to create error and difficulty in the dataset
+
+   :param random_state: The random state or seed.
+   :param n_samples: The number of samples that the dataset will contain
+   :param n_classes: The number of classes in which the samples will be labelled
+   :param n_views: The number of views describing the samples
+   :param error_matrix: The error matrix giving in row i column j the error of the Bayes classifier on Class i for View j
+   :param n_features: The number of features describing the samples for each view (can specify an int or array-like of length ``n_views``)
+   :param class_weights: The proportion of the dataset that will be labelled in each class. Must specify an array-like of size n_classes ([0.1,0.45,0.45] will output a dataset with with 10% of the samples in the first class and 45% in the two others.)
+   :param redundancy: The proportion of the samples that will be well-decribed by all the views.
+   # :param complementarity: The proportion of samples that will be well-decribed only by some views
+   :param complementarity_level: The number of views that will have a bad description of the complementray samples
+   :param mutual_error: The proportion of samples that will be mis-described by all the views
+   :param name: The name of the dataset (will be used to name the file)
+   :param config_file: The path to the yaml config file. If provided, the config fil entries will overwrite the one passed as arguments.
+
+   :type random_state: int or np.random.RandomState
+   :type n_samples: int
+   :type n_classes: int
+   :type n_views: int
+   :type error_matrix: np.ndarray
+   :type n_features: int or array-like
+   :type class_weights: float or array-like
+   :type redundancy: float
+   :type complementarity: float
+   :type complementarity_level: float
+   :type mutual_error: float
+   :type name: str
+   :type config_file: str
+   :type sub_problem_type: str or list
+   :type sub_problem_configurations: None, dict or list
+
+
+   .. py:method:: to_hdf5_mc(saving_path='.')
+
+      This is used to save the dataset in an HDF5 file, compatible with
+      :summit:`SuMMIT <>`
+
+      :param saving_path: where to save the dataset, the file will be names after the self.name attribute.
+      :type saving_path: str
+      :return: None
+
+
+
+   .. py:method:: gen_report(output_path='.', file_type='md', save=True, n_cv=5)
+
+      Generates a markdown report based on the configuration.
+      If ``save`` is True, it will be saved in ``output_path`` as <self.name>.<``file_type``> .
+
+      :param output_path: path to store the text report.
+      :type output_path: str
+      :param file_type: Type of file in which the report is saved (currently supported : "md" or "txt")
+      :type file_type: str
+      :param save: Whether to save the string in a file or not.
+      :type save: bool
+      :return: The report string
+
+
+
+   .. py:method:: gen_view_report(view_index)
+
+

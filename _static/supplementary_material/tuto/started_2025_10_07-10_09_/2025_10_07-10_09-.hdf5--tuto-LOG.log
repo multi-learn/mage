@@ -1,0 +1,1281 @@
+2025-10-07 10:09:06,207 INFO: Start:	 Initializing monoview classifiers arguments
+2025-10-07 10:09:06,207 INFO: Done:	 Initializing monoview classifiers arguments
+2025-10-07 10:09:06,207 INFO: Start:	 Initializing monoview classifiers arguments
+2025-10-07 10:09:06,207 INFO: Done:	 Initializing monoview classifiers arguments
+2025-10-07 10:09:06,207 INFO: Start:	 Executing all the needed benchmarks
+2025-10-07 10:09:06,207 INFO: Start:	 Benchmark initialization
+2025-10-07 10:09:06,214 INFO: Done:	 Benchmark initialization
+2025-10-07 10:09:06,214 INFO: Start:	 monoview benchmark
+2025-10-07 10:09:06,215 INFO: Start:	 Loading data
+2025-10-07 10:09:06,216 INFO: Done:	 Loading data
+2025-10-07 10:09:06,216 INFO: Info:	 Classification - Database:tuto View:view_0_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:06,216 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:06,216 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:06,216 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:06,216 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:06,216 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:06,216 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:06,216 INFO: Start:	 Training
+2025-10-07 10:09:06,219 INFO: Done:	 Training
+2025-10-07 10:09:06,220 INFO: Start:	 Predicting
+2025-10-07 10:09:06,220 INFO: Done:	 Predicting
+2025-10-07 10:09:06,220 INFO: Info:	 Duration for training and predicting: 0.004893248999991329[s]
+2025-10-07 10:09:06,220 INFO: Start:	 Getting results
+2025-10-07 10:09:06,224 INFO: Done:	 Getting results
+2025-10-07 10:09:06,224 INFO: Start:	 Saving preds
+2025-10-07 10:09:06,224 INFO: Classification on tuto for view_0_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_0_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6526526526526526
+		- Score on test : 0.6276276276276276
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       234 │        18 │        81 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       111 │       153 │        69 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        72 │        21 │       240 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 1.0762878060340881
+Feature importances : 
+- Feature : ID_0, feature importance : 0.5362971312310851
+- Feature : ID_1, feature importance : 0.4637028687689148
+
+2025-10-07 10:09:06,233 INFO: Done:	 Saving results
+2025-10-07 10:09:06,234 INFO: Start:	 Loading data
+2025-10-07 10:09:06,234 INFO: Done:	 Loading data
+2025-10-07 10:09:06,234 INFO: Info:	 Classification - Database:tuto View:view_1_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:06,234 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:06,234 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:06,234 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:06,234 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:06,234 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:06,234 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:06,235 INFO: Start:	 Training
+2025-10-07 10:09:06,238 INFO: Done:	 Training
+2025-10-07 10:09:06,238 INFO: Start:	 Predicting
+2025-10-07 10:09:06,239 INFO: Done:	 Predicting
+2025-10-07 10:09:06,239 INFO: Info:	 Duration for training and predicting: 0.004743579000006548[s]
+2025-10-07 10:09:06,239 INFO: Start:	 Getting results
+2025-10-07 10:09:06,243 INFO: Done:	 Getting results
+2025-10-07 10:09:06,243 INFO: Start:	 Saving preds
+2025-10-07 10:09:06,243 INFO: Classification on tuto for view_1_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_1_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6516516516516516
+		- Score on test : 0.6496496496496497
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       276 │        41 │        16 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       107 │       218 │         8 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       131 │        47 │       155 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.48465175926685333
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5439880905562391
+- Feature : ID_0, feature importance : 0.4560119094437609
+
+2025-10-07 10:09:06,252 INFO: Done:	 Saving results
+2025-10-07 10:09:06,253 INFO: Start:	 Loading data
+2025-10-07 10:09:06,253 INFO: Done:	 Loading data
+2025-10-07 10:09:06,253 INFO: Info:	 Classification - Database:tuto View:view_2_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:06,253 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:06,253 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:06,253 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:06,253 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:06,253 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:06,253 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:06,253 INFO: Start:	 Training
+2025-10-07 10:09:06,257 INFO: Done:	 Training
+2025-10-07 10:09:06,257 INFO: Start:	 Predicting
+2025-10-07 10:09:06,257 INFO: Done:	 Predicting
+2025-10-07 10:09:06,257 INFO: Info:	 Duration for training and predicting: 0.004775919999985945[s]
+2025-10-07 10:09:06,257 INFO: Start:	 Getting results
+2025-10-07 10:09:06,261 INFO: Done:	 Getting results
+2025-10-07 10:09:06,261 INFO: Start:	 Saving preds
+2025-10-07 10:09:06,261 INFO: Classification on tuto for view_2_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_2_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6916916916916916
+		- Score on test : 0.6506506506506506
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       255 │        45 │        33 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        95 │       222 │        16 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       111 │        49 │       173 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.3532908111810684
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5033581850070752
+- Feature : ID_0, feature importance : 0.4927367760585069
+- Feature : ID_2, feature importance : 0.0039050389344178838
+
+2025-10-07 10:09:06,270 INFO: Done:	 Saving results
+2025-10-07 10:09:06,271 INFO: Start:	 Loading data
+2025-10-07 10:09:06,271 INFO: Done:	 Loading data
+2025-10-07 10:09:06,271 INFO: Info:	 Classification - Database:tuto View:view_3_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:06,271 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:06,271 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:06,271 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:06,271 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:06,271 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:06,271 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:06,271 INFO: Start:	 Training
+2025-10-07 10:09:06,275 INFO: Done:	 Training
+2025-10-07 10:09:06,275 INFO: Start:	 Predicting
+2025-10-07 10:09:06,276 INFO: Done:	 Predicting
+2025-10-07 10:09:06,276 INFO: Info:	 Duration for training and predicting: 0.004823548999979721[s]
+2025-10-07 10:09:06,276 INFO: Start:	 Getting results
+2025-10-07 10:09:06,280 INFO: Done:	 Getting results
+2025-10-07 10:09:06,280 INFO: Start:	 Saving preds
+2025-10-07 10:09:06,280 INFO: Classification on tuto for view_3_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_3_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6526526526526526
+		- Score on test : 0.6286286286286287
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       227 │        44 │        62 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        95 │       215 │        23 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        92 │        55 │       186 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= 1.0520192384719849
+Feature importances : 
+- Feature : ID_0, feature importance : 0.5936307447067122
+- Feature : ID_1, feature importance : 0.4046706547715914
+- Feature : ID_2, feature importance : 0.0016986005216963788
+
+2025-10-07 10:09:06,288 INFO: Done:	 Saving results
+2025-10-07 10:09:06,288 INFO: Done:	 monoview benchmark
+2025-10-07 10:09:06,288 INFO: Start:	 multiview benchmark
+2025-10-07 10:09:06,288 INFO: Done:	 multiview benchmark
+2025-10-07 10:09:06,289 INFO: Start:	 Analyzing all results
+2025-10-07 10:09:06,298 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:06,654 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:06,655 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:08,464 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:08,572 INFO: Done:	 Analyzing all results
+2025-10-07 10:09:08,572 INFO: Start:	 Benchmark initialization
+2025-10-07 10:09:08,580 INFO: Done:	 Benchmark initialization
+2025-10-07 10:09:08,580 INFO: Start:	 monoview benchmark
+2025-10-07 10:09:08,581 INFO: Start:	 Loading data
+2025-10-07 10:09:08,581 INFO: Done:	 Loading data
+2025-10-07 10:09:08,581 INFO: Info:	 Classification - Database:tuto View:view_0_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:08,581 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:08,581 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:08,581 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:08,581 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:08,581 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:08,581 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:08,581 INFO: Start:	 Training
+2025-10-07 10:09:08,585 INFO: Done:	 Training
+2025-10-07 10:09:08,585 INFO: Start:	 Predicting
+2025-10-07 10:09:08,586 INFO: Done:	 Predicting
+2025-10-07 10:09:08,586 INFO: Info:	 Duration for training and predicting: 0.005122449999987566[s]
+2025-10-07 10:09:08,586 INFO: Start:	 Getting results
+2025-10-07 10:09:08,590 INFO: Done:	 Getting results
+2025-10-07 10:09:08,590 INFO: Start:	 Saving preds
+2025-10-07 10:09:08,590 INFO: Classification on tuto for view_0_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_0_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6426426426426426
+		- Score on test : 0.6276276276276276
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       212 │        11 │       110 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       107 │       144 │        82 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        55 │         7 │       271 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= -0.303257554769516
+Feature importances : 
+- Feature : ID_0, feature importance : 0.5293985075922516
+- Feature : ID_1, feature importance : 0.4706014924077484
+
+2025-10-07 10:09:08,599 INFO: Done:	 Saving results
+2025-10-07 10:09:08,600 INFO: Start:	 Loading data
+2025-10-07 10:09:08,600 INFO: Done:	 Loading data
+2025-10-07 10:09:08,600 INFO: Info:	 Classification - Database:tuto View:view_1_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:08,600 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:08,600 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:08,600 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:08,600 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:08,601 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:08,601 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:08,601 INFO: Start:	 Training
+2025-10-07 10:09:08,604 INFO: Done:	 Training
+2025-10-07 10:09:08,604 INFO: Start:	 Predicting
+2025-10-07 10:09:08,605 INFO: Done:	 Predicting
+2025-10-07 10:09:08,605 INFO: Info:	 Duration for training and predicting: 0.004775588999990532[s]
+2025-10-07 10:09:08,605 INFO: Start:	 Getting results
+2025-10-07 10:09:08,609 INFO: Done:	 Getting results
+2025-10-07 10:09:08,609 INFO: Start:	 Saving preds
+2025-10-07 10:09:08,609 INFO: Classification on tuto for view_1_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_1_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6636636636636637
+		- Score on test : 0.6426426426426426
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       260 │        48 │        25 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        97 │       224 │        12 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       129 │        46 │       158 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.41593675315380096
+Feature importances : 
+- Feature : ID_0, feature importance : 0.5653036578278915
+- Feature : ID_1, feature importance : 0.4254510298216153
+- Feature : ID_2, feature importance : 0.009245312350493225
+
+2025-10-07 10:09:08,618 INFO: Done:	 Saving results
+2025-10-07 10:09:08,619 INFO: Start:	 Loading data
+2025-10-07 10:09:08,619 INFO: Done:	 Loading data
+2025-10-07 10:09:08,619 INFO: Info:	 Classification - Database:tuto View:view_2_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:08,619 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:08,619 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:08,619 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:08,619 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:08,619 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:08,619 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:08,619 INFO: Start:	 Training
+2025-10-07 10:09:08,623 INFO: Done:	 Training
+2025-10-07 10:09:08,623 INFO: Start:	 Predicting
+2025-10-07 10:09:08,624 INFO: Done:	 Predicting
+2025-10-07 10:09:08,624 INFO: Info:	 Duration for training and predicting: 0.004774056000002247[s]
+2025-10-07 10:09:08,624 INFO: Start:	 Getting results
+2025-10-07 10:09:08,628 INFO: Done:	 Getting results
+2025-10-07 10:09:08,628 INFO: Start:	 Saving preds
+2025-10-07 10:09:08,628 INFO: Classification on tuto for view_2_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_2_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6776776776776777
+		- Score on test : 0.6676676676676677
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       263 │        44 │        26 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        92 │       228 │        13 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       114 │        43 │       176 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.35505537688732147
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5193344146098052
+- Feature : ID_0, feature importance : 0.46739224218101977
+- Feature : ID_2, feature importance : 0.013273343209174959
+
+2025-10-07 10:09:08,636 INFO: Done:	 Saving results
+2025-10-07 10:09:08,637 INFO: Start:	 Loading data
+2025-10-07 10:09:08,638 INFO: Done:	 Loading data
+2025-10-07 10:09:08,638 INFO: Info:	 Classification - Database:tuto View:view_3_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:08,638 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:08,638 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:08,638 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:08,638 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:08,638 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:08,638 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:08,638 INFO: Start:	 Training
+2025-10-07 10:09:08,642 INFO: Done:	 Training
+2025-10-07 10:09:08,642 INFO: Start:	 Predicting
+2025-10-07 10:09:08,642 INFO: Done:	 Predicting
+2025-10-07 10:09:08,642 INFO: Info:	 Duration for training and predicting: 0.0049471819999951094[s]
+2025-10-07 10:09:08,643 INFO: Start:	 Getting results
+2025-10-07 10:09:08,646 INFO: Done:	 Getting results
+2025-10-07 10:09:08,646 INFO: Start:	 Saving preds
+2025-10-07 10:09:08,646 INFO: Classification on tuto for view_3_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_3_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6826826826826827
+		- Score on test : 0.6586586586586587
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       193 │        96 │        44 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        51 │       259 │        23 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        72 │        55 │       206 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= 0.9097071886062622
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5671901152675187
+- Feature : ID_0, feature importance : 0.43280988473248116
+
+2025-10-07 10:09:08,655 INFO: Done:	 Saving results
+2025-10-07 10:09:08,655 INFO: Done:	 monoview benchmark
+2025-10-07 10:09:08,655 INFO: Start:	 multiview benchmark
+2025-10-07 10:09:08,655 INFO: Done:	 multiview benchmark
+2025-10-07 10:09:08,656 INFO: Start:	 Analyzing all results
+2025-10-07 10:09:08,664 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:08,883 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:08,883 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:10,662 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:10,765 INFO: Done:	 Analyzing all results
+2025-10-07 10:09:10,765 INFO: Start:	 Benchmark initialization
+2025-10-07 10:09:10,773 INFO: Done:	 Benchmark initialization
+2025-10-07 10:09:10,773 INFO: Start:	 monoview benchmark
+2025-10-07 10:09:10,774 INFO: Start:	 Loading data
+2025-10-07 10:09:10,774 INFO: Done:	 Loading data
+2025-10-07 10:09:10,775 INFO: Info:	 Classification - Database:tuto View:view_0_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:10,775 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:10,775 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:10,775 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:10,775 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:10,775 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:10,775 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:10,775 INFO: Start:	 Training
+2025-10-07 10:09:10,779 INFO: Done:	 Training
+2025-10-07 10:09:10,779 INFO: Start:	 Predicting
+2025-10-07 10:09:10,779 INFO: Done:	 Predicting
+2025-10-07 10:09:10,780 INFO: Info:	 Duration for training and predicting: 0.005154761000000008[s]
+2025-10-07 10:09:10,780 INFO: Start:	 Getting results
+2025-10-07 10:09:10,784 INFO: Done:	 Getting results
+2025-10-07 10:09:10,784 INFO: Start:	 Saving preds
+2025-10-07 10:09:10,784 INFO: Classification on tuto for view_0_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_0_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6676676676676677
+		- Score on test : 0.6276276276276276
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       209 │        37 │        87 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        98 │       182 │        53 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        70 │        27 │       236 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= -0.04353685863316059
+Feature importances : 
+- Feature : ID_0, feature importance : 0.5200748667453786
+- Feature : ID_1, feature importance : 0.4799251332546213
+
+2025-10-07 10:09:10,792 INFO: Done:	 Saving results
+2025-10-07 10:09:10,793 INFO: Start:	 Loading data
+2025-10-07 10:09:10,794 INFO: Done:	 Loading data
+2025-10-07 10:09:10,794 INFO: Info:	 Classification - Database:tuto View:view_1_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:10,794 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:10,794 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:10,794 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:10,794 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:10,794 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:10,794 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:10,794 INFO: Start:	 Training
+2025-10-07 10:09:10,797 INFO: Done:	 Training
+2025-10-07 10:09:10,797 INFO: Start:	 Predicting
+2025-10-07 10:09:10,798 INFO: Done:	 Predicting
+2025-10-07 10:09:10,798 INFO: Info:	 Duration for training and predicting: 0.004739681999978984[s]
+2025-10-07 10:09:10,798 INFO: Start:	 Getting results
+2025-10-07 10:09:10,802 INFO: Done:	 Getting results
+2025-10-07 10:09:10,802 INFO: Start:	 Saving preds
+2025-10-07 10:09:10,802 INFO: Classification on tuto for view_1_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_1_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6806806806806807
+		- Score on test : 0.6486486486486487
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       235 │        47 │        51 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        97 │       216 │        20 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        94 │        42 │       197 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.4753052145242691
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5019185150478026
+- Feature : ID_0, feature importance : 0.49105721946664516
+- Feature : ID_2, feature importance : 0.007024265485552163
+
+2025-10-07 10:09:10,811 INFO: Done:	 Saving results
+2025-10-07 10:09:10,812 INFO: Start:	 Loading data
+2025-10-07 10:09:10,812 INFO: Done:	 Loading data
+2025-10-07 10:09:10,812 INFO: Info:	 Classification - Database:tuto View:view_2_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:10,812 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:10,812 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:10,812 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:10,812 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:10,812 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:10,812 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:10,812 INFO: Start:	 Training
+2025-10-07 10:09:10,816 INFO: Done:	 Training
+2025-10-07 10:09:10,816 INFO: Start:	 Predicting
+2025-10-07 10:09:10,817 INFO: Done:	 Predicting
+2025-10-07 10:09:10,817 INFO: Info:	 Duration for training and predicting: 0.004740373000004183[s]
+2025-10-07 10:09:10,817 INFO: Start:	 Getting results
+2025-10-07 10:09:10,821 INFO: Done:	 Getting results
+2025-10-07 10:09:10,821 INFO: Start:	 Saving preds
+2025-10-07 10:09:10,821 INFO: Classification on tuto for view_2_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_2_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6956956956956957
+		- Score on test : 0.6356356356356356
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       254 │        65 │        14 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        76 │       248 │         9 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       126 │        74 │       133 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.07087060064077377
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5339162575995857
+- Feature : ID_0, feature importance : 0.45202625292160015
+- Feature : ID_2, feature importance : 0.014057489478814278
+
+2025-10-07 10:09:10,829 INFO: Done:	 Saving results
+2025-10-07 10:09:10,830 INFO: Start:	 Loading data
+2025-10-07 10:09:10,830 INFO: Done:	 Loading data
+2025-10-07 10:09:10,831 INFO: Info:	 Classification - Database:tuto View:view_3_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:10,831 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:10,831 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:10,831 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:10,831 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:10,831 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:10,831 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:10,831 INFO: Start:	 Training
+2025-10-07 10:09:10,834 INFO: Done:	 Training
+2025-10-07 10:09:10,835 INFO: Start:	 Predicting
+2025-10-07 10:09:10,835 INFO: Done:	 Predicting
+2025-10-07 10:09:10,835 INFO: Info:	 Duration for training and predicting: 0.004934888000008186[s]
+2025-10-07 10:09:10,835 INFO: Start:	 Getting results
+2025-10-07 10:09:10,839 INFO: Done:	 Getting results
+2025-10-07 10:09:10,839 INFO: Start:	 Saving preds
+2025-10-07 10:09:10,839 INFO: Classification on tuto for view_3_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_3_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6936936936936937
+		- Score on test : 0.6526526526526526
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       197 │        98 │        38 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        48 │       273 │        12 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        82 │        69 │       182 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= 0.9105770885944366
+Feature importances : 
+- Feature : ID_0, feature importance : 0.4988834759602334
+- Feature : ID_1, feature importance : 0.4930996298349457
+- Feature : ID_2, feature importance : 0.008016894204820785
+
+2025-10-07 10:09:10,848 INFO: Done:	 Saving results
+2025-10-07 10:09:10,848 INFO: Done:	 monoview benchmark
+2025-10-07 10:09:10,848 INFO: Start:	 multiview benchmark
+2025-10-07 10:09:10,848 INFO: Done:	 multiview benchmark
+2025-10-07 10:09:10,849 INFO: Start:	 Analyzing all results
+2025-10-07 10:09:10,856 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:11,076 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:11,076 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:12,921 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:13,028 INFO: Done:	 Analyzing all results
+2025-10-07 10:09:13,028 INFO: Start:	 Benchmark initialization
+2025-10-07 10:09:13,036 INFO: Done:	 Benchmark initialization
+2025-10-07 10:09:13,036 INFO: Start:	 monoview benchmark
+2025-10-07 10:09:13,037 INFO: Start:	 Loading data
+2025-10-07 10:09:13,037 INFO: Done:	 Loading data
+2025-10-07 10:09:13,037 INFO: Info:	 Classification - Database:tuto View:view_0_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:13,037 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:13,037 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:13,037 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:13,037 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:13,037 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:13,037 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:13,038 INFO: Start:	 Training
+2025-10-07 10:09:13,041 INFO: Done:	 Training
+2025-10-07 10:09:13,041 INFO: Start:	 Predicting
+2025-10-07 10:09:13,042 INFO: Done:	 Predicting
+2025-10-07 10:09:13,042 INFO: Info:	 Duration for training and predicting: 0.005107270999985758[s]
+2025-10-07 10:09:13,042 INFO: Start:	 Getting results
+2025-10-07 10:09:13,046 INFO: Done:	 Getting results
+2025-10-07 10:09:13,046 INFO: Start:	 Saving preds
+2025-10-07 10:09:13,046 INFO: Classification on tuto for view_0_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_0_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6696696696696697
+		- Score on test : 0.6216216216216216
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       221 │        26 │        86 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       105 │       148 │        80 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        68 │        13 │       252 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 1.1365562081336975
+Feature importances : 
+- Feature : ID_0, feature importance : 0.5401901689076004
+- Feature : ID_1, feature importance : 0.4598098310923995
+
+2025-10-07 10:09:13,055 INFO: Done:	 Saving results
+2025-10-07 10:09:13,056 INFO: Start:	 Loading data
+2025-10-07 10:09:13,056 INFO: Done:	 Loading data
+2025-10-07 10:09:13,056 INFO: Info:	 Classification - Database:tuto View:view_1_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:13,056 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:13,056 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:13,057 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:13,057 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:13,057 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:13,057 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:13,057 INFO: Start:	 Training
+2025-10-07 10:09:13,060 INFO: Done:	 Training
+2025-10-07 10:09:13,060 INFO: Start:	 Predicting
+2025-10-07 10:09:13,061 INFO: Done:	 Predicting
+2025-10-07 10:09:13,061 INFO: Info:	 Duration for training and predicting: 0.004727277999990065[s]
+2025-10-07 10:09:13,061 INFO: Start:	 Getting results
+2025-10-07 10:09:13,065 INFO: Done:	 Getting results
+2025-10-07 10:09:13,065 INFO: Start:	 Saving preds
+2025-10-07 10:09:13,065 INFO: Classification on tuto for view_1_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_1_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6656656656656657
+		- Score on test : 0.6396396396396397
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       281 │        36 │        16 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       113 │       209 │        11 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       145 │        39 │       149 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.4731249660253525
+Feature importances : 
+- Feature : ID_1, feature importance : 0.536169642484172
+- Feature : ID_0, feature importance : 0.4638303575158281
+
+2025-10-07 10:09:13,074 INFO: Done:	 Saving results
+2025-10-07 10:09:13,075 INFO: Start:	 Loading data
+2025-10-07 10:09:13,075 INFO: Done:	 Loading data
+2025-10-07 10:09:13,075 INFO: Info:	 Classification - Database:tuto View:view_2_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:13,075 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:13,075 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:13,075 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:13,075 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:13,075 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:13,075 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:13,075 INFO: Start:	 Training
+2025-10-07 10:09:13,079 INFO: Done:	 Training
+2025-10-07 10:09:13,079 INFO: Start:	 Predicting
+2025-10-07 10:09:13,079 INFO: Done:	 Predicting
+2025-10-07 10:09:13,079 INFO: Info:	 Duration for training and predicting: 0.00474581400001739[s]
+2025-10-07 10:09:13,079 INFO: Start:	 Getting results
+2025-10-07 10:09:13,083 INFO: Done:	 Getting results
+2025-10-07 10:09:13,083 INFO: Start:	 Saving preds
+2025-10-07 10:09:13,083 INFO: Classification on tuto for view_2_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_2_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6696696696696697
+		- Score on test : 0.6606606606606606
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       281 │        35 │        17 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        93 │       230 │        10 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       134 │        50 │       149 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.34149274230003357
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5263252653550262
+- Feature : ID_0, feature importance : 0.4696877420023122
+- Feature : ID_2, feature importance : 0.003986992642661502
+
+2025-10-07 10:09:13,092 INFO: Done:	 Saving results
+2025-10-07 10:09:13,093 INFO: Start:	 Loading data
+2025-10-07 10:09:13,093 INFO: Done:	 Loading data
+2025-10-07 10:09:13,093 INFO: Info:	 Classification - Database:tuto View:view_3_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:13,093 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:13,093 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:13,093 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:13,093 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:13,093 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:13,093 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:13,093 INFO: Start:	 Training
+2025-10-07 10:09:13,097 INFO: Done:	 Training
+2025-10-07 10:09:13,097 INFO: Start:	 Predicting
+2025-10-07 10:09:13,098 INFO: Done:	 Predicting
+2025-10-07 10:09:13,098 INFO: Info:	 Duration for training and predicting: 0.004977308000007952[s]
+2025-10-07 10:09:13,098 INFO: Start:	 Getting results
+2025-10-07 10:09:13,102 INFO: Done:	 Getting results
+2025-10-07 10:09:13,102 INFO: Start:	 Saving preds
+2025-10-07 10:09:13,102 INFO: Classification on tuto for view_3_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_3_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6826826826826827
+		- Score on test : 0.6636636636636637
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       198 │        88 │        47 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        59 │       260 │        14 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        55 │        73 │       205 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= 0.705277293920517
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5395907997144814
+- Feature : ID_0, feature importance : 0.46040920028551846
+
+2025-10-07 10:09:13,111 INFO: Done:	 Saving results
+2025-10-07 10:09:13,111 INFO: Done:	 monoview benchmark
+2025-10-07 10:09:13,111 INFO: Start:	 multiview benchmark
+2025-10-07 10:09:13,111 INFO: Done:	 multiview benchmark
+2025-10-07 10:09:13,111 INFO: Start:	 Analyzing all results
+2025-10-07 10:09:13,120 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:13,339 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:13,339 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:15,195 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:15,302 INFO: Done:	 Analyzing all results
+2025-10-07 10:09:15,302 INFO: Start:	 Benchmark initialization
+2025-10-07 10:09:15,310 INFO: Done:	 Benchmark initialization
+2025-10-07 10:09:15,310 INFO: Start:	 monoview benchmark
+2025-10-07 10:09:15,311 INFO: Start:	 Loading data
+2025-10-07 10:09:15,311 INFO: Done:	 Loading data
+2025-10-07 10:09:15,311 INFO: Info:	 Classification - Database:tuto View:view_0_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:15,312 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:15,312 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:15,312 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:15,312 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:15,312 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:15,312 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:15,312 INFO: Start:	 Training
+2025-10-07 10:09:15,316 INFO: Done:	 Training
+2025-10-07 10:09:15,316 INFO: Start:	 Predicting
+2025-10-07 10:09:15,316 INFO: Done:	 Predicting
+2025-10-07 10:09:15,316 INFO: Info:	 Duration for training and predicting: 0.005118291999991698[s]
+2025-10-07 10:09:15,316 INFO: Start:	 Getting results
+2025-10-07 10:09:15,321 INFO: Done:	 Getting results
+2025-10-07 10:09:15,321 INFO: Start:	 Saving preds
+2025-10-07 10:09:15,321 INFO: Classification on tuto for view_0_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_0_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6766766766766766
+		- Score on test : 0.6166166166166166
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       237 │        24 │        72 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       107 │       150 │        76 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │        96 │         8 │       229 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= 0.21715981513261795
+Feature importances : 
+- Feature : ID_0, feature importance : 0.544801365408125
+- Feature : ID_1, feature importance : 0.455198634591875
+
+2025-10-07 10:09:15,329 INFO: Done:	 Saving results
+2025-10-07 10:09:15,330 INFO: Start:	 Loading data
+2025-10-07 10:09:15,331 INFO: Done:	 Loading data
+2025-10-07 10:09:15,331 INFO: Info:	 Classification - Database:tuto View:view_1_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:15,331 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:15,331 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:15,331 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:15,331 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:15,331 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:15,331 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:15,331 INFO: Start:	 Training
+2025-10-07 10:09:15,334 INFO: Done:	 Training
+2025-10-07 10:09:15,334 INFO: Start:	 Predicting
+2025-10-07 10:09:15,335 INFO: Done:	 Predicting
+2025-10-07 10:09:15,335 INFO: Info:	 Duration for training and predicting: 0.0047449520000100165[s]
+2025-10-07 10:09:15,335 INFO: Start:	 Getting results
+2025-10-07 10:09:15,339 INFO: Done:	 Getting results
+2025-10-07 10:09:15,339 INFO: Start:	 Saving preds
+2025-10-07 10:09:15,339 INFO: Classification on tuto for view_1_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_1_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6986986986986987
+		- Score on test : 0.6296296296296297
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       236 │        46 │        51 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       105 │       207 │        21 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       101 │        46 │       186 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.4747462272644043
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5056435373281399
+- Feature : ID_0, feature importance : 0.49435646267186006
+
+2025-10-07 10:09:15,348 INFO: Done:	 Saving results
+2025-10-07 10:09:15,349 INFO: Start:	 Loading data
+2025-10-07 10:09:15,349 INFO: Done:	 Loading data
+2025-10-07 10:09:15,349 INFO: Info:	 Classification - Database:tuto View:view_2_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:15,349 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:15,349 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:15,349 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:15,349 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:15,349 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:15,349 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:15,350 INFO: Start:	 Training
+2025-10-07 10:09:15,353 INFO: Done:	 Training
+2025-10-07 10:09:15,353 INFO: Start:	 Predicting
+2025-10-07 10:09:15,354 INFO: Done:	 Predicting
+2025-10-07 10:09:15,354 INFO: Info:	 Duration for training and predicting: 0.004766622000005327[s]
+2025-10-07 10:09:15,354 INFO: Start:	 Getting results
+2025-10-07 10:09:15,358 INFO: Done:	 Getting results
+2025-10-07 10:09:15,358 INFO: Start:	 Saving preds
+2025-10-07 10:09:15,358 INFO: Classification on tuto for view_2_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_2_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6796796796796797
+		- Score on test : 0.6406406406406406
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       214 │       102 │        17 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        41 │       284 │         8 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       106 │        85 │       142 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.5110714733600616
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5270770355558901
+- Feature : ID_0, feature importance : 0.46944582314567
+- Feature : ID_2, feature importance : 0.003477141298439767
+
+2025-10-07 10:09:15,367 INFO: Done:	 Saving results
+2025-10-07 10:09:15,368 INFO: Start:	 Loading data
+2025-10-07 10:09:15,368 INFO: Done:	 Loading data
+2025-10-07 10:09:15,368 INFO: Info:	 Classification - Database:tuto View:view_3_stumps train ratio:0.5, CrossValidation k-folds: 5, cores:1, algorithm : decision_tree
+2025-10-07 10:09:15,368 INFO: Start:	 Determine Train/Test split
+2025-10-07 10:09:15,368 INFO: Info:	 Shape X_train:(999, 3), Length of y_train:999
+2025-10-07 10:09:15,368 INFO: Info:	 Shape X_test:(999, 3), Length of y_test:999
+2025-10-07 10:09:15,368 INFO: Done:	 Determine Train/Test split
+2025-10-07 10:09:15,368 INFO: Start:	 Generate classifier args
+2025-10-07 10:09:15,368 INFO: Done:	 Generate classifier args
+2025-10-07 10:09:15,368 INFO: Start:	 Training
+2025-10-07 10:09:15,372 INFO: Done:	 Training
+2025-10-07 10:09:15,372 INFO: Start:	 Predicting
+2025-10-07 10:09:15,372 INFO: Done:	 Predicting
+2025-10-07 10:09:15,373 INFO: Info:	 Duration for training and predicting: 0.00473951099999681[s]
+2025-10-07 10:09:15,373 INFO: Start:	 Getting results
+2025-10-07 10:09:15,377 INFO: Done:	 Getting results
+2025-10-07 10:09:15,377 INFO: Start:	 Saving preds
+2025-10-07 10:09:15,377 INFO: Classification on tuto for view_3_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_3_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6666666666666666
+		- Score on test : 0.6086086086086087
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       251 │        40 │        42 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │       122 │       180 │        31 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       105 │        51 │       177 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_0 <= 0.46582071483135223
+Feature importances : 
+- Feature : ID_0, feature importance : 0.5332414167592018
+- Feature : ID_1, feature importance : 0.4667585832407982
+
+2025-10-07 10:09:15,385 INFO: Done:	 Saving results
+2025-10-07 10:09:15,385 INFO: Done:	 monoview benchmark
+2025-10-07 10:09:15,385 INFO: Start:	 multiview benchmark
+2025-10-07 10:09:15,385 INFO: Done:	 multiview benchmark
+2025-10-07 10:09:15,386 INFO: Start:	 Analyzing all results
+2025-10-07 10:09:15,394 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:15,574 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:15,574 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:17,286 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:17,393 INFO: Done:	 Analyzing all results
+2025-10-07 10:09:17,393 INFO: Done:	 Executing all the needed benchmarks
+2025-10-07 10:09:17,393 INFO: Start:	 Analyzing predictions
+2025-10-07 10:09:17,394 INFO: Start:	 Analyzing all results
+2025-10-07 10:09:17,402 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:17,587 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:17,587 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:19,434 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:19,550 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:19,734 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:19,734 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:21,524 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:21,645 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:21,868 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:21,868 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:23,635 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:23,919 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:24,141 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:24,142 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:25,867 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:25,980 INFO: Start:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:26,201 INFO: Done:	 Score graph generation for accuracy_score*
+2025-10-07 10:09:26,201 INFO: Start:	 Label analysis figure generation
+2025-10-07 10:09:28,072 INFO: Done:	 Label analysis figures generation
+2025-10-07 10:09:28,177 INFO: Done:	 Analyzing all results
+2025-10-07 10:09:28,376 INFO: Start:	 Global label analysis figure generation
+2025-10-07 10:09:30,088 INFO: Done:	 Global label analysis figures generation
+2025-10-07 10:09:30,188 INFO: Done:	 Analyzing predictions

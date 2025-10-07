@@ -1,0 +1,95 @@
+:mod:`multiview_generator.gaussian_classes`
+===========================================
+
+.. py:module:: multiview_generator.gaussian_classes
+
+
+gaussian_classes
+----------------
+
+
+.. py:class:: MultiViewGaussianSubProblemsGenerator(random_state=42, n_samples=100, n_classes=4, n_views=4, error_matrix=None, n_features=3, class_weights=1.0, redundancy=0.05, complementarity=0.05, complementarity_level=3, mutual_error=0.01, name='generated_dataset', config_file=None, sub_problem_type='base', sub_problem_configurations=None, sub_problem_generators='StumpsGenerator', random_vertices=False, min_rndm_val=-1, max_rndm_val=1, **kwargs)
+
+
+
+   This engine generates one monoview sub-problem for each view with independant data.
+   If then switch descriptions between the samples to create error and difficulty in the dataset
+
+   :param random_state: The random state or seed.
+   :param n_samples: The number of samples that the dataset will contain
+   :param n_classes: The number of classes in which the samples will be labelled
+   :param n_views: The number of views describing the samples
+   :param error_matrix: The error matrix giving in row i column j the error of the Bayes classifier on Class i for View j
+   :param n_features: The number of features describing the samples for each view (can specify an int or array-like of length ``n_views``)
+   :param class_weights: The proportion of the dataset that will be labelled in each class. Must specify an array-like of size n_classes ([0.1,0.45,0.45] will output a dataset with with 10% of the samples in the first class and 45% in the two others.)
+   :param redundancy: The proportion of the samples that will be well-decribed by all the views.
+   # :param complementarity: The proportion of samples that will be well-decribed only by some views
+   :param complementarity_level: The number of views that will have a bad description of the complementray samples
+   :param mutual_error: The proportion of samples that will be mis-described by all the views
+   :param name: The name of the dataset (will be used to name the file)
+   :param config_file: The path to the yaml config file. If provided, the config fil entries will overwrite the one passed as arguments.
+
+   :type random_state: int or np.random.RandomState
+   :type n_samples: int
+   :type n_classes: int
+   :type n_views: int
+   :type error_matrix: np.ndarray
+   :type n_features: int or array-like
+   :type class_weights: float or array-like
+   :type redundancy: float
+   :type complementarity: float
+   :type complementarity_level: float
+   :type mutual_error: float
+   :type name: str
+   :type config_file: str
+   :type sub_problem_type: str or list
+   :type sub_problem_configurations: None, dict or list
+
+
+   .. py:attribute:: random_vertices
+
+
+   .. py:attribute:: sub_problem_generators
+
+
+   .. py:method:: generate_multi_view_dataset()
+
+      This is the main method. It will generate a multiview dataset according to the configuration.
+      To do so,
+
+      * it generates the labels of the multiview dataset,
+      * then it assigns all the subsets of samples (redundant, ...)
+      * finally, for each view it generates a monoview dataset according to the configuration
+
+
+      :return: view_data a list containing the views np.ndarrays and y, the label array.
+
+
+
+   .. py:method:: assign_mutual_error()
+
+      Method assigning the mis-describing views to the mutual error samples.
+
+
+
+   .. py:method:: assign_complementarity()
+
+      Method assigning mis-described and well-described views to build
+      complementary samples
+
+
+
+   .. py:method:: assign_redundancy()
+
+      Method assigning the well-describing views to the redundant samples.
+
+
+
+   .. py:method:: get_distance()
+
+      Method that records the distance of each description to the ideal
+      decision limit, will be used later to quantify more precisely the
+      quality of a description.
+
+
+
