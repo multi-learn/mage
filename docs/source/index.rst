@@ -21,10 +21,10 @@ To install |gene|, clone the gitlab repository and run
    :maxdepth: 1
    :caption: Contents:
 
-     include_tuto1
-     include_tuto2
-     include_tuto3
-     documentation
+   include_tuto1
+   include_tuto2
+   include_tuto3
+   documentation
 
 Read Me
 =======
