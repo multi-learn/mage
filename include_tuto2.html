@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAGE tutorial : the sample types &mdash; MAGE 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/plotly_js.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MAGE tutorial : multiple monoview generators." href="include_tuto3.html" />
+    <link rel="prev" title="Multiview Dataset Generator Demo" href="include_tuto1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MAGE
+              <img src="_static/mage-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="include_tuto1.html">Multiview Dataset Generator Demo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MAGE tutorial : the sample types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Hands-on-experience-:-initialization">Hands on experience : initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Dataset-analysis-using-SuMMIT">Dataset analysis using SuMMIT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="include_tuto3.html">MAGE tutorial : multiple monoview generators.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">MAGE documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MAGE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MAGE tutorial : the sample types</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/include_tuto2.nblink.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <style>
+   .nbinput .prompt, .nboutput .prompt{
+    display: none;
+}
+
+</style><section id="MAGE-tutorial-:-the-sample-types">
+<h1>MAGE tutorial : the sample types<a class="headerlink" href="#MAGE-tutorial-:-the-sample-types" title="Link to this heading"></a></h1>
+<p>In this tutorial, we will learn how to generate a multiview dataset presenting :</p>
+<ul class="simple">
+<li><p>redundancy,</p></li>
+<li><p>complementarity and</p></li>
+<li><p>mutual error.</p></li>
+</ul>
+<section id="Definitions">
+<h2>Definitions<a class="headerlink" href="#Definitions" title="Link to this heading"></a></h2>
+<p>In this tutorial, will will denote a sample as</p>
+<ul class="simple">
+<li><p><strong>Redundant</strong> if all the views have enough information to classify it correctly without collaboration,</p></li>
+<li><p><strong>Complementary</strong> if only some of the views have enough information to classify it correctly without collaboration it is useful the assess the ability to extract the relevant information among the views.</p></li>
+<li><p>Part of the <strong>Mutual Error</strong> if none of the views has enough information to classify it correctly without collaboration. A mutliview classifier able to classify these examples is apt to get information from several features from different views and combine it to classify the examples.</p></li>
+</ul>
+</section>
+<section id="Hands-on-experience-:-initialization">
+<h2>Hands on experience : initialization<a class="headerlink" href="#Hands-on-experience-:-initialization" title="Link to this heading"></a></h2>
+<p>We will initialize the arguments as earlier :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">multiview_generator.gaussian_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiViewGaussianSubProblemsGenerator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tabulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">random_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;tuto&quot;</span>
+<span class="n">n_views</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">error_matrix</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">class_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.333</span><span class="p">,</span> <span class="mf">0.333</span><span class="p">,</span> <span class="mf">0.333</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+<p>To control the three previously introduced characteristics, we have to provide three floats :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">complementarity</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">redundancy</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">mutual_error</span> <span class="o">=</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can generate the dataset with the given configuration.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">generator</span> <span class="o">=</span> <span class="n">MultiViewGaussianSubProblemsGenerator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">n_views</span><span class="o">=</span><span class="n">n_views</span><span class="p">,</span>
+                                          <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
+                                          <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
+                                          <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
+                                          <span class="n">class_weights</span><span class="o">=</span><span class="n">class_weights</span><span class="p">,</span>
+                                          <span class="n">error_matrix</span><span class="o">=</span><span class="n">error_matrix</span><span class="p">,</span>
+                                          <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
+                                          <span class="n">redundancy</span><span class="o">=</span><span class="n">redundancy</span><span class="p">,</span>
+                                          <span class="n">complementarity</span><span class="o">=</span><span class="n">complementarity</span><span class="p">,</span>
+                                          <span class="n">mutual_error</span><span class="o">=</span><span class="n">mutual_error</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_multi_view_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Here, the generator distinguishes four types of examples, the thrre previously introduced and the ones that were used to fill the dataset.</p>
+</section>
+<section id="Dataset-analysis-using-SuMMIT">
+<h2>Dataset analysis using <a class="reference external" href="https://gitlab.lis-lab.fr/baptiste.bauvin/summit">SuMMIT</a><a class="headerlink" href="#Dataset-analysis-using-SuMMIT" title="Link to this heading"></a></h2>
+<p>In order to differentiate them, we use <code class="docutils literal notranslate"><span class="pre">generator.sample_ids</span></code>. In this attribute, we can find an array with the ids of all the generated exmaples, characterizing their type :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">generator</span><span class="o">.</span><span class="n">sample_ids</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;0_l_0_m-0_0.37-1_0.04-2_0.27-3_0.81&#39;,
+ &#39;1_l_0_m-0_0.48-1_1.28-2_0.28-3_0.55&#39;,
+ &#39;2_l_0_m-0_0.96-1_0.32-2_0.08-3_0.56&#39;,
+ &#39;3_l_0_m-0_2.49-1_0.18-2_0.97-3_0.35&#39;,
+ &#39;4_l_0_m-0_0.11-1_0.92-2_0.21-3_0.4&#39;,
+ &#39;5_l_0_m-0_0.84-1_0.43-2_0.48-3_1.17&#39;,
+ &#39;6_l_0_m-0_0.84-1_1.41-2_0.13-3_0.46&#39;,
+ &#39;7_l_0_m-0_0.14-1_0.64-2_0.62-3_0.4&#39;,
+ &#39;8_l_0_m-0_0.04-1_0.31-2_0.63-3_0.21&#39;,
+ &#39;9_l_0_m-0_0.86-1_1.18-2_0.09-3_0.35&#39;]
+</pre></div></div>
+</div>
+<p>Here, we printed the 10 first ones, and we have :</p>
+<ul class="simple">
+<li><p>the redundant samples tagged <code class="docutils literal notranslate"><span class="pre">_r-</span></code>,</p></li>
+<li><p>the mutual error ones tagged <code class="docutils literal notranslate"><span class="pre">_m-</span></code>,</p></li>
+<li><p>the complementary ones tagged <code class="docutils literal notranslate"><span class="pre">_c-</span></code> and</p></li>
+</ul>
+<p>To get a visualization on these properties, we will use <a class="reference external" href="https://gitlab.lis-lab.fr/baptiste.bauvin/summit">SuMMIT</a> with decision trees on each view.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">summit.execute</span><span class="w"> </span><span class="kn">import</span> <span class="n">execute</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">supp_dir</span><span class="p">)</span>
+<span class="n">generator</span><span class="o">.</span><span class="n">to_hdf5_mc</span><span class="p">(</span><span class="n">supp_dir</span><span class="p">)</span>
+<span class="n">execute</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">supp_dir</span><span class="p">,</span> <span class="s2">&quot;config_summit.yml&quot;</span><span class="p">))</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+_static/supplementary_material
+selected labels  [0 0 0 ... 2 2 2]
+self.dataset  [&#39;label_1&#39; &#39;label_2&#39; &#39;label_3&#39;]
+</pre></div></div>
+</div>
+<p>To extract the result, we need a small script that will fetch the right folder :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_iframe_path</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="c1"># détecte si on est en Sphinx (variable d&#39;environnement ou autre)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SPHINX_BUILD&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+        <span class="c1"># chemin dans _static/tuto_latest lors du build</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;_static/tuto_latest/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># chemin direct dans dossier dynamique lors du notebook interactif</span>
+        <span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;supplementary_material&#39;</span><span class="p">,</span> <span class="s1">&#39;tuto&#39;</span><span class="p">)</span>
+        <span class="n">latest_dir</span> <span class="o">=</span> <span class="n">fetch_latest_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">base_path</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">latest_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_latest_dir</span><span class="p">(</span><span class="n">experiment_directories</span><span class="p">,</span> <span class="n">latest_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1560</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">experiment_directory</span> <span class="ow">in</span> <span class="n">experiment_directories</span><span class="p">:</span>
+        <span class="n">experiment_time</span> <span class="o">=</span> <span class="n">experiment_directory</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">experiment_time</span> <span class="o">+=</span> <span class="n">experiment_directory</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">experiment_time</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">experiment_time</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">experiment_time</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dt</span> <span class="o">&gt;</span> <span class="n">latest_date</span><span class="p">:</span>
+            <span class="n">latest_date</span> <span class="o">=</span> <span class="n">dt</span>
+            <span class="n">latest_experiment_dir</span> <span class="o">=</span> <span class="n">experiment_directory</span>
+    <span class="k">return</span> <span class="n">latest_experiment_dir</span>
+
+<span class="n">experiment_directory</span> <span class="o">=</span> <span class="n">fetch_latest_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">supp_dir</span><span class="p">,</span> <span class="s1">&#39;tuto&#39;</span><span class="p">)))</span>
+<span class="n">error_fig_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">supp_dir</span><span class="p">,</span> <span class="s1">&#39;tuto&#39;</span><span class="p">,</span> <span class="n">experiment_directory</span><span class="p">,</span> <span class="s2">&quot;error_analysis_2D.html&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">error_fig_path</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">iframe_path</span> <span class="o">=</span> <span class="n">get_iframe_path</span><span class="p">(</span><span class="s2">&quot;error_analysis_2D.html&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">error_fig_path</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; FFile not Found : </span><span class="si">{</span><span class="n">error_fig_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<iframe
+    width="900"
+    height="500"
+    src="_static/supplementary_material/tuto/started_2025_11_11-16_32_/error_analysis_2D.html"
+    frameborder="0"
+    allowfullscreen
+
+></iframe></div>
+</div>
+<p>This graph represents the failure of each classifier on each sample. So a black rectangle on row i, column j means that classifier j always failed to classify example i. So, by <a class="reference external" href="https://baptiste.bauvin.pages.lis-lab.fr/summit/_images/zoom_plotly.gif">zooming in</a>, we can focus on several samples and we see that the type of samples are well defined as the mutual error ones are systematically misclassified by the decision trees, the redundant ones are well-classified and the complementary ones
+are classified only by a portion of the views.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">supp_dir</span><span class="p">,</span> <span class="s1">&#39;tuto&#39;</span><span class="p">,</span> <span class="n">experiment_directory</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;tuto-mean_on_5_iter-accuracy_score*-class.html&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fig_path</span><span class="p">):</span>
+    <span class="n">iframe_path</span> <span class="o">=</span> <span class="n">get_iframe_path</span><span class="p">(</span><span class="s2">&quot;tuto-mean_on_5_iter-accuracy_score*-class.html&#39;&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">fig_path</span> <span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; File not found: </span><span class="si">{</span><span class="n">fig_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<iframe
+    width="900"
+    height="500"
+    src="_static/supplementary_material/tuto/started_2025_11_11-16_32_/tuto-mean_on_5_iter-accuracy_score*-class.html"
+    frameborder="0"
+    allowfullscreen
+
+></iframe></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="include_tuto1.html" class="btn btn-neutral float-left" title="Multiview Dataset Generator Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="include_tuto3.html" class="btn btn-neutral float-right" title="MAGE tutorial : multiple monoview generators." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Baptiste Bauvin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

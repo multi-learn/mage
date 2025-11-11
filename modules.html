@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>multiview_generator &mdash; MAGE 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/plotly_js.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MAGE
+              <img src="_static/mage-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_tuto1.html">Multiview Dataset Generator Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="include_tuto2.html">MAGE tutorial : the sample types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="include_tuto3.html">MAGE tutorial : multiple monoview generators.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">MAGE documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MAGE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">multiview_generator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiview-generator">
+<h1>multiview_generator<a class="headerlink" href="#multiview-generator" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="multiview_generator.html">multiview_generator package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.tests.html">multiview_generator.tests package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#module-multiview_generator.tests.test_gaussian_classes">multiview_generator.tests.test_gaussian_classes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#module-multiview_generator.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#module-multiview_generator.base">multiview_generator.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.base.MultiViewSubProblemsGenerator"><code class="docutils literal notranslate"><span class="pre">MultiViewSubProblemsGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.base.MultiViewSubProblemsGenerator.gen_report"><code class="docutils literal notranslate"><span class="pre">MultiViewSubProblemsGenerator.gen_report()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.base.MultiViewSubProblemsGenerator.gen_view_report"><code class="docutils literal notranslate"><span class="pre">MultiViewSubProblemsGenerator.gen_view_report()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.base.MultiViewSubProblemsGenerator.to_hdf5_mc"><code class="docutils literal notranslate"><span class="pre">MultiViewSubProblemsGenerator.to_hdf5_mc()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#module-multiview_generator.base_strs">multiview_generator.base_strs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#module-multiview_generator.gaussian_classes">multiview_generator.gaussian_classes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator"><code class="docutils literal notranslate"><span class="pre">MultiViewGaussianSubProblemsGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_complementarity"><code class="docutils literal notranslate"><span class="pre">MultiViewGaussianSubProblemsGenerator.assign_complementarity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_mutual_error"><code class="docutils literal notranslate"><span class="pre">MultiViewGaussianSubProblemsGenerator.assign_mutual_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_redundancy"><code class="docutils literal notranslate"><span class="pre">MultiViewGaussianSubProblemsGenerator.assign_redundancy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.generate_multi_view_dataset"><code class="docutils literal notranslate"><span class="pre">MultiViewGaussianSubProblemsGenerator.generate_multi_view_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.get_distance"><code class="docutils literal notranslate"><span class="pre">MultiViewGaussianSubProblemsGenerator.get_distance()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#module-multiview_generator.sub_problems">multiview_generator.sub_problems module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.BaseSubProblem"><code class="docutils literal notranslate"><span class="pre">BaseSubProblem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.BaseSubProblem.gen_report"><code class="docutils literal notranslate"><span class="pre">BaseSubProblem.gen_report()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.RingsGenerator"><code class="docutils literal notranslate"><span class="pre">RingsGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.RingsGenerator.gen_data"><code class="docutils literal notranslate"><span class="pre">RingsGenerator.gen_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.RingsGenerator.gen_report"><code class="docutils literal notranslate"><span class="pre">RingsGenerator.gen_report()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.RingsGenerator.get_bayes_classifier"><code class="docutils literal notranslate"><span class="pre">RingsGenerator.get_bayes_classifier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.StumpsGenerator"><code class="docutils literal notranslate"><span class="pre">StumpsGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.StumpsGenerator.gen_data"><code class="docutils literal notranslate"><span class="pre">StumpsGenerator.gen_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.StumpsGenerator.gen_report"><code class="docutils literal notranslate"><span class="pre">StumpsGenerator.gen_report()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.StumpsGenerator.get_bayes_classifier"><code class="docutils literal notranslate"><span class="pre">StumpsGenerator.get_bayes_classifier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.TreesGenerator"><code class="docutils literal notranslate"><span class="pre">TreesGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.TreesGenerator.gen_data"><code class="docutils literal notranslate"><span class="pre">TreesGenerator.gen_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.TreesGenerator.gen_report"><code class="docutils literal notranslate"><span class="pre">TreesGenerator.gen_report()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.TreesGenerator.get_bayes_classifier"><code class="docutils literal notranslate"><span class="pre">TreesGenerator.get_bayes_classifier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.sub_problems.to_cartesian"><code class="docutils literal notranslate"><span class="pre">to_cartesian()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#module-multiview_generator.utils">multiview_generator.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.utils.format_array"><code class="docutils literal notranslate"><span class="pre">format_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.utils.get_config_from_file"><code class="docutils literal notranslate"><span class="pre">get_config_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.utils.init_array_attr"><code class="docutils literal notranslate"><span class="pre">init_array_attr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.utils.init_class_weights"><code class="docutils literal notranslate"><span class="pre">init_class_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.utils.init_error_matrix"><code class="docutils literal notranslate"><span class="pre">init_error_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.utils.init_list"><code class="docutils literal notranslate"><span class="pre">init_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.html#multiview_generator.utils.init_random_state"><code class="docutils literal notranslate"><span class="pre">init_random_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.html#module-multiview_generator">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Baptiste Bauvin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

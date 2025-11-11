@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>multiview_generator package &mdash; MAGE 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/plotly_js.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MAGE
+              <img src="_static/mage-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_tuto1.html">Multiview Dataset Generator Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="include_tuto2.html">MAGE tutorial : the sample types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="include_tuto3.html">MAGE tutorial : multiple monoview generators.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">MAGE documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MAGE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">multiview_generator package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/multiview_generator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiview-generator-package">
+<h1>multiview_generator package<a class="headerlink" href="#multiview-generator-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="multiview_generator.tests.html">multiview_generator.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.tests.html#module-multiview_generator.tests.test_gaussian_classes">multiview_generator.tests.test_gaussian_classes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.tests.html#multiview_generator.tests.test_gaussian_classes.Test_MultiViewGaussianSubProblemsGenerator"><code class="docutils literal notranslate"><span class="pre">Test_MultiViewGaussianSubProblemsGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#multiview_generator.tests.test_gaussian_classes.Test_MultiViewGaussianSubProblemsGenerator.setUpClass"><code class="docutils literal notranslate"><span class="pre">Test_MultiViewGaussianSubProblemsGenerator.setUpClass()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#multiview_generator.tests.test_gaussian_classes.Test_MultiViewGaussianSubProblemsGenerator.tearDownClass"><code class="docutils literal notranslate"><span class="pre">Test_MultiViewGaussianSubProblemsGenerator.tearDownClass()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#multiview_generator.tests.test_gaussian_classes.Test_MultiViewGaussianSubProblemsGenerator.test_report"><code class="docutils literal notranslate"><span class="pre">Test_MultiViewGaussianSubProblemsGenerator.test_report()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#multiview_generator.tests.test_gaussian_classes.Test_MultiViewGaussianSubProblemsGenerator.test_save"><code class="docutils literal notranslate"><span class="pre">Test_MultiViewGaussianSubProblemsGenerator.test_save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiview_generator.tests.html#multiview_generator.tests.test_gaussian_classes.Test_MultiViewGaussianSubProblemsGenerator.test_simple"><code class="docutils literal notranslate"><span class="pre">Test_MultiViewGaussianSubProblemsGenerator.test_simple()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="multiview_generator.tests.html#multiview_generator.tests.test_gaussian_classes.rm_tmp"><code class="docutils literal notranslate"><span class="pre">rm_tmp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiview_generator.tests.html#module-multiview_generator.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-multiview_generator.base">
+<span id="multiview-generator-base-module"></span><h2>multiview_generator.base module<a class="headerlink" href="#module-multiview_generator.base" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="multiview_generator.base.MultiViewSubProblemsGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultiViewSubProblemsGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_views</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redundancy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complementarity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complementarity_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutual_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'generated_dataset'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_problem_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_problem_configurations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_rndm_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_rndm_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.base.MultiViewSubProblemsGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This engine generates one monoview sub-problem for each view with independant data.
+If then switch descriptions between the samples to create error and difficulty in the dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>random_state</strong> – The random state or seed.</p></li>
+<li><p><strong>n_samples</strong> – The number of samples that the dataset will contain</p></li>
+<li><p><strong>n_classes</strong> – The number of classes in which the samples will be labelled</p></li>
+<li><p><strong>n_views</strong> – The number of views describing the samples</p></li>
+<li><p><strong>error_matrix</strong> – The error matrix giving in row i column j the error of the Bayes classifier on Class i for View j</p></li>
+<li><p><strong>n_features</strong> – The number of features describing the samples for each view (can specify an int or array-like of length <code class="docutils literal notranslate"><span class="pre">n_views</span></code>)</p></li>
+<li><p><strong>class_weights</strong> – The proportion of the dataset that will be labelled in each class. Must specify an array-like of size n_classes ([0.1,0.45,0.45] will output a dataset with with 10% of the samples in the first class and 45% in the two others.)</p></li>
+<li><p><strong>redundancy</strong> – The proportion of the samples that will be well-decribed by all the views.</p></li>
+</ul>
+</dd>
+</dl>
+<p># :param complementarity: The proportion of samples that will be well-decribed only by some views
+:param complementarity_level: The number of views that will have a bad description of the complementray samples
+:param mutual_error: The proportion of samples that will be mis-described by all the views
+:param name: The name of the dataset (will be used to name the file)
+:param config_file: The path to the yaml config file. If provided, the config fil entries will overwrite the one passed as arguments.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.base.MultiViewSubProblemsGenerator.gen_report">
+<span class="sig-name descname"><span class="pre">gen_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'md'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.base.MultiViewSubProblemsGenerator.gen_report" title="Link to this definition"></a></dt>
+<dd><p>Generates a markdown report based on the configuration.
+If <code class="docutils literal notranslate"><span class="pre">save</span></code> is True, it will be saved in <code class="docutils literal notranslate"><span class="pre">output_path</span></code> as &lt;self.name&gt;.&lt;<code class="docutils literal notranslate"><span class="pre">file_type</span></code>&gt; .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> (<em>str</em>) – path to store the text report.</p></li>
+<li><p><strong>file_type</strong> (<em>str</em>) – Type of file in which the report is saved (currently supported : “md” or “txt”)</p></li>
+<li><p><strong>save</strong> (<em>bool</em>) – Whether to save the string in a file or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The report string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.base.MultiViewSubProblemsGenerator.gen_view_report">
+<span class="sig-name descname"><span class="pre">gen_view_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.base.MultiViewSubProblemsGenerator.gen_view_report" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.base.MultiViewSubProblemsGenerator.to_hdf5_mc">
+<span class="sig-name descname"><span class="pre">to_hdf5_mc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saving_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.base.MultiViewSubProblemsGenerator.to_hdf5_mc" title="Link to this definition"></a></dt>
+<dd><p>This is used to save the dataset in an HDF5 file, compatible with
+<a class="extlink-summit reference external" href="https://multi-learn.github.io/summit/">SuMMIT</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>saving_path</strong> (<em>str</em>) – where to save the dataset, the file will be names after the self.name attribute.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-multiview_generator.base_strs">
+<span id="multiview-generator-base-strs-module"></span><h2>multiview_generator.base_strs module<a class="headerlink" href="#module-multiview_generator.base_strs" title="Link to this heading"></a></h2>
+</section>
+<section id="module-multiview_generator.gaussian_classes">
+<span id="multiview-generator-gaussian-classes-module"></span><h2>multiview_generator.gaussian_classes module<a class="headerlink" href="#module-multiview_generator.gaussian_classes" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultiViewGaussianSubProblemsGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_views</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redundancy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complementarity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complementarity_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutual_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'generated_dataset'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_problem_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'base'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_problem_configurations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_problem_generators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'StumpsGenerator'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_rndm_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_rndm_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#multiview_generator.base.MultiViewSubProblemsGenerator" title="multiview_generator.base.MultiViewSubProblemsGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiViewSubProblemsGenerator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_complementarity">
+<span class="sig-name descname"><span class="pre">assign_complementarity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_complementarity" title="Link to this definition"></a></dt>
+<dd><p>Method assigning mis-described and well-described views to build
+complementary samples</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_mutual_error">
+<span class="sig-name descname"><span class="pre">assign_mutual_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_mutual_error" title="Link to this definition"></a></dt>
+<dd><p>Method assigning the mis-describing views to the mutual error samples.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_redundancy">
+<span class="sig-name descname"><span class="pre">assign_redundancy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.assign_redundancy" title="Link to this definition"></a></dt>
+<dd><p>Method assigning the well-describing views to the redundant samples.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.generate_multi_view_dataset">
+<span class="sig-name descname"><span class="pre">generate_multi_view_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.generate_multi_view_dataset" title="Link to this definition"></a></dt>
+<dd><p>This is the main method. It will generate a multiview dataset according to the configuration.
+To do so,</p>
+<ul class="simple">
+<li><p>it generates the labels of the multiview dataset,</p></li>
+<li><p>then it assigns all the subsets of samples (redundant, …)</p></li>
+<li><p>finally, for each view it generates a monoview dataset according to the configuration</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>view_data a list containing the views np.ndarrays and y, the label array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.get_distance">
+<span class="sig-name descname"><span class="pre">get_distance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.gaussian_classes.MultiViewGaussianSubProblemsGenerator.get_distance" title="Link to this definition"></a></dt>
+<dd><p>Method that records the distance of each description to the ideal
+decision limit, will be used later to quantify more precisely the
+quality of a description.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-multiview_generator.sub_problems">
+<span id="multiview-generator-sub-problems-module"></span><h2>multiview_generator.sub_problems module<a class="headerlink" href="#module-multiview_generator.sub_problems" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.BaseSubProblem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseSubProblem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_classes=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_vertices=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors=array([0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0.5])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=RandomState(MT19937)</span> <span class="pre">at</span> <span class="pre">0x7F58ABBDC040</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples_per_class=array([100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">100])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**configuration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.BaseSubProblem" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The base class for all the sub-problem generators.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.BaseSubProblem.gen_report">
+<span class="sig-name descname"><span class="pre">gen_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.BaseSubProblem.gen_report" title="Link to this definition"></a></dt>
+<dd><p>General method the generate the report on the view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string containing the general report for the view</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.RingsGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RingsGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_classes=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_vertices=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors=array([0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0.5])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=RandomState(MT19937)</span> <span class="pre">at</span> <span class="pre">0x7F58ABBDC040</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples_per_class=array([100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">100])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**configuration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.RingsGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#multiview_generator.sub_problems.BaseSubProblem" title="multiview_generator.sub_problems.BaseSubProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSubProblem</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.RingsGenerator.gen_data">
+<span class="sig-name descname"><span class="pre">gen_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.RingsGenerator.gen_data" title="Link to this definition"></a></dt>
+<dd><p>Generates the samples according to gaussian distributions with scales
+computed with the given error and class separation. The generator first
+computes a radius according to the gaussian distribution, then
+generates n_features-1 random angles to build the polar coordinates of
+the samples. The dataset returned is the cartesian version of this
+“polar” dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data a np.ndarray of dimension n_classes, n_samples_per_class, n_features containing the samples’ descriptions, sorted by class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.RingsGenerator.gen_report">
+<span class="sig-name descname"><span class="pre">gen_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.RingsGenerator.gen_report" title="Link to this definition"></a></dt>
+<dd><p>Generates the specific report for StumpsGenerator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.RingsGenerator.get_bayes_classifier">
+<span class="sig-name descname"><span class="pre">get_bayes_classifier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.RingsGenerator.get_bayes_classifier" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.StumpsGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StumpsGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_classes=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_vertices=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors=array([0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0.5])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=RandomState(MT19937)</span> <span class="pre">at</span> <span class="pre">0x7F58ABBDC040</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples_per_class=array([100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">100])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**configuration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.StumpsGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#multiview_generator.sub_problems.BaseSubProblem" title="multiview_generator.sub_problems.BaseSubProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSubProblem</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.StumpsGenerator.gen_data">
+<span class="sig-name descname"><span class="pre">gen_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.StumpsGenerator.gen_data" title="Link to this definition"></a></dt>
+<dd><p>Generates the samples according to gaussian distributions with scales
+computed with the given error and class separation. This sub-problem is
+easily understandable by a decision tree.</p>
+<p>The features are built as :
+relevant_features : the  math.ceil(math.log2(self.n_classes)) first ones,
+uniform noise features : all the remaining ones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data a np.ndarray of dimension n_classes, n_samples_per_class,         n_features containing the samples’ descriptions, sorted by class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.StumpsGenerator.gen_report">
+<span class="sig-name descname"><span class="pre">gen_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.StumpsGenerator.gen_report" title="Link to this definition"></a></dt>
+<dd><p>Generates the specific report for StumpsGenerator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.StumpsGenerator.get_bayes_classifier">
+<span class="sig-name descname"><span class="pre">get_bayes_classifier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.StumpsGenerator.get_bayes_classifier" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.TreesGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TreesGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_classes=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_vertices=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors=array([0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0.5])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state=RandomState(MT19937)</span> <span class="pre">at</span> <span class="pre">0x7F58ABBDC040</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples_per_class=array([100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">100])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**configuration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.TreesGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#multiview_generator.sub_problems.BaseSubProblem" title="multiview_generator.sub_problems.BaseSubProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSubProblem</span></code></a></p>
+<p>Work in progress : Similar generator as StumpsGenerator, but that
+generates several blobs per class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.TreesGenerator.gen_data">
+<span class="sig-name descname"><span class="pre">gen_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.TreesGenerator.gen_data" title="Link to this definition"></a></dt>
+<dd><p>WIP</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.TreesGenerator.gen_report">
+<span class="sig-name descname"><span class="pre">gen_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.TreesGenerator.gen_report" title="Link to this definition"></a></dt>
+<dd><p>WIP</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.TreesGenerator.get_bayes_classifier">
+<span class="sig-name descname"><span class="pre">get_bayes_classifier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.TreesGenerator.get_bayes_classifier" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.sub_problems.to_cartesian">
+<span class="sig-name descname"><span class="pre">to_cartesian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.sub_problems.to_cartesian" title="Link to this definition"></a></dt>
+<dd><p>Transforms polar coordinates to cartesian coordinates.</p>
+</dd></dl>
+
+</section>
+<section id="module-multiview_generator.utils">
+<span id="multiview-generator-utils-module"></span><h2>multiview_generator.utils module<a class="headerlink" href="#module-multiview_generator.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.utils.format_array">
+<span class="sig-name descname"><span class="pre">format_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_needed=&lt;class</span> <span class="pre">'int'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.utils.format_array" title="Link to this definition"></a></dt>
+<dd><p>Used to test that :
+*  if the input is an array, it is the right size,
+* if it is either a string, or a saclar, build an array with <code class="docutils literal notranslate"><span class="pre">input</span></code>
+repeated <code class="docutils literal notranslate"><span class="pre">size</span></code> times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> – either a string, a scalar or an array-like</p></li>
+<li><p><strong>size</strong> – an int, the size of the output array</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> of shape (<code class="docutils literal notranslate"><span class="pre">size</span></code>, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.utils.get_config_from_file">
+<span class="sig-name descname"><span class="pre">get_config_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.utils.get_config_from_file" title="Link to this definition"></a></dt>
+<dd><p>Loads the configuration for the yaml config file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> – path to the config file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.utils.init_array_attr">
+<span class="sig-name descname"><span class="pre">init_array_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.utils.init_array_attr" title="Link to this definition"></a></dt>
+<dd><p>Transforms a unique attribute into an array with the same value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong></p></li>
+<li><p><strong>n_repeat</strong></p></li>
+<li><p><strong>base_val</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.utils.init_class_weights">
+<span class="sig-name descname"><span class="pre">init_class_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.utils.init_class_weights" title="Link to this definition"></a></dt>
+<dd><p>Initializes the class weights. Sets a unifrom distribution if no
+distribution is specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>class_weights</strong></p></li>
+<li><p><strong>n_classes</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.utils.init_error_matrix">
+<span class="sig-name descname"><span class="pre">init_error_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_views</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.utils.init_error_matrix" title="Link to this definition"></a></dt>
+<dd><p>Initializes the error matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>error_matrix</strong></p></li>
+<li><p><strong>n_classes</strong></p></li>
+<li><p><strong>n_views</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.utils.init_list">
+<span class="sig-name descname"><span class="pre">init_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_needed=&lt;class</span> <span class="pre">'dict'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.utils.init_list" title="Link to this definition"></a></dt>
+<dd><p>Transforms a unique attribute into a list with the same value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong></p></li>
+<li><p><strong>n_repeat</strong></p></li>
+<li><p><strong>base_val</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multiview_generator.utils.init_random_state">
+<span class="sig-name descname"><span class="pre">init_random_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multiview_generator.utils.init_random_state" title="Link to this definition"></a></dt>
+<dd><p>Initalizes the random state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>random_state</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-multiview_generator">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-multiview_generator" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Baptiste Bauvin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

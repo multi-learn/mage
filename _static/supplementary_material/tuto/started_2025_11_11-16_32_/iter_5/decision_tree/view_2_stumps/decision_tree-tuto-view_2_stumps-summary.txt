@@ -1,0 +1,41 @@
+Classification on tuto for view_2_stumps with decision_tree.
+
+Database configuration : 
+	- Database name : tuto
+	- View name : view_2_stumps	 View shape : (1998, 3)
+	- Learning Rate : 0.5
+	- Labels used : label_1, label_2, label_3
+	- Number of cross validation folds : 5
+
+Classifier configuration : 
+	- DecisionTree with max_depth : 3, criterion : gini, splitter : best, random_state : RandomState(MT19937)
+	- Executed on 1 core(s) 
+
+
+	For Accuracy score using {}, (higher is better) : 
+		- Score on train : 0.6796796796796797
+		- Score on test : 0.6406406406406406
+
+Test set confusion matrix : 
+
+╒═════════╤═══════════╤═══════════╤═══════════╕
+│         │   label_1 │   label_2 │   label_3 │
+╞═════════╪═══════════╪═══════════╪═══════════╡
+│ label_1 │       214 │       102 │        17 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_2 │        41 │       284 │         8 │
+├─────────┼───────────┼───────────┼───────────┤
+│ label_3 │       106 │        85 │       142 │
+╘═════════╧═══════════╧═══════════╧═══════════╛
+
+
+
+ Classification took 0:00:00
+
+ Classifier Interpretation : 
+First feature : 
+	ID_1 <= 0.5110714733600616
+Feature importances : 
+- Feature : ID_1, feature importance : 0.5270770355558901
+- Feature : ID_0, feature importance : 0.46944582314567
+- Feature : ID_2, feature importance : 0.003477141298439767

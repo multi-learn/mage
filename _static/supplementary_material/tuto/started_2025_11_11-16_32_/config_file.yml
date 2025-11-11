@@ -1,0 +1,39 @@
+add_noise: false
+algos_monoview:
+- decision_tree
+algos_multiview: []
+classes: null
+debug: false
+decision_tree:
+  max_depth: 3
+file_type: .hdf5
+full: true
+hps_args: {}
+hps_iter: 1
+hps_kwargs:
+  equivalent_draws: true
+  n_iter: 10
+hps_type: None
+label: ''
+log: false
+metric_princ: accuracy_score
+metrics:
+  accuracy_score: {}
+name:
+- tuto
+nb_class: null
+nb_cores: 1
+nb_folds: 5
+nice: 0
+noise_std: 0.0
+pathf: ./_static/supplementary_material/
+random_state: 42
+res_dir: ./_static/supplementary_material
+split: 0.5
+stats_iter: 5
+track_tracebacks: true
+type:
+- monoview
+views: null
+weighted_linear_late_fusion:
+  monoview_classifiers: random_forest
